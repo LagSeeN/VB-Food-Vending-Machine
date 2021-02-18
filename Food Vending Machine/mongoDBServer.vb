@@ -3,12 +3,13 @@ Imports MongoDB.Driver
 Public Class mongoDBServer
 
     Dim server As String = "mongodb+srv://vending_machine:wYvBQGPZHF6tMGbqHueyZZeWMjcuq47zSA6p9DifL3WeExvSi5RWE4hYuuwAcgG4ZoSNoXyYb37txCESZw6UfffmFrnuRZXP4Rpqd9LfRMEq8K3toKAwsuUcbakHvz58@clustertni.kt6oq.mongodb.net/Food_Vending_Machine?retryWrites=true&w=majority"
-    Public Function search_data()
+    Dim base64 As New Base64
+    Public Sub search_data()
         Dim conn = New MongoClient(server)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim found = database.GetCollection(Of BsonDocument)("products")
         MessageBox.Show(found.CountDocuments("{}"))
-    End Function
+    End Sub
 
     Public Function count_data()
         Dim conn = New MongoClient(server)
@@ -21,21 +22,16 @@ Public Class mongoDBServer
         Dim conn = New MongoClient(server)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
-        Dim cursor = collection.Find(New BsonDocument()).ToList
-        For Each t In cursor
-            MessageBox.Show(String.Format("{0}", t("product_name")))
+
+        'Dim filter = Builders(Of BsonDocument).Filter.
+        'Dim cursor = collection.Find(New BsonDocument()).ToList
+        Dim cursor = collection.Find(New BsonDocument()).Project(Builders(Of BsonDocument).Projection.Include("image").Exclude("_id")).ToList
+        Dim image_list(cursor.Count)
+        For i = 0 To cursor.Count - 1
+            image_list(i) = base64.convertbytetoimage(base64.ConvertBase64ToByteArray(cursor(i)("image")))
         Next
+        Return image_list
     End Function
-
-
-    'def get_all_image()
-    '    With pymongo.MongoClient(server) As conn:
-    '        db = conn.get_database('Food_Vending_Machine')
-    '        cursor = db['products'].find({}, {'image': 1})
-    '        image = []
-    '        For i in cursor:
-    '            image.append(i['image'])
-    '        Return image
 
 
     'def get_all_status()
@@ -56,7 +52,26 @@ Public Class mongoDBServer
     '        For i in cursor:
     '            _id.append(i['_id'])
     '        Return _id
+    Public Function get_all_food()
+        Dim conn = New MongoClient(server)
+        Dim database = conn.GetDatabase("Food_Vending_Machine")
+        Dim collection = database.GetCollection(Of BsonDocument)("products")
+        Dim cursor = collection.Find(New BsonDocument()).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("stock")).ToList
+        Dim foods_list(cursor.Count)
+        For i = 0 To cursor.Count - 1
+            foods_list(i) = cursor(i)
+        Next
+        Return foods_list
+    End Function
 
+    Public Function get_food(id As String)
+        Dim conn = New MongoClient(server)
+        Dim database = conn.GetDatabase("Food_Vending_Machine")
+        Dim collection = database.GetCollection(Of BsonDocument)("products")
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", ObjectId.Parse(id))
+        Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("price").Include("stock").Include("image")).First
+        Return cursor
+    End Function
 
     'def get_food(_id)
     '    With pymongo.MongoClient(server) As conn:
