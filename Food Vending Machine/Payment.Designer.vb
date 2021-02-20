@@ -36,6 +36,7 @@ Partial Class Payment
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblPaymentHead = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.GetFood_Worker = New System.ComponentModel.BackgroundWorker()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.ptbProduct, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -45,16 +46,16 @@ Partial Class Payment
         '
         Me.TableLayoutPanel1.BackColor = System.Drawing.Color.White
         Me.TableLayoutPanel1.ColumnCount = 10
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 651.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 570.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 13.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.lblTextPrice, 3, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.lblPrice, 4, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.lblName, 4, 1)
@@ -64,18 +65,17 @@ Partial Class Payment
         Me.TableLayoutPanel1.Controls.Add(Me.lblTextTime, 6, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.lblTime, 7, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.ptbProduct, 1, 1)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 154)
-        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 113)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 7
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 249.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 187.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1262, 690)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1104, 518)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'lblTextPrice
@@ -83,9 +83,9 @@ Partial Class Payment
         Me.lblTextPrice.BackColor = System.Drawing.Color.White
         Me.lblTextPrice.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTextPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTextPrice.Location = New System.Drawing.Point(695, 204)
+        Me.lblTextPrice.Location = New System.Drawing.Point(609, 153)
         Me.lblTextPrice.Name = "lblTextPrice"
-        Me.lblTextPrice.Size = New System.Drawing.Size(127, 74)
+        Me.lblTextPrice.Size = New System.Drawing.Size(110, 56)
         Me.lblTextPrice.TabIndex = 11
         Me.lblTextPrice.Text = "ราคา"
         Me.lblTextPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -95,9 +95,9 @@ Partial Class Payment
         Me.lblPrice.BackColor = System.Drawing.Color.White
         Me.lblPrice.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblPrice.Location = New System.Drawing.Point(828, 204)
+        Me.lblPrice.Location = New System.Drawing.Point(725, 153)
         Me.lblPrice.Name = "lblPrice"
-        Me.lblPrice.Size = New System.Drawing.Size(156, 74)
+        Me.lblPrice.Size = New System.Drawing.Size(136, 56)
         Me.lblPrice.TabIndex = 13
         Me.lblPrice.Text = "ราคาสินค้า"
         Me.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -108,9 +108,9 @@ Partial Class Payment
         Me.TableLayoutPanel1.SetColumnSpan(Me.lblName, 4)
         Me.lblName.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblName.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblName.Location = New System.Drawing.Point(828, 87)
+        Me.lblName.Location = New System.Drawing.Point(725, 65)
         Me.lblName.Name = "lblName"
-        Me.lblName.Size = New System.Drawing.Size(407, 74)
+        Me.lblName.Size = New System.Drawing.Size(356, 56)
         Me.lblName.TabIndex = 19
         Me.lblName.Text = "ชื่อสินค้าที่ซื้อ"
         Me.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -120,9 +120,9 @@ Partial Class Payment
         Me.lblTextName.BackColor = System.Drawing.Color.White
         Me.lblTextName.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTextName.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTextName.Location = New System.Drawing.Point(695, 87)
+        Me.lblTextName.Location = New System.Drawing.Point(609, 65)
         Me.lblTextName.Name = "lblTextName"
-        Me.lblTextName.Size = New System.Drawing.Size(127, 74)
+        Me.lblTextName.Size = New System.Drawing.Size(110, 56)
         Me.lblTextName.TabIndex = 10
         Me.lblTextName.Text = "ชื่อสินค้า"
         Me.lblTextName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -131,10 +131,9 @@ Partial Class Payment
         '
         Me.btnCoinEmu.Dock = System.Windows.Forms.DockStyle.Fill
         Me.btnCoinEmu.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.btnCoinEmu.Location = New System.Drawing.Point(1005, 208)
-        Me.btnCoinEmu.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnCoinEmu.Location = New System.Drawing.Point(880, 156)
         Me.btnCoinEmu.Name = "btnCoinEmu"
-        Me.btnCoinEmu.Size = New System.Drawing.Size(156, 66)
+        Me.btnCoinEmu.Size = New System.Drawing.Size(136, 50)
         Me.btnCoinEmu.TabIndex = 15
         Me.btnCoinEmu.Text = "หยอดเหรียญ"
         Me.btnCoinEmu.UseVisualStyleBackColor = True
@@ -143,10 +142,9 @@ Partial Class Payment
         '
         Me.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.btnCancel.Location = New System.Drawing.Point(828, 531)
-        Me.btnCancel.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnCancel.Location = New System.Drawing.Point(725, 399)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(156, 66)
+        Me.btnCancel.Size = New System.Drawing.Size(136, 50)
         Me.btnCancel.TabIndex = 16
         Me.btnCancel.Text = "ยกเลิกการซื้อ"
         Me.btnCancel.UseVisualStyleBackColor = True
@@ -155,9 +153,9 @@ Partial Class Payment
         '
         Me.lblTextTime.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTextTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTextTime.Location = New System.Drawing.Point(1005, 527)
+        Me.lblTextTime.Location = New System.Drawing.Point(880, 396)
         Me.lblTextTime.Name = "lblTextTime"
-        Me.lblTextTime.Size = New System.Drawing.Size(156, 74)
+        Me.lblTextTime.Size = New System.Drawing.Size(136, 56)
         Me.lblTextTime.TabIndex = 21
         Me.lblTextTime.Text = "เวลาทำการ"
         Me.lblTextTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -166,9 +164,9 @@ Partial Class Payment
         '
         Me.lblTime.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTime.Location = New System.Drawing.Point(1167, 527)
+        Me.lblTime.Location = New System.Drawing.Point(1022, 396)
         Me.lblTime.Name = "lblTime"
-        Me.lblTime.Size = New System.Drawing.Size(68, 74)
+        Me.lblTime.Size = New System.Drawing.Size(59, 56)
         Me.lblTime.TabIndex = 22
         Me.lblTime.Text = "0"
         Me.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -177,11 +175,11 @@ Partial Class Payment
         '
         Me.ptbProduct.BackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.ptbProduct.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ptbProduct.Location = New System.Drawing.Point(29, 91)
-        Me.ptbProduct.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.ptbProduct.Location = New System.Drawing.Point(26, 68)
         Me.ptbProduct.Name = "ptbProduct"
         Me.TableLayoutPanel1.SetRowSpan(Me.ptbProduct, 5)
-        Me.ptbProduct.Size = New System.Drawing.Size(645, 506)
+        Me.ptbProduct.Size = New System.Drawing.Size(564, 381)
+        Me.ptbProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.ptbProduct.TabIndex = 23
         Me.ptbProduct.TabStop = False
         '
@@ -191,18 +189,17 @@ Partial Class Payment
         Me.Panel1.Controls.Add(Me.lblPaymentHead)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1262, 156)
+        Me.Panel1.Size = New System.Drawing.Size(1104, 117)
         Me.Panel1.TabIndex = 1
         '
         'lblPaymentHead
         '
         Me.lblPaymentHead.AutoSize = True
         Me.lblPaymentHead.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblPaymentHead.Location = New System.Drawing.Point(49, 38)
+        Me.lblPaymentHead.Location = New System.Drawing.Point(43, 28)
         Me.lblPaymentHead.Name = "lblPaymentHead"
-        Me.lblPaymentHead.Size = New System.Drawing.Size(175, 54)
+        Me.lblPaymentHead.Size = New System.Drawing.Size(142, 44)
         Me.lblPaymentHead.TabIndex = 0
         Me.lblPaymentHead.Text = "ชำระเงิน"
         '
@@ -210,15 +207,18 @@ Partial Class Payment
         '
         Me.Timer1.Interval = 1000
         '
+        'GetFood_Worker
+        '
+        '
         'Payment
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1262, 841)
+        Me.ClientSize = New System.Drawing.Size(1104, 631)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TableLayoutPanel1)
-        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "Payment"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Payment"
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.ptbProduct, System.ComponentModel.ISupportInitialize).EndInit()
@@ -241,4 +241,5 @@ Partial Class Payment
     Friend WithEvents lblTextTime As Label
     Friend WithEvents lblTime As Label
     Friend WithEvents ptbProduct As PictureBox
+    Friend WithEvents GetFood_Worker As System.ComponentModel.BackgroundWorker
 End Class
