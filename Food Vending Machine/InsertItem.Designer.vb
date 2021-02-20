@@ -36,11 +36,14 @@ Partial Class InsertItem
         Me.stockLabel = New System.Windows.Forms.Label()
         Me.timeLabel = New System.Windows.Forms.Label()
         Me.nameTextBox = New System.Windows.Forms.TextBox()
-        Me.priceTextBox = New System.Windows.Forms.TextBox()
-        Me.stockTextbox = New System.Windows.Forms.TextBox()
-        Me.timeTextBox = New System.Windows.Forms.TextBox()
+        Me.priceInput = New System.Windows.Forms.NumericUpDown()
+        Me.stockInput = New System.Windows.Forms.NumericUpDown()
+        Me.timeInput = New System.Windows.Forms.NumericUpDown()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.itemPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.priceInput, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.stockInput, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.timeInput, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'headerPanel
@@ -81,9 +84,9 @@ Partial Class InsertItem
         Me.TableLayoutPanel1.Controls.Add(Me.stockLabel, 1, 9)
         Me.TableLayoutPanel1.Controls.Add(Me.timeLabel, 1, 11)
         Me.TableLayoutPanel1.Controls.Add(Me.nameTextBox, 3, 5)
-        Me.TableLayoutPanel1.Controls.Add(Me.priceTextBox, 3, 7)
-        Me.TableLayoutPanel1.Controls.Add(Me.stockTextbox, 3, 9)
-        Me.TableLayoutPanel1.Controls.Add(Me.timeTextBox, 3, 11)
+        Me.TableLayoutPanel1.Controls.Add(Me.priceInput, 3, 7)
+        Me.TableLayoutPanel1.Controls.Add(Me.stockInput, 3, 9)
+        Me.TableLayoutPanel1.Controls.Add(Me.timeInput, 3, 11)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 125)
@@ -233,32 +236,33 @@ Partial Class InsertItem
         Me.nameTextBox.Size = New System.Drawing.Size(240, 34)
         Me.nameTextBox.TabIndex = 17
         '
-        'priceTextBox
+        'priceInput
         '
-        Me.TableLayoutPanel1.SetColumnSpan(Me.priceTextBox, 3)
-        Me.priceTextBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.priceTextBox.Location = New System.Drawing.Point(396, 250)
-        Me.priceTextBox.Name = "priceTextBox"
-        Me.priceTextBox.Size = New System.Drawing.Size(174, 34)
-        Me.priceTextBox.TabIndex = 18
+        Me.TableLayoutPanel1.SetColumnSpan(Me.priceInput, 3)
+        Me.priceInput.DecimalPlaces = 2
+        Me.priceInput.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.priceInput.Location = New System.Drawing.Point(396, 250)
+        Me.priceInput.Name = "priceInput"
+        Me.priceInput.Size = New System.Drawing.Size(174, 34)
+        Me.priceInput.TabIndex = 24
         '
-        'stockTextbox
+        'stockInput
         '
-        Me.TableLayoutPanel1.SetColumnSpan(Me.stockTextbox, 3)
-        Me.stockTextbox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.stockTextbox.Location = New System.Drawing.Point(396, 308)
-        Me.stockTextbox.Name = "stockTextbox"
-        Me.stockTextbox.Size = New System.Drawing.Size(174, 34)
-        Me.stockTextbox.TabIndex = 19
+        Me.TableLayoutPanel1.SetColumnSpan(Me.stockInput, 3)
+        Me.stockInput.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.stockInput.Location = New System.Drawing.Point(396, 308)
+        Me.stockInput.Name = "stockInput"
+        Me.stockInput.Size = New System.Drawing.Size(174, 34)
+        Me.stockInput.TabIndex = 25
         '
-        'timeTextBox
+        'timeInput
         '
-        Me.TableLayoutPanel1.SetColumnSpan(Me.timeTextBox, 3)
-        Me.timeTextBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.timeTextBox.Location = New System.Drawing.Point(396, 366)
-        Me.timeTextBox.Name = "timeTextBox"
-        Me.timeTextBox.Size = New System.Drawing.Size(174, 34)
-        Me.timeTextBox.TabIndex = 20
+        Me.TableLayoutPanel1.SetColumnSpan(Me.timeInput, 3)
+        Me.timeInput.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.timeInput.Location = New System.Drawing.Point(396, 366)
+        Me.timeInput.Name = "timeInput"
+        Me.timeInput.Size = New System.Drawing.Size(174, 34)
+        Me.timeInput.TabIndex = 26
         '
         'InsertItem
         '
@@ -272,6 +276,9 @@ Partial Class InsertItem
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
         CType(Me.itemPicBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.priceInput, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.stockInput, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.timeInput, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -290,7 +297,7 @@ Partial Class InsertItem
     Friend WithEvents stockLabel As Label
     Friend WithEvents timeLabel As Label
     Friend WithEvents nameTextBox As TextBox
-    Friend WithEvents priceTextBox As TextBox
-    Friend WithEvents stockTextbox As TextBox
-    Friend WithEvents timeTextBox As TextBox
+    Friend WithEvents priceInput As NumericUpDown
+    Friend WithEvents stockInput As NumericUpDown
+    Friend WithEvents timeInput As NumericUpDown
 End Class

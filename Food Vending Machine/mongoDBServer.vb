@@ -20,7 +20,7 @@ Public Class MongoDBServer
         Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("image").Exclude("_id")).ToList
         Dim image_list(cursor.Count)
         For i = 0 To cursor.Count - 1
-            image_list(i) = base64.convertbytetoimage(base64.ConvertBase64ToByteArray(cursor(i)("image")))
+            image_list(i) = base64.ConvertByteToImage(base64.ConvertBase64ToByteArray(cursor(i)("image")))
         Next
         Return image_list
     End Function
@@ -44,6 +44,35 @@ Public Class MongoDBServer
         Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", ObjectId.Parse(id))
         Dim food = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("price").Include("stock").Include("image")).First
         Return food
+    End Function
+
+    Public Function Insert(product As Product)
+        Dim result As Boolean
+
+        Dim conn = New MongoClient(server)
+        Dim database = conn.GetDatabase("Food_Vending_Machine")
+        Dim collection = database.GetCollection(Of BsonDocument)("products")
+
+        Dim data As BsonDocument = New BsonDocument()
+
+        With data
+            .Add("product_name", product.product_name)
+            .Add("price", product.price)
+            .Add("stock", product.stock)
+            .Add("image", product.image)
+            .Add("time", product.time)
+            .Add("branch", "Visual Basic")
+        End With
+
+        Try
+            collection.InsertOne(data)
+            result = True
+        Catch ex As Exception
+            Debug.Fail(ex.Message)
+            result = False
+        End Try
+
+        Return result
     End Function
 
 

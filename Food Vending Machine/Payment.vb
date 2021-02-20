@@ -57,7 +57,7 @@
     Private Sub Load_Food()
         lblName.Text = food_item("product_name").ToString
         lblPrice.Text = food_item("price").ToString
-        ptbProduct.Image = base64.convertbytetoimage(base64.ConvertBase64ToByteArray(food_item("image")))
+        ptbProduct.Image = base64.ConvertByteToImage(base64.ConvertBase64ToByteArray(food_item("image")))
         price = food_item("price")
         CoinEmu = New CoinEmu(price)
     End Sub

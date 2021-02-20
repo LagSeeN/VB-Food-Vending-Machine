@@ -1,6 +1,6 @@
 ﻿Imports MongoDB.Driver
 Imports MongoDB.Bson
-Public Class Products
+Public Class Product
     Public Property id As ObjectId
     Public Property product_name As String
     Public Property price As Double
