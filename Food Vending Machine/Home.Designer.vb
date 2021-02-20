@@ -26,7 +26,7 @@ Partial Class Home
         Me.headerPanel = New System.Windows.Forms.Panel()
         Me.homeTableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.foodListPanel = New System.Windows.Forms.Panel()
-        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.FoodView = New System.Windows.Forms.ListView()
         Me.buyBtn = New System.Windows.Forms.Button()
         Me.ProductListImage = New System.Windows.Forms.ImageList(Me.components)
         Me.Load_Products_Worker = New System.ComponentModel.BackgroundWorker()
@@ -73,7 +73,7 @@ Partial Class Home
         '
         Me.foodListPanel.BackColor = System.Drawing.SystemColors.ControlLight
         Me.homeTableLayoutPanel.SetColumnSpan(Me.foodListPanel, 4)
-        Me.foodListPanel.Controls.Add(Me.ListView1)
+        Me.foodListPanel.Controls.Add(Me.FoodView)
         Me.foodListPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.foodListPanel.Location = New System.Drawing.Point(78, 18)
         Me.foodListPanel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -81,16 +81,17 @@ Partial Class Home
         Me.foodListPanel.Size = New System.Drawing.Size(1191, 288)
         Me.foodListPanel.TabIndex = 0
         '
-        'ListView1
+        'FoodView
         '
-        Me.ListView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ListView1.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ListView1.Location = New System.Drawing.Point(0, 0)
-        Me.ListView1.MultiSelect = False
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(1191, 288)
-        Me.ListView1.TabIndex = 1
-        Me.ListView1.UseCompatibleStateImageBehavior = False
+        Me.FoodView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FoodView.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.FoodView.HideSelection = False
+        Me.FoodView.Location = New System.Drawing.Point(0, 0)
+        Me.FoodView.MultiSelect = False
+        Me.FoodView.Name = "FoodView"
+        Me.FoodView.Size = New System.Drawing.Size(1191, 288)
+        Me.FoodView.TabIndex = 1
+        Me.FoodView.UseCompatibleStateImageBehavior = False
         '
         'buyBtn
         '
@@ -135,7 +136,7 @@ Partial Class Home
     Friend WithEvents homeTableLayoutPanel As TableLayoutPanel
     Friend WithEvents buyBtn As Button
     Friend WithEvents foodListPanel As Panel
-    Friend WithEvents ListView1 As ListView
+    Friend WithEvents FoodView As ListView
     Friend WithEvents ProductListImage As ImageList
     Friend WithEvents Load_Products_Worker As System.ComponentModel.BackgroundWorker
 End Class
