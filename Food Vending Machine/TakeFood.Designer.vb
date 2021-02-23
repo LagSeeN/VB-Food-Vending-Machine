@@ -135,6 +135,7 @@ Partial Class TakeFood
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "TakeFood"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TakeFood"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

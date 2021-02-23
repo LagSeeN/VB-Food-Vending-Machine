@@ -26,8 +26,8 @@
             If CoinEmu.Get_input_coin >= price Then
                 'ไปหน้าต่อไป
                 Timer1.Stop()
-                Dim TakeFood As New TakeFood
-                TakeFood.Show()
+                Dim Change As New Change
+                Change.Show()
             End If
             lblTime.Text = timeCount
             timeCount -= 1

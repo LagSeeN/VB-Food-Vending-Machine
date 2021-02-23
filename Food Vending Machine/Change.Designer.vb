@@ -44,16 +44,16 @@ Partial Class Change
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1262, 125)
+        Me.Panel1.Size = New System.Drawing.Size(1104, 117)
         Me.Panel1.TabIndex = 0
         '
         'lblTakeFood
         '
         Me.lblTakeFood.AutoSize = True
-        Me.lblTakeFood.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lblTakeFood.Location = New System.Drawing.Point(451, 32)
+        Me.lblTakeFood.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblTakeFood.Location = New System.Drawing.Point(395, 30)
         Me.lblTakeFood.Name = "lblTakeFood"
-        Me.lblTakeFood.Size = New System.Drawing.Size(328, 55)
+        Me.lblTakeFood.Size = New System.Drawing.Size(260, 44)
         Me.lblTakeFood.TabIndex = 2
         Me.lblTakeFood.Text = "กรุณารับเงินทอน"
         '
@@ -61,15 +61,15 @@ Partial Class Change
         '
         Me.TableLayoutPanel1.BackColor = System.Drawing.Color.White
         Me.TableLayoutPanel1.ColumnCount = 9
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 286.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 258.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 39.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 214.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 226.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.lblTextHeat, 1, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.btnHeat, 5, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.btnNotHeat, 7, 4)
@@ -78,16 +78,16 @@ Partial Class Change
         Me.TableLayoutPanel1.Controls.Add(Me.lblBahtText, 7, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.lblTextChange, 2, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 125)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 117)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 6
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.63158!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.36842!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 316.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1262, 548)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 296.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1104, 514)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'lblTextHeat
@@ -95,10 +95,10 @@ Partial Class Change
         Me.lblTextHeat.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.lblTextHeat, 3)
         Me.lblTextHeat.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblTextHeat.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lblTextHeat.Location = New System.Drawing.Point(289, 439)
+        Me.lblTextHeat.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblTextHeat.Location = New System.Drawing.Point(253, 412)
         Me.lblTextHeat.Name = "lblTextHeat"
-        Me.lblTextHeat.Size = New System.Drawing.Size(352, 64)
+        Me.lblTextHeat.Size = New System.Drawing.Size(307, 60)
         Me.lblTextHeat.TabIndex = 0
         Me.lblTextHeat.Text = "ต้องการอุ่นอาหารหรือไม่"
         Me.lblTextHeat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -106,10 +106,10 @@ Partial Class Change
         'btnHeat
         '
         Me.btnHeat.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.btnHeat.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.btnHeat.Location = New System.Drawing.Point(668, 442)
+        Me.btnHeat.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btnHeat.Location = New System.Drawing.Point(584, 415)
         Me.btnHeat.Name = "btnHeat"
-        Me.btnHeat.Size = New System.Drawing.Size(147, 58)
+        Me.btnHeat.Size = New System.Drawing.Size(128, 54)
         Me.btnHeat.TabIndex = 1
         Me.btnHeat.Text = "อุ่นอาหาร"
         Me.btnHeat.UseVisualStyleBackColor = True
@@ -117,10 +117,10 @@ Partial Class Change
         'btnNotHeat
         '
         Me.btnNotHeat.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.btnNotHeat.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.btnNotHeat.Location = New System.Drawing.Point(854, 442)
+        Me.btnNotHeat.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btnNotHeat.Location = New System.Drawing.Point(747, 415)
         Me.btnNotHeat.Name = "btnNotHeat"
-        Me.btnNotHeat.Size = New System.Drawing.Size(147, 58)
+        Me.btnNotHeat.Size = New System.Drawing.Size(128, 54)
         Me.btnNotHeat.TabIndex = 2
         Me.btnNotHeat.Text = "ไม่อุ่นอาหาร"
         Me.btnNotHeat.UseVisualStyleBackColor = True
@@ -129,10 +129,9 @@ Partial Class Change
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.picBird3, 4)
         Me.picBird3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.picBird3.Image = Global.Food_Vending_Machine.My.Resources.Resources.Change
-        Me.picBird3.Location = New System.Drawing.Point(403, 90)
+        Me.picBird3.Location = New System.Drawing.Point(352, 85)
         Me.picBird3.Name = "picBird3"
-        Me.picBird3.Size = New System.Drawing.Size(445, 310)
+        Me.picBird3.Size = New System.Drawing.Size(389, 290)
         Me.picBird3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.picBird3.TabIndex = 3
         Me.picBird3.TabStop = False
@@ -141,10 +140,10 @@ Partial Class Change
         '
         Me.lblChange.AutoSize = True
         Me.lblChange.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblChange.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lblChange.Location = New System.Drawing.Point(668, 0)
+        Me.lblChange.Font = New System.Drawing.Font("Microsoft Sans Serif", 19.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblChange.Location = New System.Drawing.Point(584, 0)
         Me.lblChange.Name = "lblChange"
-        Me.lblChange.Size = New System.Drawing.Size(147, 63)
+        Me.lblChange.Size = New System.Drawing.Size(128, 60)
         Me.lblChange.TabIndex = 5
         Me.lblChange.Text = "เงินทอน"
         Me.lblChange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -153,10 +152,10 @@ Partial Class Change
         '
         Me.lblBahtText.AutoSize = True
         Me.lblBahtText.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblBahtText.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lblBahtText.Location = New System.Drawing.Point(854, 0)
+        Me.lblBahtText.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblBahtText.Location = New System.Drawing.Point(747, 0)
         Me.lblBahtText.Name = "lblBahtText"
-        Me.lblBahtText.Size = New System.Drawing.Size(147, 63)
+        Me.lblBahtText.Size = New System.Drawing.Size(128, 60)
         Me.lblBahtText.TabIndex = 6
         Me.lblBahtText.Text = "บาท"
         Me.lblBahtText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -166,23 +165,24 @@ Partial Class Change
         Me.lblTextChange.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.lblTextChange, 2)
         Me.lblTextChange.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblTextChange.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lblTextChange.Location = New System.Drawing.Point(334, 0)
+        Me.lblTextChange.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblTextChange.Location = New System.Drawing.Point(292, 0)
         Me.lblTextChange.Name = "lblTextChange"
-        Me.lblTextChange.Size = New System.Drawing.Size(307, 63)
+        Me.lblTextChange.Size = New System.Drawing.Size(268, 60)
         Me.lblTextChange.TabIndex = 7
         Me.lblTextChange.Text = "เงินทอนทั้งหมด"
         Me.lblTextChange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Change
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1262, 673)
+        Me.ClientSize = New System.Drawing.Size(1104, 631)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Change"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Change"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
