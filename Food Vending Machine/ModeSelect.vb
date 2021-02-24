@@ -6,7 +6,7 @@
     End Sub
 
     Private Sub EditProductBtn_Click(sender As Object, e As EventArgs) Handles EditProductBtn.Click
-        Dim InsertItem As New InsertItem
+        Dim InsertItem As New InsertItem(True)
         InsertItem.Show()
         Me.Close()
     End Sub

@@ -42,7 +42,7 @@ Public Class MongoDBServer
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
         Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", ObjectId.Parse(id))
-        Dim food = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("price").Include("stock").Include("image")).First
+        Dim food = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("price").Include("stock").Include("image").Include("time")).First
         Return food
     End Function
 
@@ -66,6 +66,36 @@ Public Class MongoDBServer
 
         Try
             collection.InsertOne(data)
+            result = True
+        Catch ex As Exception
+            Debug.Fail(ex.Message)
+            result = False
+        End Try
+
+        Return result
+    End Function
+
+    Public Function Update(product As Product)
+        Dim result As Boolean
+
+        Dim conn = New MongoClient(server)
+        Dim database = conn.GetDatabase("Food_Vending_Machine")
+        Dim collection = database.GetCollection(Of BsonDocument)("products")
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", product.id)
+
+        Dim data As BsonDocument = New BsonDocument()
+
+        With data
+            .Add("product_name", product.product_name)
+            .Add("price", product.price)
+            .Add("stock", product.stock)
+            .Add("image", product.image)
+            .Add("time", product.time)
+            .Add("branch", "Visual Basic")
+        End With
+
+        Try
+            collection.UpdateOne(filter, New BsonDocument("$set", data))
             result = True
         Catch ex As Exception
             Debug.Fail(ex.Message)

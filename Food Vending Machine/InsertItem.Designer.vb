@@ -24,13 +24,11 @@ Partial Class InsertItem
     Private Sub InitializeComponent()
         Me.headerPanel = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.listItemComboBox = New System.Windows.Forms.ComboBox()
+        Me.cbm_productList = New System.Windows.Forms.ComboBox()
         Me.uploadBtn = New System.Windows.Forms.Button()
         Me.cancelBtn = New System.Windows.Forms.Button()
         Me.acceptBtn = New System.Windows.Forms.Button()
         Me.itemPicBox = New System.Windows.Forms.PictureBox()
-        Me.editCheck = New System.Windows.Forms.CheckBox()
-        Me.addCheck = New System.Windows.Forms.CheckBox()
         Me.nameLabel = New System.Windows.Forms.Label()
         Me.priceLabel = New System.Windows.Forms.Label()
         Me.stockLabel = New System.Windows.Forms.Label()
@@ -72,13 +70,11 @@ Partial Class InsertItem
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.497488!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.0697!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.048788!))
-        Me.TableLayoutPanel1.Controls.Add(Me.listItemComboBox, 1, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.cbm_productList, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.uploadBtn, 12, 11)
         Me.TableLayoutPanel1.Controls.Add(Me.cancelBtn, 12, 13)
         Me.TableLayoutPanel1.Controls.Add(Me.acceptBtn, 10, 13)
         Me.TableLayoutPanel1.Controls.Add(Me.itemPicBox, 9, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.editCheck, 5, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.addCheck, 3, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.nameLabel, 1, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.priceLabel, 1, 7)
         Me.TableLayoutPanel1.Controls.Add(Me.stockLabel, 1, 9)
@@ -110,15 +106,17 @@ Partial Class InsertItem
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1262, 548)
         Me.TableLayoutPanel1.TabIndex = 2
         '
-        'listItemComboBox
+        'cbm_productList
         '
-        Me.TableLayoutPanel1.SetColumnSpan(Me.listItemComboBox, 7)
-        Me.listItemComboBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.listItemComboBox.FormattingEnabled = True
-        Me.listItemComboBox.Location = New System.Drawing.Point(158, 48)
-        Me.listItemComboBox.Name = "listItemComboBox"
-        Me.listItemComboBox.Size = New System.Drawing.Size(478, 36)
-        Me.listItemComboBox.TabIndex = 1
+        Me.cbm_productList.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cbm_productList.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.TableLayoutPanel1.SetColumnSpan(Me.cbm_productList, 7)
+        Me.cbm_productList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.cbm_productList.FormattingEnabled = True
+        Me.cbm_productList.Location = New System.Drawing.Point(158, 48)
+        Me.cbm_productList.Name = "cbm_productList"
+        Me.cbm_productList.Size = New System.Drawing.Size(478, 36)
+        Me.cbm_productList.TabIndex = 1
         '
         'uploadBtn
         '
@@ -161,27 +159,6 @@ Partial Class InsertItem
         Me.itemPicBox.Size = New System.Drawing.Size(443, 292)
         Me.itemPicBox.TabIndex = 12
         Me.itemPicBox.TabStop = False
-        '
-        'editCheck
-        '
-        Me.editCheck.AutoSize = True
-        Me.editCheck.Location = New System.Drawing.Point(490, 115)
-        Me.editCheck.Name = "editCheck"
-        Me.editCheck.Size = New System.Drawing.Size(75, 32)
-        Me.editCheck.TabIndex = 3
-        Me.editCheck.Text = "แก้ไข"
-        Me.editCheck.UseVisualStyleBackColor = True
-        '
-        'addCheck
-        '
-        Me.addCheck.AutoSize = True
-        Me.addCheck.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.addCheck.Location = New System.Drawing.Point(396, 115)
-        Me.addCheck.Name = "addCheck"
-        Me.addCheck.Size = New System.Drawing.Size(63, 32)
-        Me.addCheck.TabIndex = 2
-        Me.addCheck.Text = "เพิ่ม"
-        Me.addCheck.UseVisualStyleBackColor = True
         '
         'nameLabel
         '
@@ -242,6 +219,7 @@ Partial Class InsertItem
         Me.priceInput.DecimalPlaces = 2
         Me.priceInput.Dock = System.Windows.Forms.DockStyle.Fill
         Me.priceInput.Location = New System.Drawing.Point(396, 250)
+        Me.priceInput.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.priceInput.Name = "priceInput"
         Me.priceInput.Size = New System.Drawing.Size(174, 34)
         Me.priceInput.TabIndex = 24
@@ -260,6 +238,7 @@ Partial Class InsertItem
         Me.TableLayoutPanel1.SetColumnSpan(Me.timeInput, 3)
         Me.timeInput.Dock = System.Windows.Forms.DockStyle.Fill
         Me.timeInput.Location = New System.Drawing.Point(396, 366)
+        Me.timeInput.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.timeInput.Name = "timeInput"
         Me.timeInput.Size = New System.Drawing.Size(174, 34)
         Me.timeInput.TabIndex = 26
@@ -285,9 +264,7 @@ Partial Class InsertItem
 
     Friend WithEvents headerPanel As Panel
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents listItemComboBox As ComboBox
-    Friend WithEvents addCheck As CheckBox
-    Friend WithEvents editCheck As CheckBox
+    Friend WithEvents cbm_productList As ComboBox
     Friend WithEvents uploadBtn As Button
     Friend WithEvents acceptBtn As Button
     Friend WithEvents cancelBtn As Button
