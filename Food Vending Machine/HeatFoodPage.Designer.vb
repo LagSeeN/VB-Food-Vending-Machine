@@ -69,7 +69,7 @@ Partial Class HeatFoodPage
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.42178!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.37891!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.19931!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.pnlBack, 2, 6)
         Me.TableLayoutPanel1.Controls.Add(Me.picBird1, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.picBird2, 3, 2)
@@ -95,7 +95,7 @@ Partial Class HeatFoodPage
         '
         Me.pnlBack.BackColor = System.Drawing.Color.DarkGray
         Me.pnlBack.Controls.Add(Me.pnlProgress)
-        Me.pnlBack.Location = New System.Drawing.Point(332, 422)
+        Me.pnlBack.Location = New System.Drawing.Point(331, 422)
         Me.pnlBack.Name = "pnlBack"
         Me.pnlBack.Size = New System.Drawing.Size(427, 32)
         Me.pnlBack.TabIndex = 5
@@ -113,14 +113,14 @@ Partial Class HeatFoodPage
         Me.picBird1.Location = New System.Drawing.Point(21, 75)
         Me.picBird1.Name = "picBird1"
         Me.TableLayoutPanel1.SetRowSpan(Me.picBird1, 3)
-        Me.picBird1.Size = New System.Drawing.Size(305, 322)
+        Me.picBird1.Size = New System.Drawing.Size(304, 322)
         Me.picBird1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.picBird1.TabIndex = 1
         Me.picBird1.TabStop = False
         '
         'picBird2
         '
-        Me.picBird2.Location = New System.Drawing.Point(769, 75)
+        Me.picBird2.Location = New System.Drawing.Point(767, 75)
         Me.picBird2.Name = "picBird2"
         Me.TableLayoutPanel1.SetRowSpan(Me.picBird2, 3)
         Me.picBird2.Size = New System.Drawing.Size(302, 322)
@@ -133,9 +133,9 @@ Partial Class HeatFoodPage
         Me.lblCountDown.AutoSize = True
         Me.lblCountDown.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblCountDown.Font = New System.Drawing.Font("Microsoft Sans Serif", 25.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblCountDown.Location = New System.Drawing.Point(332, 157)
+        Me.lblCountDown.Location = New System.Drawing.Point(331, 157)
         Me.lblCountDown.Name = "lblCountDown"
-        Me.lblCountDown.Size = New System.Drawing.Size(431, 150)
+        Me.lblCountDown.Size = New System.Drawing.Size(430, 150)
         Me.lblCountDown.TabIndex = 4
         Me.lblCountDown.Text = "Label1"
         Me.lblCountDown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -145,9 +145,9 @@ Partial Class HeatFoodPage
         Me.lblTextWait.AutoSize = True
         Me.lblTextWait.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTextWait.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTextWait.Location = New System.Drawing.Point(332, 72)
+        Me.lblTextWait.Location = New System.Drawing.Point(331, 72)
         Me.lblTextWait.Name = "lblTextWait"
-        Me.lblTextWait.Size = New System.Drawing.Size(431, 85)
+        Me.lblTextWait.Size = New System.Drawing.Size(430, 85)
         Me.lblTextWait.TabIndex = 6
         Me.lblTextWait.Text = "เหลือเวลารอ"
         Me.lblTextWait.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -157,9 +157,9 @@ Partial Class HeatFoodPage
         Me.lblTextSec.AutoSize = True
         Me.lblTextSec.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTextSec.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTextSec.Location = New System.Drawing.Point(332, 307)
+        Me.lblTextSec.Location = New System.Drawing.Point(331, 307)
         Me.lblTextSec.Name = "lblTextSec"
-        Me.lblTextSec.Size = New System.Drawing.Size(431, 93)
+        Me.lblTextSec.Size = New System.Drawing.Size(430, 93)
         Me.lblTextSec.TabIndex = 7
         Me.lblTextSec.Text = "วินาที"
         Me.lblTextSec.TextAlign = System.Drawing.ContentAlignment.MiddleCenter

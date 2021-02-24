@@ -22,6 +22,7 @@ Partial Class Change
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Change))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTakeFood = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -129,6 +130,7 @@ Partial Class Change
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.picBird3, 4)
         Me.picBird3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.picBird3.Image = CType(resources.GetObject("picBird3.Image"), System.Drawing.Image)
         Me.picBird3.Location = New System.Drawing.Point(352, 85)
         Me.picBird3.Name = "picBird3"
         Me.picBird3.Size = New System.Drawing.Size(389, 290)

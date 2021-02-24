@@ -1,13 +1,17 @@
 ﻿Public Class HeatFoodPage
     Dim time As Double = 60
     Dim sizes As Double = 0
+    Dim id As String
+    Dim time_to_cook As Integer
 
-    Public Sub New()
+    Public Sub New(id As String, time_to_cook As Integer)
 
         ' This call is required by the designer.
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
+        Me.id = id
+        Me.time_to_cook = time_to_cook
 
     End Sub
     Private Sub HeatFoodPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load

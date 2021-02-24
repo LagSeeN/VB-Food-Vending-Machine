@@ -1,6 +1,9 @@
 ﻿Public Class Payment
     Dim timeCount As Integer = 60
     Dim id As String
+    Dim change_price As Integer
+    Dim coin As Integer()
+    Dim time_to_cook As Integer
     Dim food_item
     Dim mongoDBServer As New MongoDBServer
     Dim base64 As New Base64
@@ -23,11 +26,19 @@
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If timeCount >= 0 Then
-            If CoinEmu.Get_input_coin >= price Then
-                'ไปหน้าต่อไป
-                Timer1.Stop()
-                Dim Change As New Change
-                Change.Show()
+            If Application.OpenForms().OfType(Of CoinEmu).Any Then
+                If CoinEmu.Get_input_coin >= price Then
+                    'ไปหน้าต่อไป
+                    Timer1.Stop()
+                    coin = CoinEmu.Get_coin_arr
+                    change_price = CoinEmu.Get_input_coin - price
+                    Dim Change As New Change(id, change_price, coin, time_to_cook)
+                    Change.Show()
+                    CoinEmu.Close()
+                End If
+            ElseIf CoinEmu.Get_is_canceled Then
+                MessageBox.Show("ยกเลิกรายการแล้ว กลับไปยังหน้าแรก", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.Close()
             End If
             lblTime.Text = timeCount
             timeCount -= 1
@@ -51,6 +62,8 @@
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Timer1.Stop()
+        MessageBox.Show("กรุณารับเงินคืน", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Me.Close()
     End Sub
 
@@ -59,6 +72,7 @@
         lblPrice.Text = food_item("price").ToString
         ptbProduct.Image = base64.ConvertByteToImage(base64.ConvertBase64ToByteArray(food_item("image")))
         price = food_item("price")
+        time_to_cook = food_item("time")
         CoinEmu = New CoinEmu(price)
     End Sub
 

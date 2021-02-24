@@ -2,10 +2,23 @@
     Dim price As Integer
     Dim coin(3) As Integer
     Dim input_coin As Integer
+    Dim is_canceled As Boolean
 
     Public ReadOnly Property Get_input_coin As Integer
         Get
             Return input_coin
+        End Get
+    End Property
+
+    Public ReadOnly Property Get_coin_arr As Integer()
+        Get
+            Return coin
+        End Get
+    End Property
+
+    Public ReadOnly Property Get_is_canceled As Boolean
+        Get
+            Return is_canceled
         End Get
     End Property
     Public Sub New(price As Integer)
@@ -17,19 +30,15 @@
         Me.price = price
 
     End Sub
-    Private Sub submitBtn_Click(sender As Object, e As EventArgs) Handles submitBtn.Click
-        'Payment.Show()
-        Me.Hide()
-        'ส่งค่าไปด้วย
-    End Sub
 
     Private Sub cancelBtn_Click(sender As Object, e As EventArgs) Handles cancelBtn.Click
-        'Payment.Show()
+        is_canceled = True
         Me.Hide()
     End Sub
 
     Private Sub CoinEmu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         input_coin = 0
+        is_canceled = False
     End Sub
 
     Private Sub oneCoinBtn_Click(sender As Object, e As EventArgs) Handles oneCoinBtn.Click
@@ -55,7 +64,11 @@
 
     Private Sub CheckPrice()
         If input_coin >= price Then
-            Me.Close()
+            Me.Hide()
         End If
+    End Sub
+
+    Private Sub CoinEmu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        is_canceled = True
     End Sub
 End Class

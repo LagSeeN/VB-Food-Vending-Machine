@@ -22,6 +22,7 @@ Partial Class TakeFood
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TakeFood))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTakeFood = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -87,6 +88,7 @@ Partial Class TakeFood
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.picBird4, 5)
         Me.picBird4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.picBird4.Image = CType(resources.GetObject("picBird4.Image"), System.Drawing.Image)
         Me.picBird4.Location = New System.Drawing.Point(351, 45)
         Me.picBird4.Name = "picBird4"
         Me.picBird4.Size = New System.Drawing.Size(413, 311)

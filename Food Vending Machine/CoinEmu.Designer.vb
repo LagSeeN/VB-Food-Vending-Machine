@@ -29,9 +29,7 @@ Partial Class CoinEmu
         Me.oneCoinBtn = New System.Windows.Forms.Button()
         Me.fiveCoinBtn = New System.Windows.Forms.Button()
         Me.tenCoinBtn = New System.Windows.Forms.Button()
-        Me.submitBtn = New System.Windows.Forms.Button()
         Me.cancelBtn = New System.Windows.Forms.Button()
-        Me.clearBtn = New System.Windows.Forms.Button()
         Me.CoinEmuTableLayoutPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -67,9 +65,7 @@ Partial Class CoinEmu
         Me.CoinEmuTableLayoutPanel.Controls.Add(Me.oneCoinBtn, 1, 3)
         Me.CoinEmuTableLayoutPanel.Controls.Add(Me.fiveCoinBtn, 3, 3)
         Me.CoinEmuTableLayoutPanel.Controls.Add(Me.tenCoinBtn, 5, 3)
-        Me.CoinEmuTableLayoutPanel.Controls.Add(Me.submitBtn, 3, 5)
         Me.CoinEmuTableLayoutPanel.Controls.Add(Me.cancelBtn, 5, 5)
-        Me.CoinEmuTableLayoutPanel.Controls.Add(Me.clearBtn, 5, 1)
         Me.CoinEmuTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CoinEmuTableLayoutPanel.Location = New System.Drawing.Point(0, 0)
         Me.CoinEmuTableLayoutPanel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -131,17 +127,6 @@ Partial Class CoinEmu
         Me.tenCoinBtn.Text = "10"
         Me.tenCoinBtn.UseVisualStyleBackColor = True
         '
-        'submitBtn
-        '
-        Me.submitBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.submitBtn.Location = New System.Drawing.Point(151, 149)
-        Me.submitBtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.submitBtn.Name = "submitBtn"
-        Me.submitBtn.Size = New System.Drawing.Size(99, 24)
-        Me.submitBtn.TabIndex = 4
-        Me.submitBtn.Text = "ตกลง"
-        Me.submitBtn.UseVisualStyleBackColor = True
-        '
         'cancelBtn
         '
         Me.cancelBtn.Dock = System.Windows.Forms.DockStyle.Top
@@ -152,17 +137,6 @@ Partial Class CoinEmu
         Me.cancelBtn.TabIndex = 5
         Me.cancelBtn.Text = "ยกเลิก"
         Me.cancelBtn.UseVisualStyleBackColor = True
-        '
-        'clearBtn
-        '
-        Me.clearBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.clearBtn.Location = New System.Drawing.Point(270, 26)
-        Me.clearBtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.clearBtn.Name = "clearBtn"
-        Me.clearBtn.Size = New System.Drawing.Size(99, 28)
-        Me.clearBtn.TabIndex = 6
-        Me.clearBtn.Text = "Clear"
-        Me.clearBtn.UseVisualStyleBackColor = True
         '
         'CoinEmu
         '
@@ -190,7 +164,5 @@ Partial Class CoinEmu
     Friend WithEvents oneCoinBtn As Button
     Friend WithEvents fiveCoinBtn As Button
     Friend WithEvents tenCoinBtn As Button
-    Friend WithEvents submitBtn As Button
     Friend WithEvents cancelBtn As Button
-    Friend WithEvents clearBtn As Button
 End Class
