@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+#ยกเว้นไฟล์ X509
+!Food Vending Machine/Resources/X509-cert-2554937799609490701.pfx
