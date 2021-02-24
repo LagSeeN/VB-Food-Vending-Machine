@@ -1,11 +1,25 @@
 ﻿Imports MongoDB.Bson
 Imports MongoDB.Driver
-Public Class MongoDBServer
+Imports System
+Imports System.IO
+Imports System.Threading.Tasks
+Imports System.Collections.Generic
+Imports System.Security.Cryptography.X509Certificates
 
-    Dim server As String = "mongodb+srv://vending_machine:wYvBQGPZHF6tMGbqHueyZZeWMjcuq47zSA6p9DifL3WeExvSi5RWE4hYuuwAcgG4ZoSNoXyYb37txCESZw6UfffmFrnuRZXP4Rpqd9LfRMEq8K3toKAwsuUcbakHvz58@clustertni.kt6oq.mongodb.net/Food_Vending_Machine?retryWrites=true&w=majority"
+Public Class MongoDBServer
+    Dim server = "mongodb+srv://clustertni.kt6oq.mongodb.net/Food_Vending_Machine?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
+    'Dim server As String = "mongodb+srv://vending_machine:wYvBQGPZHF6tMGbqHueyZZeWMjcuq47zSA6p9DifL3WeExvSi5RWE4hYuuwAcgG4ZoSNoXyYb37txCESZw6UfffmFrnuRZXP4Rpqd9LfRMEq8K3toKAwsuUcbakHvz58@clustertni.kt6oq.mongodb.net/Food_Vending_Machine?retryWrites=true&w=majority"
+
     Dim base64 As New Base64
     Public Function CountFood()
-        Dim conn = New MongoClient(server)
+        Dim cert = New X509Certificate2("C:\Users\LagSeeN\source\repos\Food-Vending-Machine\Food Vending Machine\Resources\Cert_cert_out.pfx", "")
+        Dim settings = MongoClientSettings.FromConnectionString(server)
+        settings.SslSettings = New SslSettings With {
+            .ClientCertificates = New List(Of X509Certificate)() From {
+                cert
+            }
+        }
+        Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", "Visual Basic")
         Dim found = database.GetCollection(Of BsonDocument)("products")
@@ -13,7 +27,14 @@ Public Class MongoDBServer
     End Function
 
     Public Function GetAllImage()
-        Dim conn = New MongoClient(server)
+        Dim cert = New X509Certificate2("C:\Users\LagSeeN\source\repos\Food-Vending-Machine\Food Vending Machine\Resources\Cert_cert_out.pfx", "")
+        Dim settings = MongoClientSettings.FromConnectionString(server)
+        settings.SslSettings = New SslSettings With {
+            .ClientCertificates = New List(Of X509Certificate)() From {
+                cert
+            }
+        }
+        Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
         Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", "Visual Basic")
@@ -25,7 +46,14 @@ Public Class MongoDBServer
         Return image_list
     End Function
     Public Function GetAllFood()
-        Dim conn = New MongoClient(server)
+        Dim cert = New X509Certificate2("C:\Users\LagSeeN\source\repos\Food-Vending-Machine\Food Vending Machine\Resources\Cert_cert_out.pfx", "")
+        Dim settings = MongoClientSettings.FromConnectionString(server)
+        settings.SslSettings = New SslSettings With {
+            .ClientCertificates = New List(Of X509Certificate)() From {
+                cert
+            }
+        }
+        Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
         Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", "Visual Basic")
@@ -38,7 +66,14 @@ Public Class MongoDBServer
     End Function
 
     Public Function GetFood(id As String)
-        Dim conn = New MongoClient(server)
+        Dim cert = New X509Certificate2("C:\Users\LagSeeN\source\repos\Food-Vending-Machine\Food Vending Machine\Resources\Cert_cert_out.pfx", "")
+        Dim settings = MongoClientSettings.FromConnectionString(server)
+        settings.SslSettings = New SslSettings With {
+            .ClientCertificates = New List(Of X509Certificate)() From {
+                cert
+            }
+        }
+        Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
         Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", ObjectId.Parse(id))
@@ -49,7 +84,14 @@ Public Class MongoDBServer
     Public Function Insert(product As Product)
         Dim result As Boolean
 
-        Dim conn = New MongoClient(server)
+        Dim cert = New X509Certificate2("C:\Users\LagSeeN\source\repos\Food-Vending-Machine\Food Vending Machine\Resources\Cert_cert_out.pfx", "")
+        Dim settings = MongoClientSettings.FromConnectionString(server)
+        settings.SslSettings = New SslSettings With {
+            .ClientCertificates = New List(Of X509Certificate)() From {
+                cert
+            }
+        }
+        Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
 
