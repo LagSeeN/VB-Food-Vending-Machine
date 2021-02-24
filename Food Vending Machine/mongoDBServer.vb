@@ -8,11 +8,9 @@ Imports System.Security.Cryptography.X509Certificates
 
 Public Class MongoDBServer
     Dim server = "mongodb+srv://clustertni.kt6oq.mongodb.net/Food_Vending_Machine?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
-    'Dim server As String = "mongodb+srv://vending_machine:wYvBQGPZHF6tMGbqHueyZZeWMjcuq47zSA6p9DifL3WeExvSi5RWE4hYuuwAcgG4ZoSNoXyYb37txCESZw6UfffmFrnuRZXP4Rpqd9LfRMEq8K3toKAwsuUcbakHvz58@clustertni.kt6oq.mongodb.net/Food_Vending_Machine?retryWrites=true&w=majority"
-
+    Dim cert = New X509Certificate2(My.Resources.X509_cert_2554937799609490701, "")
     Dim base64 As New Base64
     Public Function CountFood()
-        Dim cert = New X509Certificate2("C:\Users\LagSeeN\source\repos\Food-Vending-Machine\Food Vending Machine\Resources\Cert_cert_out.pfx", "")
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
             .ClientCertificates = New List(Of X509Certificate)() From {
@@ -27,7 +25,6 @@ Public Class MongoDBServer
     End Function
 
     Public Function GetAllImage()
-        Dim cert = New X509Certificate2("C:\Users\LagSeeN\source\repos\Food-Vending-Machine\Food Vending Machine\Resources\Cert_cert_out.pfx", "")
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
             .ClientCertificates = New List(Of X509Certificate)() From {
@@ -46,7 +43,6 @@ Public Class MongoDBServer
         Return image_list
     End Function
     Public Function GetAllFood()
-        Dim cert = New X509Certificate2("C:\Users\LagSeeN\source\repos\Food-Vending-Machine\Food Vending Machine\Resources\Cert_cert_out.pfx", "")
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
             .ClientCertificates = New List(Of X509Certificate)() From {
@@ -66,7 +62,6 @@ Public Class MongoDBServer
     End Function
 
     Public Function GetFood(id As String)
-        Dim cert = New X509Certificate2("C:\Users\LagSeeN\source\repos\Food-Vending-Machine\Food Vending Machine\Resources\Cert_cert_out.pfx", "")
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
             .ClientCertificates = New List(Of X509Certificate)() From {
@@ -84,7 +79,6 @@ Public Class MongoDBServer
     Public Function Insert(product As Product)
         Dim result As Boolean
 
-        Dim cert = New X509Certificate2("C:\Users\LagSeeN\source\repos\Food-Vending-Machine\Food Vending Machine\Resources\Cert_cert_out.pfx", "")
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
             .ClientCertificates = New List(Of X509Certificate)() From {
@@ -120,7 +114,13 @@ Public Class MongoDBServer
     Public Function Update(product As Product)
         Dim result As Boolean
 
-        Dim conn = New MongoClient(server)
+        Dim settings = MongoClientSettings.FromConnectionString(server)
+        settings.SslSettings = New SslSettings With {
+            .ClientCertificates = New List(Of X509Certificate)() From {
+                cert
+            }
+        }
+        Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
         Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", product.id)
@@ -146,15 +146,6 @@ Public Class MongoDBServer
 
         Return result
     End Function
-
-
-    'def get_food_time(_id)
-    '    With pymongo.MongoClient(server) As conn:
-    '        db = conn.get_database('Food_Vending_Machine')
-    '        where = {'_id': _id}
-    '        cursor = db['products'].find_one(where, {'_id': 1, 'time': 1})
-    '        Return cursor
-
 
     'def food_finish(_id, current_food)
     '    With pymongo.MongoClient(server) As conn:

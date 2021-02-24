@@ -33,7 +33,6 @@ Namespace My
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
             Me.MainForm = Global.Food_Vending_Machine.ModeSelect
-            'Me.MainForm = Global.Food_Vending_Machine.InsertItem
         End Sub
     End Class
 End Namespace
