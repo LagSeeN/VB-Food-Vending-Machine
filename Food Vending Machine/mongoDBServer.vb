@@ -188,23 +188,37 @@ Public Class MongoDBServer
         'write coin
     End Sub
 
-    'Public Function GetTransaction()
-    '    Dim settings = MongoClientSettings.FromConnectionString(server)
-    '    settings.SslSettings = New SslSettings With {
-    '        .ClientCertificates = New List(Of X509Certificate)() From {
-    '            cert
-    '        }
-    '    }
-    '    Dim conn = New MongoClient(settings)
-    '    Dim database = conn.GetDatabase("Food_Vending_Machine")
-    '    Dim collection = database.GetCollection(Of BsonDocument)("transaction")
-    '    Dim filter = Builders(Of BsonDocument).Filter.And(Of String)("branch", "Visual Basic")(Of String)("", "")
-    '    Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("stock")).ToList
-    '    Dim foods_list(cursor.Count)
-    '    For i = 0 To cursor.Count - 1
-    '        foods_list(i) = cursor(i)
-    '    Next
-    '    Return foods_list
-    'End Function
+    Public Function GetTransaction()
+        Dim settings = MongoClientSettings.FromConnectionString(server)
+        settings.SslSettings = New SslSettings With {
+            .ClientCertificates = New List(Of X509Certificate)() From {
+                cert
+            }
+        }
+        Dim conn = New MongoClient(settings)
+        Dim database = conn.GetDatabase("Food_Vending_Machine")
+        Dim collection = database.GetCollection(Of BsonDocument)("transaction")
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", "Visual Basic")
+        Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("date").Include("food_name")).ToList
+
+        Dim transactions As New List(Of Transaction)
+        For i = 0 To cursor.Count - 1
+            Dim transaction As New Transaction
+            transaction._id = cursor(i)("_id")
+            transaction.purchase_date = cursor(i)("date")
+            transaction.food_name = cursor(i)("food_name")
+
+            transactions.Add(transaction)
+        Next
+
+        transactions = transactions.Where(Function(t) t.purchase_date.ToUniversalTime.Month = Date.Now.Month And t.purchase_date.ToUniversalTime.Year = Date.Now.Year).ToList()
+
+        Dim result = (From x In transactions Group x By __groupByKey1__ = x.food_name Into g = Group Order By g.Count() Descending Select New TransactionResult With {
+            .FoodName = __groupByKey1__,
+            .Count = g.Count()
+        }).ToList()
+
+        Return result
+    End Function
 
 End Class
