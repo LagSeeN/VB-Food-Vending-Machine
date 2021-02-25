@@ -23,14 +23,15 @@ Partial Class Home
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Home))
         Me.headerPanel = New System.Windows.Forms.Panel()
+        Me.titleLabel = New System.Windows.Forms.Label()
         Me.homeTableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.foodListPanel = New System.Windows.Forms.Panel()
         Me.FoodView = New System.Windows.Forms.ListView()
         Me.buyBtn = New System.Windows.Forms.Button()
         Me.ProductListImage = New System.Windows.Forms.ImageList(Me.components)
         Me.Load_Products_Worker = New System.ComponentModel.BackgroundWorker()
-        Me.titleLabel = New System.Windows.Forms.Label()
         Me.headerPanel.SuspendLayout()
         Me.homeTableLayoutPanel.SuspendLayout()
         Me.foodListPanel.SuspendLayout()
@@ -45,6 +46,17 @@ Partial Class Home
         Me.headerPanel.Name = "headerPanel"
         Me.headerPanel.Size = New System.Drawing.Size(1514, 125)
         Me.headerPanel.TabIndex = 0
+        '
+        'titleLabel
+        '
+        Me.titleLabel.AutoSize = True
+        Me.titleLabel.Font = New System.Drawing.Font("Segoe UI", 28.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.titleLabel.ForeColor = System.Drawing.Color.White
+        Me.titleLabel.Location = New System.Drawing.Point(89, 24)
+        Me.titleLabel.Name = "titleLabel"
+        Me.titleLabel.Size = New System.Drawing.Size(510, 62)
+        Me.titleLabel.TabIndex = 0
+        Me.titleLabel.Text = "Food Vending Machine"
         '
         'homeTableLayoutPanel
         '
@@ -115,17 +127,6 @@ Partial Class Home
         'Load_Products_Worker
         '
         '
-        'titleLabel
-        '
-        Me.titleLabel.AutoSize = True
-        Me.titleLabel.Font = New System.Drawing.Font("Segoe UI", 28.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.titleLabel.ForeColor = System.Drawing.Color.White
-        Me.titleLabel.Location = New System.Drawing.Point(89, 24)
-        Me.titleLabel.Name = "titleLabel"
-        Me.titleLabel.Size = New System.Drawing.Size(510, 62)
-        Me.titleLabel.TabIndex = 0
-        Me.titleLabel.Text = "Food Vending Machine"
-        '
         'Home
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
@@ -134,6 +135,7 @@ Partial Class Home
         Me.ClientSize = New System.Drawing.Size(1514, 673)
         Me.Controls.Add(Me.homeTableLayoutPanel)
         Me.Controls.Add(Me.headerPanel)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Home"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Home"

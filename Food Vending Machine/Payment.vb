@@ -1,4 +1,8 @@
-﻿Public Class Payment
+﻿Imports System.IO
+Imports System.Drawing.Text
+Imports System.Runtime.InteropServices
+Imports System.Reflection
+Public Class Payment
     Dim timeCount As Integer = 60
     Dim id As String
     Dim change_price As Integer
@@ -19,6 +23,7 @@
         Me.id = id
     End Sub
     Private Sub Payment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Fontload()
         GetFood_Worker.RunWorkerAsync()
         lblTime.Text = timeCount
         Timer1.Start()
@@ -82,5 +87,33 @@
 
     Private Sub GetFood_Worker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles GetFood_Worker.RunWorkerCompleted
         Load_Food()
+    End Sub
+
+    Private Sub Fontload()
+        Dim pfc As New PrivateFontCollection
+        Dim resource As String = "Food_Vending_Machine.FC Lamoon Regular ver 1.00.ttf"
+        Dim fontstream As Stream
+        Dim data As IntPtr
+        Dim fontdata As Byte()
+        fontstream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource)
+        data = Marshal.AllocCoTaskMem(CInt(fontstream.Length))
+        fontdata = New Byte(fontstream.Length - 1) {}
+        fontstream.Read(fontdata, 0, CInt(fontstream.Length))
+        Marshal.Copy(fontdata, 0, data, CInt(fontstream.Length))
+        pfc.AddMemoryFont(data, CInt(fontstream.Length))
+        fontstream.Close()
+        Marshal.FreeCoTaskMem(data)
+
+        lblPaymentHead.Font = New Font(pfc.Families(0), 45, FontStyle.Regular)
+        lblTextName.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        lblName.Font = New Font(pfc.Families(0), 30, FontStyle.Regular)
+        lblTextPrice.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        lblPrice.Font = New Font(pfc.Families(0), 30, FontStyle.Regular)
+        lblTextTime.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        lblTime.Font = New Font(pfc.Families(0), 35, FontStyle.Regular)
+        btnCancel.Font = New Font(pfc.Families(0), 15, FontStyle.Regular)
+        btnCoinEmu.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+
+
     End Sub
 End Class
