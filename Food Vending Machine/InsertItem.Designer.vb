@@ -37,8 +37,8 @@ Partial Class InsertItem
         Me.priceInput = New System.Windows.Forms.NumericUpDown()
         Me.stockInput = New System.Windows.Forms.NumericUpDown()
         Me.timeInput = New System.Windows.Forms.NumericUpDown()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.availableLabel = New System.Windows.Forms.Label()
+        Me.availableCheck = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.itemPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.priceInput, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -51,9 +51,8 @@ Partial Class InsertItem
         Me.headerPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.headerPanel.Dock = System.Windows.Forms.DockStyle.Top
         Me.headerPanel.Location = New System.Drawing.Point(0, 0)
-        Me.headerPanel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.headerPanel.Name = "headerPanel"
-        Me.headerPanel.Size = New System.Drawing.Size(1104, 94)
+        Me.headerPanel.Size = New System.Drawing.Size(1262, 125)
         Me.headerPanel.TabIndex = 1
         '
         'TableLayoutPanel1
@@ -86,12 +85,11 @@ Partial Class InsertItem
         Me.TableLayoutPanel1.Controls.Add(Me.priceInput, 3, 7)
         Me.TableLayoutPanel1.Controls.Add(Me.stockInput, 3, 9)
         Me.TableLayoutPanel1.Controls.Add(Me.timeInput, 3, 11)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label1, 1, 13)
-        Me.TableLayoutPanel1.Controls.Add(Me.CheckBox1, 3, 13)
+        Me.TableLayoutPanel1.Controls.Add(Me.availableLabel, 1, 13)
+        Me.TableLayoutPanel1.Controls.Add(Me.availableCheck, 3, 13)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 94)
-        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 125)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 15
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.374806!))
@@ -109,7 +107,7 @@ Partial Class InsertItem
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.037651!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.27007!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.11534!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1104, 411)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1262, 548)
         Me.TableLayoutPanel1.TabIndex = 2
         '
         'cbm_productList
@@ -119,19 +117,17 @@ Partial Class InsertItem
         Me.TableLayoutPanel1.SetColumnSpan(Me.cbm_productList, 7)
         Me.cbm_productList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.cbm_productList.FormattingEnabled = True
-        Me.cbm_productList.Location = New System.Drawing.Point(138, 36)
-        Me.cbm_productList.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.cbm_productList.Location = New System.Drawing.Point(158, 48)
         Me.cbm_productList.Name = "cbm_productList"
-        Me.cbm_productList.Size = New System.Drawing.Size(415, 29)
+        Me.cbm_productList.Size = New System.Drawing.Size(478, 36)
         Me.cbm_productList.TabIndex = 1
         '
         'uploadBtn
         '
         Me.uploadBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.uploadBtn.Location = New System.Drawing.Point(913, 275)
-        Me.uploadBtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.uploadBtn.Location = New System.Drawing.Point(1047, 366)
         Me.uploadBtn.Name = "uploadBtn"
-        Me.uploadBtn.Size = New System.Drawing.Size(105, 24)
+        Me.uploadBtn.Size = New System.Drawing.Size(121, 32)
         Me.uploadBtn.TabIndex = 8
         Me.uploadBtn.Text = "อัพโหลดภาพ"
         Me.uploadBtn.UseVisualStyleBackColor = True
@@ -139,10 +135,9 @@ Partial Class InsertItem
         'cancelBtn
         '
         Me.cancelBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.cancelBtn.Location = New System.Drawing.Point(913, 328)
-        Me.cancelBtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.cancelBtn.Location = New System.Drawing.Point(1047, 437)
         Me.cancelBtn.Name = "cancelBtn"
-        Me.cancelBtn.Size = New System.Drawing.Size(105, 26)
+        Me.cancelBtn.Size = New System.Drawing.Size(121, 35)
         Me.cancelBtn.TabIndex = 11
         Me.cancelBtn.Text = "ยกเลิก"
         Me.cancelBtn.UseVisualStyleBackColor = True
@@ -150,10 +145,9 @@ Partial Class InsertItem
         'acceptBtn
         '
         Me.acceptBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.acceptBtn.Location = New System.Drawing.Point(789, 328)
-        Me.acceptBtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.acceptBtn.Location = New System.Drawing.Point(906, 437)
         Me.acceptBtn.Name = "acceptBtn"
-        Me.acceptBtn.Size = New System.Drawing.Size(102, 26)
+        Me.acceptBtn.Size = New System.Drawing.Size(117, 35)
         Me.acceptBtn.TabIndex = 9
         Me.acceptBtn.Text = "ยืนยัน"
         Me.acceptBtn.UseVisualStyleBackColor = True
@@ -163,11 +157,10 @@ Partial Class InsertItem
         Me.itemPicBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.TableLayoutPanel1.SetColumnSpan(Me.itemPicBox, 4)
         Me.itemPicBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.itemPicBox.Location = New System.Drawing.Point(631, 36)
-        Me.itemPicBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.itemPicBox.Location = New System.Drawing.Point(725, 48)
         Me.itemPicBox.Name = "itemPicBox"
         Me.TableLayoutPanel1.SetRowSpan(Me.itemPicBox, 9)
-        Me.itemPicBox.Size = New System.Drawing.Size(387, 220)
+        Me.itemPicBox.Size = New System.Drawing.Size(443, 292)
         Me.itemPicBox.TabIndex = 12
         Me.itemPicBox.TabStop = False
         '
@@ -176,9 +169,9 @@ Partial Class InsertItem
         Me.nameLabel.AutoSize = True
         Me.nameLabel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.nameLabel.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.nameLabel.Location = New System.Drawing.Point(138, 141)
+        Me.nameLabel.Location = New System.Drawing.Point(158, 189)
         Me.nameLabel.Name = "nameLabel"
-        Me.nameLabel.Size = New System.Drawing.Size(183, 29)
+        Me.nameLabel.Size = New System.Drawing.Size(211, 38)
         Me.nameLabel.TabIndex = 13
         Me.nameLabel.Text = "ชื่อสินค้า"
         '
@@ -187,9 +180,9 @@ Partial Class InsertItem
         Me.priceLabel.AutoSize = True
         Me.priceLabel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.priceLabel.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.priceLabel.Location = New System.Drawing.Point(138, 185)
+        Me.priceLabel.Location = New System.Drawing.Point(158, 247)
         Me.priceLabel.Name = "priceLabel"
-        Me.priceLabel.Size = New System.Drawing.Size(183, 29)
+        Me.priceLabel.Size = New System.Drawing.Size(211, 38)
         Me.priceLabel.TabIndex = 14
         Me.priceLabel.Text = "ราคา"
         '
@@ -198,9 +191,9 @@ Partial Class InsertItem
         Me.stockLabel.AutoSize = True
         Me.stockLabel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.stockLabel.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.stockLabel.Location = New System.Drawing.Point(138, 229)
+        Me.stockLabel.Location = New System.Drawing.Point(158, 305)
         Me.stockLabel.Name = "stockLabel"
-        Me.stockLabel.Size = New System.Drawing.Size(183, 29)
+        Me.stockLabel.Size = New System.Drawing.Size(211, 38)
         Me.stockLabel.TabIndex = 15
         Me.stockLabel.Text = "สต็อกสินค้า"
         '
@@ -209,9 +202,9 @@ Partial Class InsertItem
         Me.timeLabel.AutoSize = True
         Me.timeLabel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.timeLabel.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.timeLabel.Location = New System.Drawing.Point(138, 273)
+        Me.timeLabel.Location = New System.Drawing.Point(158, 363)
         Me.timeLabel.Name = "timeLabel"
-        Me.timeLabel.Size = New System.Drawing.Size(183, 29)
+        Me.timeLabel.Size = New System.Drawing.Size(211, 38)
         Me.timeLabel.TabIndex = 16
         Me.timeLabel.Text = "ระยะเวลาที่ใช้ในการอุ่น"
         '
@@ -219,11 +212,10 @@ Partial Class InsertItem
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.nameTextBox, 5)
         Me.nameTextBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.nameTextBox.Location = New System.Drawing.Point(345, 143)
-        Me.nameTextBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.nameTextBox.Location = New System.Drawing.Point(396, 192)
         Me.nameTextBox.MaxLength = 30
         Me.nameTextBox.Name = "nameTextBox"
-        Me.nameTextBox.Size = New System.Drawing.Size(208, 29)
+        Me.nameTextBox.Size = New System.Drawing.Size(240, 34)
         Me.nameTextBox.TabIndex = 17
         '
         'priceInput
@@ -231,61 +223,58 @@ Partial Class InsertItem
         Me.TableLayoutPanel1.SetColumnSpan(Me.priceInput, 3)
         Me.priceInput.DecimalPlaces = 2
         Me.priceInput.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.priceInput.Location = New System.Drawing.Point(345, 187)
-        Me.priceInput.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.priceInput.Location = New System.Drawing.Point(396, 250)
         Me.priceInput.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.priceInput.Name = "priceInput"
-        Me.priceInput.Size = New System.Drawing.Size(151, 29)
+        Me.priceInput.Size = New System.Drawing.Size(174, 34)
         Me.priceInput.TabIndex = 24
         '
         'stockInput
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.stockInput, 3)
         Me.stockInput.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.stockInput.Location = New System.Drawing.Point(345, 231)
-        Me.stockInput.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.stockInput.Location = New System.Drawing.Point(396, 308)
         Me.stockInput.Name = "stockInput"
-        Me.stockInput.Size = New System.Drawing.Size(151, 29)
+        Me.stockInput.Size = New System.Drawing.Size(174, 34)
         Me.stockInput.TabIndex = 25
         '
         'timeInput
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.timeInput, 3)
         Me.timeInput.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.timeInput.Location = New System.Drawing.Point(345, 275)
-        Me.timeInput.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.timeInput.Location = New System.Drawing.Point(396, 366)
         Me.timeInput.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.timeInput.Name = "timeInput"
-        Me.timeInput.Size = New System.Drawing.Size(151, 29)
+        Me.timeInput.Size = New System.Drawing.Size(174, 34)
         Me.timeInput.TabIndex = 26
         '
-        'Label1
+        'availableLabel
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(138, 326)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 21)
-        Me.Label1.TabIndex = 27
-        Me.Label1.Text = "Label1"
+        Me.availableLabel.AutoSize = True
+        Me.availableLabel.Location = New System.Drawing.Point(158, 434)
+        Me.availableLabel.Name = "availableLabel"
+        Me.availableLabel.Size = New System.Drawing.Size(153, 28)
+        Me.availableLabel.TabIndex = 27
+        Me.availableLabel.Text = "สถานะการจำหน่าย"
         '
-        'CheckBox1
+        'availableCheck
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(345, 329)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(63, 25)
-        Me.CheckBox1.TabIndex = 28
-        Me.CheckBox1.Text = "CheckBox1"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.availableCheck.AutoSize = True
+        Me.availableCheck.Location = New System.Drawing.Point(396, 438)
+        Me.availableCheck.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.availableCheck.Name = "availableCheck"
+        Me.availableCheck.Size = New System.Drawing.Size(73, 32)
+        Me.availableCheck.TabIndex = 28
+        Me.availableCheck.Text = "มีการจำหน่าย"
+        Me.availableCheck.UseVisualStyleBackColor = True
         '
         'InsertItem
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1104, 505)
+        Me.ClientSize = New System.Drawing.Size(1262, 673)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.headerPanel)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "InsertItem"
         Me.Text = "InsertItem"
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -313,6 +302,6 @@ Partial Class InsertItem
     Friend WithEvents priceInput As NumericUpDown
     Friend WithEvents stockInput As NumericUpDown
     Friend WithEvents timeInput As NumericUpDown
-    Friend WithEvents Label1 As Label
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents availableLabel As Label
+    Friend WithEvents availableCheck As CheckBox
 End Class

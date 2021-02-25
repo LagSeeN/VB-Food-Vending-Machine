@@ -23,6 +23,8 @@ Public Class InsertItem
             LoadCombobox()
         Else
             cbm_productList.Visible = False
+            availableLabel.Visible = False
+            availableCheck.Visible = False
         End If
     End Sub
     Private Sub acceptBtn_Click(sender As Object, e As EventArgs) Handles acceptBtn.Click
@@ -68,6 +70,7 @@ Public Class InsertItem
             detail.time = timeInput.Value
             If isEditMode Then
                 detail.id = ObjectId.Parse(currentId)
+                detail.is_available = If(availableCheck.Checked, 1, 0)
 
                 Dim image As Image = If(String.IsNullOrEmpty(imagePath), currentImage, Bitmap.FromFile(imagePath))
                 Dim imageFormat As Imaging.ImageFormat = image.RawFormat
@@ -88,6 +91,7 @@ Public Class InsertItem
                 End If
 
             Else
+                detail.is_available = 1
                 If My.Computer.FileSystem.FileExists(imagePath) Then
                     Dim image As Image = Bitmap.FromFile(imagePath)
                     Dim imageFormat As Imaging.ImageFormat = image.RawFormat
@@ -154,6 +158,7 @@ Public Class InsertItem
         priceInput.Value = food("price")
         stockInput.Value = food("stock")
         timeInput.Value = food("time")
+        availableCheck.Checked = If(food("is_available") = 1, True, False)
     End Sub
 
     Private Sub LoadCombobox()
