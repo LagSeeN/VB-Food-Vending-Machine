@@ -85,6 +85,7 @@ Partial Class Home
         '
         Me.FoodView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FoodView.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.FoodView.HideSelection = False
         Me.FoodView.LabelWrap = False
         Me.FoodView.Location = New System.Drawing.Point(0, 0)
         Me.FoodView.MultiSelect = False

@@ -16,6 +16,7 @@ Public Class Home
         ' Add any initialization after the InitializeComponent() call.
     End Sub
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.KeyPreview = True
         buyBtn.Enabled = False
         Load_Products_Worker.RunWorkerAsync()
 
@@ -65,6 +66,14 @@ Public Class Home
                 buyBtn.Text = "ชำระเงิน"
                 buyBtn.Enabled = True
             End If
+        End If
+    End Sub
+
+    Private Sub Home_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.F1 Then
+            Dim ModeSelect As New ModeSelect()
+            ModeSelect.ShowDialog()
+            Load_Products_Worker.RunWorkerAsync()
         End If
     End Sub
 End Class
