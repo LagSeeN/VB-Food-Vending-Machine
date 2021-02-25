@@ -24,9 +24,10 @@ Partial Class TransactionViewer
     Private Sub InitializeComponent()
         Me.headerPanel = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.dtgTransaction = New System.Windows.Forms.DataGridView()
+        Me.dgvTransaction = New System.Windows.Forms.DataGridView()
+        Me.lblTitle = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
-        CType(Me.dtgTransaction, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvTransaction, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'headerPanel
@@ -44,7 +45,8 @@ Partial Class TransactionViewer
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.dtgTransaction, 1, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.dgvTransaction, 1, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.lblTitle, 1, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 125)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -55,19 +57,28 @@ Partial Class TransactionViewer
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1145, 463)
         Me.TableLayoutPanel1.TabIndex = 3
         '
-        'dtgTransaction
+        'dgvTransaction
         '
-        Me.dtgTransaction.AllowUserToAddRows = False
-        Me.dtgTransaction.AllowUserToDeleteRows = False
-        Me.dtgTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgTransaction.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dtgTransaction.Location = New System.Drawing.Point(53, 53)
-        Me.dtgTransaction.Name = "dtgTransaction"
-        Me.dtgTransaction.ReadOnly = True
-        Me.dtgTransaction.RowHeadersWidth = 51
-        Me.dtgTransaction.RowTemplate.Height = 29
-        Me.dtgTransaction.Size = New System.Drawing.Size(1039, 357)
-        Me.dtgTransaction.TabIndex = 0
+        Me.dgvTransaction.AllowUserToAddRows = False
+        Me.dgvTransaction.AllowUserToDeleteRows = False
+        Me.dgvTransaction.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvTransaction.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvTransaction.Location = New System.Drawing.Point(53, 53)
+        Me.dgvTransaction.Name = "dgvTransaction"
+        Me.dgvTransaction.ReadOnly = True
+        Me.dgvTransaction.RowHeadersWidth = 51
+        Me.dgvTransaction.RowTemplate.Height = 29
+        Me.dgvTransaction.Size = New System.Drawing.Size(1039, 357)
+        Me.dgvTransaction.TabIndex = 0
+        '
+        'lblTitle
+        '
+        Me.lblTitle.AutoSize = True
+        Me.lblTitle.Location = New System.Drawing.Point(53, 0)
+        Me.lblTitle.Name = "lblTitle"
+        Me.lblTitle.Size = New System.Drawing.Size(55, 20)
+        Me.lblTitle.TabIndex = 1
+        Me.lblTitle.Text = "lblTitle"
         '
         'TransactionViewer
         '
@@ -79,12 +90,14 @@ Partial Class TransactionViewer
         Me.Name = "TransactionViewer"
         Me.Text = "TransactionViewer"
         Me.TableLayoutPanel1.ResumeLayout(False)
-        CType(Me.dtgTransaction, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel1.PerformLayout()
+        CType(Me.dgvTransaction, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents headerPanel As Panel
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents dtgTransaction As DataGridView
+    Friend WithEvents dgvTransaction As DataGridView
+    Friend WithEvents lblTitle As Label
 End Class
