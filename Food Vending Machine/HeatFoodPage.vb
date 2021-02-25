@@ -3,6 +3,7 @@
     Dim sizes As Double = 0
     Dim id As String
     Dim time_to_cook As Integer
+    Dim current_time As Integer
 
     Public Sub New(id As String, time_to_cook As Integer)
 
@@ -12,20 +13,19 @@
         ' Add any initialization after the InitializeComponent() call.
         Me.id = id
         Me.time_to_cook = time_to_cook
+        Me.current_time = time_to_cook
 
     End Sub
     Private Sub HeatFoodPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        pnlProgress.Width = 0
-        lblCountDown.Text = time
+        lblCountDown.Text = time_to_cook
         Timer1.Start()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        sizes = 372 / 60
-        If time >= 0 Then
-            lblCountDown.Text = time
-            time -= 1
-            pnlProgress.Width += sizes
+        If current_time > 0 Then
+            lblCountDown.Text = current_time
+            current_time -= 1
+            ProgressBar.Value = 100 - ((current_time / time_to_cook) * 100)
         Else
             My.Computer.Audio.Play(My.Resources.Sound, AudioPlayMode.WaitToComplete)
             Timer1.Stop()

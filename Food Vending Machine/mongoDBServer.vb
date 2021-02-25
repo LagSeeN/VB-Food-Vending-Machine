@@ -10,6 +10,7 @@ Public Class MongoDBServer
     Dim server = "mongodb+srv://clustertni.kt6oq.mongodb.net/Food_Vending_Machine?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
     Dim cert = New X509Certificate2(My.Resources.X509_cert_2554937799609490701, "")
     Dim base64 As New Base64
+    Dim branch As String = "Visual Basic"
     Public Function CountFood()
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
@@ -19,7 +20,7 @@ Public Class MongoDBServer
         }
         Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", "Visual Basic")
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
         Dim found = database.GetCollection(Of BsonDocument)("products")
         Return found.CountDocuments(filter)
     End Function
@@ -34,9 +35,9 @@ Public Class MongoDBServer
         Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
-        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", "Visual Basic")
-        Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("image").Exclude("_id")).ToList
-        Dim image_list(cursor.Count)
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
+        Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("image")).ToList
+        Dim image_list(cursor.Count) As Image
         For i = 0 To cursor.Count - 1
             image_list(i) = base64.ConvertByteToImage(base64.ConvertBase64ToByteArray(cursor(i)("image")))
         Next
