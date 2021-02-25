@@ -1,5 +1,5 @@
 ﻿Public Class Change
-
+    Dim mongoDBServer As New MongoDBServer
     Dim id As String
     Dim change_price As Integer
     Dim coin
@@ -31,5 +31,6 @@
 
     Private Sub Change_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblChange.Text = change_price
+        mongoDBServer.food_finish(id)
     End Sub
 End Class

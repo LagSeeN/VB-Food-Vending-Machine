@@ -147,12 +147,41 @@ Public Class MongoDBServer
         Return result
     End Function
 
-    'def food_finish(_id, current_food)
-    '    With pymongo.MongoClient(server) As conn:
-    '        db = conn.get_database('Food_Vending_Machine')
-    '        where = {'_id': _id}
-    '        db['products'].update({'_id': _id}, {'$set': {'stock': current_food - 1}})
-    '        db['transaction'].insert_one(
-    '            {'date': datetime.now(), 'food_item': _id, 'food_name': db['products'].find_one(where)['product_name'],
-    '             'price': db['products'].find_one(where)['price']})
+    Public Sub food_finish(id As String)
+        Dim settings = MongoClientSettings.FromConnectionString(server)
+        settings.SslSettings = New SslSettings With {
+            .ClientCertificates = New List(Of X509Certificate)() From {
+                cert
+            }
+        }
+        Dim conn = New MongoClient(settings)
+        Dim database = conn.GetDatabase("Food_Vending_Machine")
+        Dim collection = database.GetCollection(Of BsonDocument)("products")
+        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", ObjectId.Parse(id))
+        Dim stock_data = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("price").Include("stock")).First
+
+        'update stock
+        filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", stock_data("_id"))
+
+        Dim data As BsonDocument = New BsonDocument()
+        Dim new_stock As Integer = stock_data("stock")
+        With data
+            .Add("stock", new_stock - 1)
+        End With
+        collection.UpdateOne(filter, New BsonDocument("$set", data))
+
+        'write transaction
+        collection = database.GetCollection(Of BsonDocument)("transaction")
+        data = New BsonDocument()
+
+        With data
+            .Add("date", Date.Now())
+            .Add("food_item", stock_data("_id"))
+            .Add("food_name", stock_data("product_name"))
+            .Add("price", stock_data("price"))
+            .Add("branch", "Visual Basic")
+        End With
+        collection.InsertOne(data)
+        'write coin
+    End Sub
 End Class
