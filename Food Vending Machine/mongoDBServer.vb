@@ -73,7 +73,7 @@ Public Class MongoDBServer
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
         Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", ObjectId.Parse(id))
-        Dim food = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("price").Include("stock").Include("image").Include("time")).First
+        Dim food = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("price").Include("stock").Include("image").Include("time").Include("is_available")).First
         Return food
     End Function
 
@@ -99,6 +99,7 @@ Public Class MongoDBServer
             .Add("image", product.image)
             .Add("time", product.time)
             .Add("branch", "Visual Basic")
+            .Add("is_available", product.is_available)
         End With
 
         Try
@@ -135,6 +136,7 @@ Public Class MongoDBServer
             .Add("image", product.image)
             .Add("time", product.time)
             .Add("branch", "Visual Basic")
+            .Add("is_available", product.is_available)
         End With
 
         Try
@@ -185,4 +187,24 @@ Public Class MongoDBServer
         collection.InsertOne(data)
         'write coin
     End Sub
+
+    'Public Function GetTransaction()
+    '    Dim settings = MongoClientSettings.FromConnectionString(server)
+    '    settings.SslSettings = New SslSettings With {
+    '        .ClientCertificates = New List(Of X509Certificate)() From {
+    '            cert
+    '        }
+    '    }
+    '    Dim conn = New MongoClient(settings)
+    '    Dim database = conn.GetDatabase("Food_Vending_Machine")
+    '    Dim collection = database.GetCollection(Of BsonDocument)("transaction")
+    '    Dim filter = Builders(Of BsonDocument).Filter.And(Of String)("branch", "Visual Basic")(Of String)("", "")
+    '    Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("stock")).ToList
+    '    Dim foods_list(cursor.Count)
+    '    For i = 0 To cursor.Count - 1
+    '        foods_list(i) = cursor(i)
+    '    Next
+    '    Return foods_list
+    'End Function
+
 End Class
