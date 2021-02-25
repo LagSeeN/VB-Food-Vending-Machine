@@ -1,5 +1,8 @@
 ﻿Imports MongoDB.Bson
-
+Imports System.IO
+Imports System.Drawing.Text
+Imports System.Runtime.InteropServices
+Imports System.Reflection
 Public Class InsertItem
     Dim base64 As New Base64
     Dim mongoDBServer As New MongoDBServer
@@ -20,8 +23,10 @@ Public Class InsertItem
     End Sub
     Private Sub InsertItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If isEditMode Then
+            Fontload()
             LoadCombobox()
         Else
+            Fontload()
             cbm_productList.Visible = False
             availableLabel.Visible = False
             availableCheck.Visible = False
@@ -172,5 +177,38 @@ Public Class InsertItem
         cbm_productList.DataSource = New BindingSource(comboSource, Nothing)
         cbm_productList.DisplayMember = "Value"
         cbm_productList.ValueMember = "Key"
+    End Sub
+    Private Sub Fontload()
+        Dim pfc As New PrivateFontCollection
+        Dim resource As String = "Food_Vending_Machine.FC Lamoon Regular ver 1.00.ttf"
+        Dim fontstream As Stream
+        Dim data As IntPtr
+        Dim fontdata As Byte()
+        fontstream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource)
+        data = Marshal.AllocCoTaskMem(CInt(fontstream.Length))
+        fontdata = New Byte(fontstream.Length - 1) {}
+        fontstream.Read(fontdata, 0, CInt(fontstream.Length))
+        Marshal.Copy(fontdata, 0, data, CInt(fontstream.Length))
+        pfc.AddMemoryFont(data, CInt(fontstream.Length))
+        fontstream.Close()
+        Marshal.FreeCoTaskMem(data)
+
+        cbm_productList.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        nameLabel.Font = New Font(pfc.Families(0), 20, FontStyle.Bold)
+        priceLabel.Font = New Font(pfc.Families(0), 20, FontStyle.Bold)
+        stockLabel.Font = New Font(pfc.Families(0), 20, FontStyle.Bold)
+        timeLabel.Font = New Font(pfc.Families(0), 20, FontStyle.Bold)
+        availableLabel.Font = New Font(pfc.Families(0), 20, FontStyle.Bold)
+
+        nameTextBox.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        priceInput.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        stockInput.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        timeInput.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        availableCheck.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+
+        uploadBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        acceptBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        cancelBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+
     End Sub
 End Class

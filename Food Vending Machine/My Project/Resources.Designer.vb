@@ -141,6 +141,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property FC_Lamoon_Regular_ver_1_00() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("FC_Lamoon_Regular_ver_1_00", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         '''</summary>
         Friend ReadOnly Property Sound() As System.IO.UnmanagedMemoryStream

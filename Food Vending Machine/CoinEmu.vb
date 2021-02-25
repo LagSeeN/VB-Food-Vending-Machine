@@ -1,4 +1,8 @@
-﻿Public Class CoinEmu
+﻿Imports System.IO
+Imports System.Drawing.Text
+Imports System.Runtime.InteropServices
+Imports System.Reflection
+Public Class CoinEmu
     Dim price As Integer
     Dim coin(3) As Integer
     Dim input_coin As Integer
@@ -37,6 +41,7 @@
     End Sub
 
     Private Sub CoinEmu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Fontload()
         input_coin = 0
         is_canceled = False
     End Sub
@@ -70,5 +75,27 @@
 
     Private Sub CoinEmu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         is_canceled = True
+    End Sub
+    Private Sub Fontload()
+        Dim pfc As New PrivateFontCollection
+        Dim resource As String = "Food_Vending_Machine.FC Lamoon Regular ver 1.00.ttf"
+        Dim fontstream As Stream
+        Dim data As IntPtr
+        Dim fontdata As Byte()
+        fontstream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource)
+        data = Marshal.AllocCoTaskMem(CInt(fontstream.Length))
+        fontdata = New Byte(fontstream.Length - 1) {}
+        fontstream.Read(fontdata, 0, CInt(fontstream.Length))
+        Marshal.Copy(fontdata, 0, data, CInt(fontstream.Length))
+        pfc.AddMemoryFont(data, CInt(fontstream.Length))
+        fontstream.Close()
+        Marshal.FreeCoTaskMem(data)
+
+        oneCoinBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        fiveCoinBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        tenCoinBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        cancelBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        coinTotalTB.Font = New Font(pfc.Families(0), 24, FontStyle.Regular)
+
     End Sub
 End Class
