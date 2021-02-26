@@ -138,7 +138,6 @@ Partial Class Home
         Me.ClientSize = New System.Drawing.Size(1325, 505)
         Me.Controls.Add(Me.homeTableLayoutPanel)
         Me.Controls.Add(Me.headerPanel)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Home"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -22,7 +22,6 @@ Partial Class TransactionViewer
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TransactionViewer))
         Me.headerPanel = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.dgvTransaction = New System.Windows.Forms.DataGridView()
@@ -91,7 +90,6 @@ Partial Class TransactionViewer
         Me.ClientSize = New System.Drawing.Size(1002, 441)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.headerPanel)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "TransactionViewer"
         Me.Text = "TransactionViewer"

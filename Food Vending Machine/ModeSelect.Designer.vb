@@ -64,7 +64,6 @@ Partial Class ModeSelect
         Me.Controls.Add(Me.EditProductBtn)
         Me.Controls.Add(Me.AddProductBtn)
         Me.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ModeSelect"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ModeSelect"

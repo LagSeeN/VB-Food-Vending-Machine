@@ -98,7 +98,6 @@ Partial Class TakeFood
         Me.ClientSize = New System.Drawing.Size(1104, 631)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Panel1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "TakeFood"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TakeFood"

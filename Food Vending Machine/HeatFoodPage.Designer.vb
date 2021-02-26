@@ -171,7 +171,6 @@ Partial Class HeatFoodPage
         Me.ClientSize = New System.Drawing.Size(1104, 631)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Panel1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "HeatFoodPage"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "HeatFoodPage"
