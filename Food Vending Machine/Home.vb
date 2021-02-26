@@ -19,7 +19,7 @@ Public Class Home
         ' Add any initialization after the InitializeComponent() call.
     End Sub
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Fontload()
+        Fontload()
         InitializeFoodView()
         Load_Products_Worker.RunWorkerAsync()
 
@@ -99,23 +99,27 @@ Public Class Home
         End If
     End Sub
     Private Sub Fontload()
-        Dim pfc As New PrivateFontCollection
-        Dim resource As String = "Food_Vending_Machine.FC Lamoon Regular ver 1.00.ttf"
-        Dim fontstream As Stream
-        Dim data As IntPtr
-        Dim fontdata As Byte()
-        fontstream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource)
-        data = Marshal.AllocCoTaskMem(CInt(fontstream.Length))
-        fontdata = New Byte(fontstream.Length - 1) {}
-        fontstream.Read(fontdata, 0, CInt(fontstream.Length))
-        Marshal.Copy(fontdata, 0, data, CInt(fontstream.Length))
-        pfc.AddMemoryFont(data, CInt(fontstream.Length))
-        fontstream.Close()
-        Marshal.FreeCoTaskMem(data)
+        'Dim pfc As New PrivateFontCollection
+        'Dim resource As String = "Food_Vending_Machine.FC Lamoon Regular ver 1.00.ttf"
+        'Dim fontstream As Stream
+        'Dim data As IntPtr
+        'Dim fontdata As Byte()
+        'fontstream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource)
+        'Data = Marshal.AllocCoTaskMem(CInt(fontstream.Length))
+        'fontdata = New Byte(fontstream.Length - 1) {}
+        'fontstream.Read(fontdata, 0, CInt(fontstream.Length))
+        'Marshal.Copy(fontdata, 0, data, CInt(fontstream.Length))
+        'pfc.AddMemoryFont(data, CInt(fontstream.Length))
+        'fontstream.Close()
+        'Marshal.FreeCoTaskMem(data)
+        Dim colFont As New Drawing.Text.PrivateFontCollection
+        My.Computer.FileSystem.WriteAllBytes(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf", My.Resources.FC_Lamoon_Regular_ver_1_00, True)
+        colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
+        'Label1.Font = New Font(colFont.Families(0), 40)
 
-        buyBtn.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)
-        FoodView.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
-        titleLabel.Font = New Font(pfc.Families(0), 45, FontStyle.Regular)
+        buyBtn.Font = New Font(colFont.Families(0), 16, FontStyle.Regular)
+        'FoodView.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
+        titleLabel.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)
 
     End Sub
 End Class
