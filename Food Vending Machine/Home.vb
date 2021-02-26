@@ -1,8 +1,5 @@
 ﻿Imports System.Threading
-Imports System.IO
 Imports System.Drawing.Text
-Imports System.Runtime.InteropServices
-Imports System.Reflection
 Public Class Home
     Dim mongoDBServer As New MongoDBServer
     Dim lst As ListViewItem
@@ -112,14 +109,13 @@ Public Class Home
         'pfc.AddMemoryFont(data, CInt(fontstream.Length))
         'fontstream.Close()
         'Marshal.FreeCoTaskMem(data)
-        Dim colFont As New Drawing.Text.PrivateFontCollection
-        My.Computer.FileSystem.WriteAllBytes(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf", My.Resources.FC_Lamoon_Regular_ver_1_00, True)
+        Dim colFont As New PrivateFontCollection
+        'My.Computer.FileSystem.WriteAllBytes(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf", My.Resources.FC_Lamoon_Regular_ver_1_00, True)
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
         'Label1.Font = New Font(colFont.Families(0), 40)
 
         buyBtn.Font = New Font(colFont.Families(0), 16, FontStyle.Regular)
         'FoodView.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
         titleLabel.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)
-
     End Sub
 End Class

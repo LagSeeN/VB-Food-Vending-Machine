@@ -22,7 +22,6 @@ Partial Class ModeSelect
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ModeSelect))
         Me.AddProductBtn = New System.Windows.Forms.Button()
         Me.EditProductBtn = New System.Windows.Forms.Button()
         Me.SellProductBtn = New System.Windows.Forms.Button()
@@ -57,7 +56,7 @@ Partial Class ModeSelect
         '
         'ModeSelect
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 32.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(391, 293)
         Me.Controls.Add(Me.SellProductBtn)

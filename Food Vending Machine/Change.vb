@@ -1,7 +1,4 @@
-﻿Imports System.IO
-Imports System.Drawing.Text
-Imports System.Runtime.InteropServices
-Imports System.Reflection
+﻿Imports System.Drawing.Text
 Public Class Change
     Dim mongoDBServer As New MongoDBServer
     Dim id As String
@@ -41,37 +38,24 @@ Public Class Change
         lblChange.Text = change_price
         mongoDBServer.food_finish(id)
     End Sub
-
-    Private Sub Fontload()
-        Dim pfc As New PrivateFontCollection
-        Dim resource As String = "Food_Vending_Machine.FC Lamoon Regular ver 1.00.ttf"
-        Dim fontstream As Stream
-        Dim data As IntPtr
-        Dim fontdata As Byte()
-        fontstream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource)
-        data = Marshal.AllocCoTaskMem(CInt(fontstream.Length))
-        fontdata = New Byte(fontstream.Length - 1) {}
-        fontstream.Read(fontdata, 0, CInt(fontstream.Length))
-        Marshal.Copy(fontdata, 0, data, CInt(fontstream.Length))
-        pfc.AddMemoryFont(data, CInt(fontstream.Length))
-        fontstream.Close()
-        Marshal.FreeCoTaskMem(data)
-
-        lblTakeFood.Font = New Font(pfc.Families(0), 45, FontStyle.Regular)
-        lblTextChange.Font = New Font(pfc.Families(0), 30, FontStyle.Regular)
-        lblTextHeat.Font = New Font(pfc.Families(0), 30, FontStyle.Regular)
-        lblBahtText.Font = New Font(pfc.Families(0), 30, FontStyle.Regular)
-        lblChange.Font = New Font(pfc.Families(0), 40, FontStyle.Regular)
-        btnHeat.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
-        btnNotHeat.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
-
-    End Sub
-
     Private Sub Change_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If can_close Then
             e.Cancel = False
         Else
             e.Cancel = True
         End If
+    End Sub
+    Private Sub Fontload()
+        Dim colFont As New PrivateFontCollection
+        colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
+
+        lblTakeFood.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)
+        lblTextChange.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
+        lblTextHeat.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
+        lblBahtText.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
+        lblChange.Font = New Font(colFont.Families(0), 40, FontStyle.Regular)
+        btnHeat.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
+        btnNotHeat.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
+
     End Sub
 End Class
