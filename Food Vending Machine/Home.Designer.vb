@@ -23,6 +23,7 @@ Partial Class Home
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Home))
         Me.headerPanel = New System.Windows.Forms.Panel()
         Me.titleLabel = New System.Windows.Forms.Label()
         Me.homeTableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
@@ -134,6 +135,7 @@ Partial Class Home
         Me.ClientSize = New System.Drawing.Size(1377, 673)
         Me.Controls.Add(Me.homeTableLayoutPanel)
         Me.Controls.Add(Me.headerPanel)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Home"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Home"
