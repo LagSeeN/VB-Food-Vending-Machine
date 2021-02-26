@@ -24,7 +24,6 @@ Public Class Home
         Fontload()
         InitializeFoodView()
         Load_Products_Worker.RunWorkerAsync()
-
     End Sub
 
     Private Sub buyBtn_Click(sender As Object, e As EventArgs) Handles buyBtn.Click
@@ -111,7 +110,6 @@ Public Class Home
         Try
             colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
             buyBtn.Font = New Font(colFont.Families(0), 16, FontStyle.Regular)
-            'FoodView.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
             titleLabel.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)
         Catch ex As System.IO.FileNotFoundException
             MessageBox.Show("ไม่พบ Font ในโปรแกรม", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
