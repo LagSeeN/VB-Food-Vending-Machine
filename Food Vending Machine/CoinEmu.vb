@@ -41,7 +41,7 @@ Public Class CoinEmu
     End Sub
 
     Private Sub CoinEmu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
+        'Fontload()
         input_coin = 0
         is_canceled = False
     End Sub
@@ -75,27 +75,28 @@ Public Class CoinEmu
 
     Private Sub CoinEmu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         is_canceled = True
+        Me.Hide()
     End Sub
     Private Sub Fontload()
-        Dim pfc As New PrivateFontCollection
-        Dim resource As String = "Food_Vending_Machine.FC Lamoon Regular ver 1.00.ttf"
-        Dim fontstream As Stream
-        Dim data As IntPtr
-        Dim fontdata As Byte()
-        fontstream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource)
-        data = Marshal.AllocCoTaskMem(CInt(fontstream.Length))
-        fontdata = New Byte(fontstream.Length - 1) {}
-        fontstream.Read(fontdata, 0, CInt(fontstream.Length))
-        Marshal.Copy(fontdata, 0, data, CInt(fontstream.Length))
-        pfc.AddMemoryFont(data, CInt(fontstream.Length))
-        fontstream.Close()
-        Marshal.FreeCoTaskMem(data)
+        'Dim pfc As New PrivateFontCollection
+        'Dim resource As String = "Food_Vending_Machine.FC Lamoon Regular ver 1.00.ttf"
+        'Dim fontstream As Stream
+        'Dim data As IntPtr
+        'Dim fontdata As Byte()
+        'fontstream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource)
+        'Data = Marshal.AllocCoTaskMem(CInt(fontstream.Length))
+        'fontdata = New Byte(fontstream.Length - 1) {}
+        'fontstream.Read(fontdata, 0, CInt(fontstream.Length))
+        'Marshal.Copy(fontdata, 0, data, CInt(fontstream.Length))
+        'pfc.AddMemoryFont(data, CInt(fontstream.Length))
+        'fontstream.Close()
+        'Marshal.FreeCoTaskMem(data)
 
-        oneCoinBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
-        fiveCoinBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
-        tenCoinBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
-        cancelBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
-        coinTotalTB.Font = New Font(pfc.Families(0), 24, FontStyle.Regular)
+        'oneCoinBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        'fiveCoinBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        'tenCoinBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        'cancelBtn.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
+        'coinTotalTB.Font = New Font(pfc.Families(0), 24, FontStyle.Regular)
 
     End Sub
 End Class
