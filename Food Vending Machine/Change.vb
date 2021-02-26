@@ -6,6 +6,7 @@ Public Class Change
     Dim coin
     Dim time_to_cook As Integer
     Dim can_close As Boolean
+    Dim colFont As New PrivateFontCollection
 
     Public Sub New(id, change_price, coin, time_to_cook)
 
@@ -46,7 +47,6 @@ Public Class Change
         End If
     End Sub
     Private Sub Fontload()
-        Dim colFont As New PrivateFontCollection
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
         lblTakeFood.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)

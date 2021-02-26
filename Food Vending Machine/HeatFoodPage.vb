@@ -5,6 +5,7 @@ Public Class HeatFoodPage
     Dim id As String
     Dim time_to_cook As Integer
     Dim current_time As Integer
+    Dim colFont As New PrivateFontCollection
 
     Public Sub New(id As String, time_to_cook As Integer)
 
@@ -37,7 +38,6 @@ Public Class HeatFoodPage
         End If
     End Sub
     Private Sub Fontload()
-        Dim colFont As New PrivateFontCollection
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
         lblTakeFood.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)

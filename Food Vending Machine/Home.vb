@@ -5,8 +5,8 @@ Public Class Home
     Dim lst As ListViewItem
 
     Dim total_product As Integer
-    Dim image_list()
-    Dim food_list()
+    Dim image_list As New ArrayList
+    Dim food_list As New ArrayList
 
     Dim colFont As New PrivateFontCollection
 
@@ -27,7 +27,6 @@ Public Class Home
         Dim id As String = FoodView.Items(FoodView.FocusedItem.Index).SubItems(1).Text
         Dim Payment As New Payment(id)
         Payment.ShowDialog()
-        buyBtn.Enabled = False
         InitializeFoodView()
         Load_Products_Worker.RunWorkerAsync()
     End Sub
@@ -35,23 +34,23 @@ Public Class Home
     Private Sub Load_Products()
         FoodView.View = View.LargeIcon
         FoodView.FullRowSelect = True
-        For i As Integer = 0 To total_product - 1
-            ProductListImage.Images.Add(image_list(i))
+        For Each img In image_list
+            ProductListImage.Images.Add(img)
         Next
         FoodView.LargeImageList = ProductListImage
-        For i As Integer = 0 To total_product - 1
+        Dim num As Integer = 0
+        For Each item In food_list
             FoodView.LargeImageList = ProductListImage
-            lst = FoodView.Items.Add(food_list(i)("product_name"), i)
-            lst.SubItems.Add(food_list(i)("_id").ToString)
-            lst.SubItems.Add(food_list(i)("stock").ToString)
+            lst = FoodView.Items.Add(item("product_name"), num)
+            lst.SubItems.Add(item("_id").ToString)
+            lst.SubItems.Add(item("stock").ToString)
             lst.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
+            num += 1
         Next
-        FoodView.Enabled = True
-        Me.KeyPreview = True
-        buyBtn.Enabled = True
     End Sub
 
     Private Sub InitializeFoodView()
+        ProductListImage.Images.Clear()
         buyBtn.Enabled = False
         Me.KeyPreview = False
         FoodView.Enabled = False
@@ -67,6 +66,9 @@ Public Class Home
     Private Sub Load_Products_Worker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles Load_Products_Worker.RunWorkerCompleted
         Try
             Load_Products()
+            FoodView.Enabled = True
+            Me.KeyPreview = True
+            buyBtn.Enabled = True
         Catch ex As Exception
             MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             MessageBox.Show("ERROR" & vbCrLf & "เกิดข้อผิดพลาดในการทำงาน โปรแกรมจะปิดตัวลง", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -91,7 +93,7 @@ Public Class Home
 
     Private Sub Home_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.F1 Then
-            Dim ModeSelect As New ModeSelect()
+            Dim ModeSelect As New ModeSelect
             ModeSelect.ShowDialog()
             InitializeFoodView()
             Try

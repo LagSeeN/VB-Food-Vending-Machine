@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing.Text
 Public Class TransactionViewer
     Dim mongoDBServer As New MongoDBServer
+    Dim colFont As New PrivateFontCollection
     Private Sub TransactionViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Fontload()
         Dim transactions As List(Of TransactionResult) = mongoDBServer.GetTransaction()
@@ -21,7 +22,6 @@ Public Class TransactionViewer
         lblTitle.Text = "กำลังแสดงรายการสินค้าได้จำหน่ายได้ในเดือน " & thaiMonth(Date.Now.Month - 1) & " ปี " & Date.Now.Year
     End Sub
     Private Sub Fontload()
-        Dim colFont As New PrivateFontCollection
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
         lblTitle.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)

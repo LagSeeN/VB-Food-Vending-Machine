@@ -4,6 +4,7 @@ Public Class CoinEmu
     Dim coin(3) As Integer
     Dim input_coin As Integer
     Dim is_canceled As Boolean
+    Dim colFont As New PrivateFontCollection
 
     Public ReadOnly Property Get_input_coin As Integer
         Get
@@ -76,7 +77,6 @@ Public Class CoinEmu
     End Sub
 
     Private Sub Fontload()
-        Dim colFont As New PrivateFontCollection
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
         oneCoinBtn.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)

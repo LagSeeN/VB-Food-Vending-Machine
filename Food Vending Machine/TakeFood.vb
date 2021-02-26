@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing.Text
 Public Class TakeFood
-
+    Dim colFont As New PrivateFontCollection
     Dim count As Integer = 0
     Public Sub New()
 
@@ -24,7 +24,6 @@ Public Class TakeFood
         End If
     End Sub
     Private Sub Fontload()
-        Dim colFont As New PrivateFontCollection
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
         lblTakeFood.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)

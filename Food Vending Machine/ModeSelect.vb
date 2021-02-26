@@ -1,5 +1,14 @@
 ﻿Imports System.Drawing.Text
 Public Class ModeSelect
+    Dim colFont As New PrivateFontCollection
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
     Private Sub AddProductBtn_Click(sender As Object, e As EventArgs) Handles AddProductBtn.Click
         Dim InsertItem As New InsertItem
         InsertItem.ShowDialog()
@@ -15,7 +24,6 @@ Public Class ModeSelect
         TransactionViewer.ShowDialog()
     End Sub
     Private Sub Fontload()
-        Dim colFont As New PrivateFontCollection
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
         AddProductBtn.Font = New Font(colFont.Families(0), 20, FontStyle.Bold)

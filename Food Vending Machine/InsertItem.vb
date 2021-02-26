@@ -9,6 +9,7 @@ Public Class InsertItem
     Dim currentImage As Image
     Dim imagePath As String = String.Empty
 
+    Dim colFont As New PrivateFontCollection
     Public Sub New(Optional isEditMode As Boolean = False)
 
         ' This call is required by the designer.
@@ -175,25 +176,30 @@ Public Class InsertItem
         cbm_productList.ValueMember = "Key"
     End Sub
     Private Sub Fontload()
-        Dim colFont As New PrivateFontCollection
-        colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
+        Try
+            colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
-        cbm_productList.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
-        nameLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
-        priceLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
-        stockLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
-        timeLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
-        availableLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
+            cbm_productList.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+            nameLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
+            priceLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
+            stockLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
+            timeLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
+            availableLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
 
-        nameTextBox.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
-        priceInput.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
-        stockInput.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
-        timeInput.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
-        availableCheck.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+            nameTextBox.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+            priceInput.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+            stockInput.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+            timeInput.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+            availableCheck.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
 
-        uploadBtn.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
-        acceptBtn.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
-        cancelBtn.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+            uploadBtn.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+            acceptBtn.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+            cancelBtn.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+        Catch ex As System.IO.FileNotFoundException
+            MessageBox.Show("ไม่พบ Font ในโปรแกรม", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Catch ex As Exception
+            MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
     End Sub
 End Class

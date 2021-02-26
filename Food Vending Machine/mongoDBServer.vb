@@ -26,7 +26,6 @@ Public Class MongoDBServer
         Else
             filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
         End If
-
         Dim found = database.GetCollection(Of BsonDocument)("products")
         Return found.CountDocuments(filter)
     End Function
@@ -47,11 +46,10 @@ Public Class MongoDBServer
         Else
             filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
         End If
-        'Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch) And Builders(Of BsonDocument).Filter.Eq(Of Int32)("is_available", 1)
         Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("image")).ToList
-        Dim image_list(cursor.Count)
-        For i = 0 To cursor.Count - 1
-            image_list(i) = base64.ConvertByteToImage(base64.ConvertBase64ToByteArray(cursor(i)("image")))
+        Dim image_list As New ArrayList
+        For Each img In cursor
+            image_list.Add(base64.ConvertByteToImage(base64.ConvertBase64ToByteArray(img("image"))))
         Next
         Return image_list
     End Function
@@ -72,9 +70,9 @@ Public Class MongoDBServer
             filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
         End If
         Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("stock")).ToList
-        Dim foods_list(cursor.Count)
-        For i = 0 To cursor.Count - 1
-            foods_list(i) = cursor(i)
+        Dim foods_list As New ArrayList
+        For Each item In cursor
+            foods_list.Add(item)
         Next
         Return foods_list
     End Function
@@ -219,11 +217,11 @@ Public Class MongoDBServer
         Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("date").Include("food_name")).ToList
 
         Dim transactions As New List(Of Transaction)
-        For i = 0 To cursor.Count - 1
+        For Each item In cursor
             Dim transaction As New Transaction
-            transaction._id = cursor(i)("_id")
-            transaction.purchase_date = cursor(i)("date")
-            transaction.food_name = cursor(i)("food_name")
+            transaction._id = item("_id")
+            transaction.purchase_date = item("date")
+            transaction.food_name = item("food_name")
 
             transactions.Add(transaction)
         Next

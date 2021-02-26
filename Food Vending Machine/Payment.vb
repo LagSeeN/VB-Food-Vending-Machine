@@ -11,6 +11,7 @@ Public Class Payment
     Dim CoinEmu As CoinEmu
     Dim price As Integer
     Dim can_close As Boolean
+    Dim colFont As New PrivateFontCollection
 
     Public Sub New(id As String)
 
@@ -107,7 +108,6 @@ Public Class Payment
         Timer1.Start()
     End Sub
     Private Sub Fontload()
-        Dim colFont As New PrivateFontCollection
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
         lblPaymentHead.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)

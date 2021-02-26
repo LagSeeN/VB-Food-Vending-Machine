@@ -292,9 +292,10 @@ Partial Class InsertItem
         Me.ClientSize = New System.Drawing.Size(1104, 505)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.headerPanel)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "InsertItem"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "InsertItem"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
