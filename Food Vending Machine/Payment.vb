@@ -10,6 +10,7 @@ Public Class Payment
     Dim base64 As New Base64
     Dim CoinEmu As CoinEmu
     Dim price As Integer
+    Dim can_close As Boolean
 
     Public Sub New(id As String)
 
@@ -20,7 +21,8 @@ Public Class Payment
         Me.id = id
     End Sub
     Private Sub Payment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Fontload()
+        Fontload()
+        can_close = False
         GetFood_Worker.RunWorkerAsync()
     End Sub
 
@@ -31,16 +33,7 @@ Public Class Payment
                 lblTime.Text = timeCount
                 If Application.OpenForms().OfType(Of CoinEmu).Any Then
                     If CoinEmu.Get_is_canceled Then
-                        Timer1.Stop()
-                        If CoinEmu.Get_input_coin > 0 Then
-                            'หน้ารับเงินคืน
-                            MessageBox.Show("ยกเลิกรายการแล้ว กรุณารับเงินคืน", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                            Debug.WriteLine(CoinEmu.Get_coin_arr)
-                            Debug.WriteLine(CoinEmu.Get_input_coin)
-                        Else
-                            MessageBox.Show("ยกเลิกรายการแล้ว กลับไปยังหน้าแรก", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        End If
-                        Me.Close()
+                        btnCancel_Click(sender, e)
                     ElseIf CoinEmu.Get_input_coin >= price Then
                         'ไปหน้าต่อไป
                         Timer1.Stop()
@@ -50,21 +43,17 @@ Public Class Payment
                         Dim Change As New Change(id, change_price, coin, time_to_cook)
                         CoinEmu.Close()
                         Change.ShowDialog()
+                        can_close = True
                         Me.Close()
                     End If
                 End If
             Else
                 Timer1.Stop()
                 If Application.OpenForms().OfType(Of CoinEmu).Any Then
-                    If CoinEmu.Get_input_coin > 0 Then
-                        'หน้ารับเงินคืน
-                        MessageBox.Show("หมดเวลาทำการ กรุณารับเงินคืน", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        Debug.WriteLine(CoinEmu.Get_coin_arr)
-                        Debug.WriteLine(CoinEmu.Get_input_coin)
-                    End If
-                    CoinEmu.Close()
+                    btnCancel_Click(sender, e)
                 End If
                 MessageBox.Show("หมดเวลาทำการ กลับไปยังหน้าแรก", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                can_close = True
                 Me.Close()
                 'กลับไปหน้าแรก
             End If
@@ -82,7 +71,20 @@ Public Class Payment
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Timer1.Stop()
-        MessageBox.Show("กรุณารับเงินคืน", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If Application.OpenForms().OfType(Of CoinEmu).Any Then
+            If CoinEmu.Get_input_coin > 0 Then
+                'หน้ารับเงินคืน
+                MessageBox.Show("ยกเลิกรายการแล้ว กรุณารับเงินคืน", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Debug.WriteLine(CoinEmu.Get_coin_arr)
+                Debug.WriteLine(CoinEmu.Get_input_coin)
+            Else
+                MessageBox.Show("ยกเลิกรายการแล้ว กลับไปยังหน้าแรก", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+            CoinEmu.Close()
+        Else
+            MessageBox.Show("ยกเลิกรายการแล้ว กลับไปยังหน้าแรก", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+        can_close = True
         Me.Close()
     End Sub
 
@@ -117,6 +119,13 @@ Public Class Payment
         lblTime.Font = New Font(colFont.Families(0), 35, FontStyle.Regular)
         btnCancel.Font = New Font(colFont.Families(0), 15, FontStyle.Regular)
         btnCoinEmu.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
+    End Sub
 
+    Private Sub Payment_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If can_close Then
+            e.Cancel = False
+        Else
+            e.Cancel = True
+        End If
     End Sub
 End Class

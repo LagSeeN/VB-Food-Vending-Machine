@@ -81,6 +81,7 @@ Public Class Home
         Else
             If FoodView.Items(FoodView.FocusedItem.Index).SubItems(2).Text = "0" Then
                 buyBtn.Text = "หมด"
+                buyBtn.Enabled = False
             Else
                 buyBtn.Text = "ชำระเงิน"
                 buyBtn.Enabled = True
@@ -100,7 +101,6 @@ Public Class Home
             Catch ex As Exception
                 MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
-
         End If
     End Sub
     Private Sub Fontload()

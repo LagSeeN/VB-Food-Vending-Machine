@@ -19,11 +19,10 @@ Public Class InsertItem
 
     End Sub
     Private Sub InsertItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Fontload()
         If isEditMode Then
-            'Fontload()
             LoadCombobox()
         Else
-            'Fontload()
             cbm_productList.Visible = False
             availableLabel.Visible = False
             availableCheck.Visible = False

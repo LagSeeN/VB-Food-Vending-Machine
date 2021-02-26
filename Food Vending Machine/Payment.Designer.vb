@@ -55,7 +55,7 @@ Partial Class Payment
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.15!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.99!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.lblTextPrice, 3, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.lblPrice, 4, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.lblName, 4, 1)
@@ -84,7 +84,7 @@ Partial Class Payment
         Me.lblTextPrice.BackColor = System.Drawing.Color.White
         Me.lblTextPrice.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTextPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTextPrice.Location = New System.Drawing.Point(527, 264)
+        Me.lblTextPrice.Location = New System.Drawing.Point(525, 264)
         Me.lblTextPrice.Name = "lblTextPrice"
         Me.lblTextPrice.Size = New System.Drawing.Size(110, 66)
         Me.lblTextPrice.TabIndex = 11
@@ -96,7 +96,7 @@ Partial Class Payment
         Me.lblPrice.BackColor = System.Drawing.Color.White
         Me.lblPrice.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblPrice.Location = New System.Drawing.Point(643, 264)
+        Me.lblPrice.Location = New System.Drawing.Point(641, 264)
         Me.lblPrice.Name = "lblPrice"
         Me.lblPrice.Size = New System.Drawing.Size(110, 66)
         Me.lblPrice.TabIndex = 13
@@ -109,7 +109,7 @@ Partial Class Payment
         Me.TableLayoutPanel1.SetColumnSpan(Me.lblName, 4)
         Me.lblName.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblName.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblName.Location = New System.Drawing.Point(643, 132)
+        Me.lblName.Location = New System.Drawing.Point(641, 132)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(382, 66)
         Me.lblName.TabIndex = 19
@@ -121,7 +121,7 @@ Partial Class Payment
         Me.lblTextName.BackColor = System.Drawing.Color.White
         Me.lblTextName.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTextName.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTextName.Location = New System.Drawing.Point(527, 132)
+        Me.lblTextName.Location = New System.Drawing.Point(525, 132)
         Me.lblTextName.Name = "lblTextName"
         Me.lblTextName.Size = New System.Drawing.Size(110, 66)
         Me.lblTextName.TabIndex = 10
@@ -132,7 +132,7 @@ Partial Class Payment
         '
         Me.btnCoinEmu.Dock = System.Windows.Forms.DockStyle.Fill
         Me.btnCoinEmu.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.btnCoinEmu.Location = New System.Drawing.Point(777, 267)
+        Me.btnCoinEmu.Location = New System.Drawing.Point(775, 267)
         Me.btnCoinEmu.Name = "btnCoinEmu"
         Me.btnCoinEmu.Size = New System.Drawing.Size(151, 60)
         Me.btnCoinEmu.TabIndex = 15
@@ -143,7 +143,7 @@ Partial Class Payment
         '
         Me.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.btnCancel.Location = New System.Drawing.Point(643, 532)
+        Me.btnCancel.Location = New System.Drawing.Point(641, 532)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(110, 60)
         Me.btnCancel.TabIndex = 16
@@ -154,7 +154,7 @@ Partial Class Payment
         '
         Me.lblTextTime.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTextTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTextTime.Location = New System.Drawing.Point(777, 529)
+        Me.lblTextTime.Location = New System.Drawing.Point(775, 529)
         Me.lblTextTime.Name = "lblTextTime"
         Me.lblTextTime.Size = New System.Drawing.Size(151, 66)
         Me.lblTextTime.TabIndex = 21
@@ -165,7 +165,7 @@ Partial Class Payment
         '
         Me.lblTime.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTime.Location = New System.Drawing.Point(934, 529)
+        Me.lblTime.Location = New System.Drawing.Point(932, 529)
         Me.lblTime.Name = "lblTime"
         Me.lblTime.Size = New System.Drawing.Size(91, 66)
         Me.lblTime.TabIndex = 22
@@ -179,7 +179,7 @@ Partial Class Payment
         Me.ptbProduct.Location = New System.Drawing.Point(21, 135)
         Me.ptbProduct.Name = "ptbProduct"
         Me.TableLayoutPanel1.SetRowSpan(Me.ptbProduct, 5)
-        Me.ptbProduct.Size = New System.Drawing.Size(482, 457)
+        Me.ptbProduct.Size = New System.Drawing.Size(480, 457)
         Me.ptbProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.ptbProduct.TabIndex = 23
         Me.ptbProduct.TabStop = False

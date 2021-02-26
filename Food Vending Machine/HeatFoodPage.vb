@@ -25,8 +25,8 @@ Public Class HeatFoodPage
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If current_time > 0 Then
-            lblCountDown.Text = current_time
             current_time -= 1
+            lblCountDown.Text = current_time
             ProgressBar.Value = 100 - ((current_time / time_to_cook) * 100)
         Else
             My.Computer.Audio.Play(My.Resources.Sound, AudioPlayMode.WaitToComplete)

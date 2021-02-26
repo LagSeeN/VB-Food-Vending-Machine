@@ -70,7 +70,7 @@ Partial Class HeatFoodPage
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 47.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.picBird1, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.picBird2, 3, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.lblCountDown, 2, 3)
@@ -108,7 +108,7 @@ Partial Class HeatFoodPage
         '
         Me.picBird2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.picBird2.Image = CType(resources.GetObject("picBird2.Image"), System.Drawing.Image)
-        Me.picBird2.Location = New System.Drawing.Point(755, 75)
+        Me.picBird2.Location = New System.Drawing.Point(754, 75)
         Me.picBird2.Name = "picBird2"
         Me.TableLayoutPanel1.SetRowSpan(Me.picBird2, 3)
         Me.picBird2.Size = New System.Drawing.Size(300, 322)
@@ -123,7 +123,7 @@ Partial Class HeatFoodPage
         Me.lblCountDown.Font = New System.Drawing.Font("Microsoft Sans Serif", 25.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblCountDown.Location = New System.Drawing.Point(346, 157)
         Me.lblCountDown.Name = "lblCountDown"
-        Me.lblCountDown.Size = New System.Drawing.Size(403, 150)
+        Me.lblCountDown.Size = New System.Drawing.Size(402, 150)
         Me.lblCountDown.TabIndex = 4
         Me.lblCountDown.Text = "Label1"
         Me.lblCountDown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -135,7 +135,7 @@ Partial Class HeatFoodPage
         Me.lblTextWait.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTextWait.Location = New System.Drawing.Point(346, 72)
         Me.lblTextWait.Name = "lblTextWait"
-        Me.lblTextWait.Size = New System.Drawing.Size(403, 85)
+        Me.lblTextWait.Size = New System.Drawing.Size(402, 85)
         Me.lblTextWait.TabIndex = 6
         Me.lblTextWait.Text = "เหลือเวลารอ"
         Me.lblTextWait.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -147,7 +147,7 @@ Partial Class HeatFoodPage
         Me.lblTextSec.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTextSec.Location = New System.Drawing.Point(346, 307)
         Me.lblTextSec.Name = "lblTextSec"
-        Me.lblTextSec.Size = New System.Drawing.Size(403, 93)
+        Me.lblTextSec.Size = New System.Drawing.Size(402, 93)
         Me.lblTextSec.TabIndex = 7
         Me.lblTextSec.Text = "วินาที"
         Me.lblTextSec.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -157,7 +157,7 @@ Partial Class HeatFoodPage
         Me.ProgressBar.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ProgressBar.Location = New System.Drawing.Point(346, 422)
         Me.ProgressBar.Name = "ProgressBar"
-        Me.ProgressBar.Size = New System.Drawing.Size(403, 32)
+        Me.ProgressBar.Size = New System.Drawing.Size(402, 32)
         Me.ProgressBar.TabIndex = 8
         '
         'Timer1
