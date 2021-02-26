@@ -40,8 +40,9 @@ Partial Class TakeFood
         Me.Panel1.Controls.Add(Me.lblTakeFood)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1104, 117)
+        Me.Panel1.Size = New System.Drawing.Size(1262, 156)
         Me.Panel1.TabIndex = 0
         '
         'lblTakeFood
@@ -51,7 +52,7 @@ Partial Class TakeFood
         Me.lblTakeFood.ForeColor = System.Drawing.Color.White
         Me.lblTakeFood.Location = New System.Drawing.Point(0, 0)
         Me.lblTakeFood.Name = "lblTakeFood"
-        Me.lblTakeFood.Size = New System.Drawing.Size(1104, 117)
+        Me.lblTakeFood.Size = New System.Drawing.Size(1262, 156)
         Me.lblTakeFood.TabIndex = 1
         Me.lblTakeFood.Text = "กรุณารับอาหาร"
         Me.lblTakeFood.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -64,24 +65,26 @@ Partial Class TakeFood
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.picBird4, 1, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 117)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 156)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1104, 514)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1262, 685)
         Me.TableLayoutPanel1.TabIndex = 12
         '
         'picBird4
         '
         Me.picBird4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.picBird4.Image = CType(resources.GetObject("picBird4.Image"), System.Drawing.Image)
-        Me.picBird4.Location = New System.Drawing.Point(334, 105)
+        Me.picBird4.Location = New System.Drawing.Point(381, 141)
+        Me.picBird4.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.picBird4.Name = "picBird4"
-        Me.picBird4.Size = New System.Drawing.Size(435, 302)
+        Me.picBird4.Size = New System.Drawing.Size(498, 403)
         Me.picBird4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.picBird4.TabIndex = 0
         Me.picBird4.TabStop = False
@@ -92,12 +95,14 @@ Partial Class TakeFood
         '
         'TakeFood
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1104, 631)
+        Me.ClientSize = New System.Drawing.Size(1262, 841)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Panel1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "TakeFood"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TakeFood"

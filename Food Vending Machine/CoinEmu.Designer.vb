@@ -22,6 +22,7 @@ Partial Class CoinEmu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CoinEmu))
         Me.footerPanel = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.CoinEmuTableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
@@ -140,6 +141,7 @@ Partial Class CoinEmu
         Me.ClientSize = New System.Drawing.Size(462, 333)
         Me.Controls.Add(Me.CoinEmuTableLayoutPanel)
         Me.Controls.Add(Me.footerPanel)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "CoinEmu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

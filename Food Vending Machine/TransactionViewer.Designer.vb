@@ -22,10 +22,11 @@ Partial Class TransactionViewer
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TransactionViewer))
         Me.headerPanel = New System.Windows.Forms.Panel()
+        Me.lblTitle = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.dgvTransaction = New System.Windows.Forms.DataGridView()
-        Me.lblTitle = New System.Windows.Forms.Label()
         Me.headerPanel.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.dgvTransaction, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -40,6 +41,17 @@ Partial Class TransactionViewer
         Me.headerPanel.Name = "headerPanel"
         Me.headerPanel.Size = New System.Drawing.Size(1145, 125)
         Me.headerPanel.TabIndex = 2
+        '
+        'lblTitle
+        '
+        Me.lblTitle.AutoSize = True
+        Me.lblTitle.Font = New System.Drawing.Font("FC Lamoon", 45.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.lblTitle.ForeColor = System.Drawing.Color.White
+        Me.lblTitle.Location = New System.Drawing.Point(74, 22)
+        Me.lblTitle.Name = "lblTitle"
+        Me.lblTitle.Size = New System.Drawing.Size(342, 72)
+        Me.lblTitle.TabIndex = 1
+        Me.lblTitle.Text = "รายการซื้อขาย"
         '
         'TableLayoutPanel1
         '
@@ -72,17 +84,6 @@ Partial Class TransactionViewer
         Me.dgvTransaction.Size = New System.Drawing.Size(989, 367)
         Me.dgvTransaction.TabIndex = 0
         '
-        'lblTitle
-        '
-        Me.lblTitle.AutoSize = True
-        Me.lblTitle.Font = New System.Drawing.Font("FC Lamoon", 45.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTitle.ForeColor = System.Drawing.Color.White
-        Me.lblTitle.Location = New System.Drawing.Point(74, 22)
-        Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(342, 72)
-        Me.lblTitle.TabIndex = 1
-        Me.lblTitle.Text = "รายการซื้อขาย"
-        '
         'TransactionViewer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
@@ -90,6 +91,7 @@ Partial Class TransactionViewer
         Me.ClientSize = New System.Drawing.Size(1145, 588)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.headerPanel)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "TransactionViewer"
         Me.Text = "TransactionViewer"
         Me.headerPanel.ResumeLayout(False)
