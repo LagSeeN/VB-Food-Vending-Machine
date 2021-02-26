@@ -1,8 +1,5 @@
 ﻿Imports System.Threading
-Imports System.IO
 Imports System.Drawing.Text
-Imports System.Runtime.InteropServices
-Imports System.Reflection
 Public Class Home
     Dim mongoDBServer As New MongoDBServer
     Dim lst As ListViewItem

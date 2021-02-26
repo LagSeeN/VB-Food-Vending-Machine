@@ -1,7 +1,4 @@
-﻿Imports System.IO
-Imports System.Drawing.Text
-Imports System.Runtime.InteropServices
-Imports System.Reflection
+﻿Imports System.Drawing.Text
 Public Class Payment
     Dim timeCount As Integer = 5
     Dim id As String
@@ -107,7 +104,6 @@ Public Class Payment
         lblTime.Text = timeCount
         Timer1.Start()
     End Sub
-
     Private Sub Fontload()
         Dim colFont As New PrivateFontCollection
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
@@ -121,7 +117,6 @@ Public Class Payment
         lblTime.Font = New Font(colFont.Families(0), 35, FontStyle.Regular)
         btnCancel.Font = New Font(colFont.Families(0), 15, FontStyle.Regular)
         btnCoinEmu.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
-
 
     End Sub
 End Class
