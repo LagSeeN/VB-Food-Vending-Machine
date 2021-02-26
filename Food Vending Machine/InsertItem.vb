@@ -23,10 +23,10 @@ Public Class InsertItem
     End Sub
     Private Sub InsertItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If isEditMode Then
-            Fontload()
+            'Fontload()
             LoadCombobox()
         Else
-            Fontload()
+            'Fontload()
             cbm_productList.Visible = False
             availableLabel.Visible = False
             availableCheck.Visible = False
@@ -168,9 +168,9 @@ Public Class InsertItem
 
     Private Sub LoadCombobox()
         Dim comboSource As New Dictionary(Of String, String)()
-        Dim foods = mongoDBServer.GetAllFood()
+        Dim foods = mongoDBServer.GetAllFood(False)
 
-        For i = 0 To mongoDBServer.CountFood() - 1
+        For i = 0 To mongoDBServer.CountFood(False) - 1
             comboSource.Add(foods(i)("_id").ToString, foods(i)("product_name"))
         Next
 

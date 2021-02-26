@@ -11,7 +11,7 @@ Public Class MongoDBServer
     Dim cert = New X509Certificate2(My.Resources.X509_cert_2554937799609490701, "")
     Dim base64 As New Base64
     Dim branch As String = "Visual Basic"
-    Public Function CountFood()
+    Public Function CountFood(is_sale As Boolean)
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
             .ClientCertificates = New List(Of X509Certificate)() From {
@@ -20,12 +20,18 @@ Public Class MongoDBServer
         }
         Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
+        Dim filter As FilterDefinition(Of BsonDocument)
+        If is_sale Then
+            filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch) And Builders(Of BsonDocument).Filter.Eq(Of Int32)("is_available", 1)
+        Else
+            filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
+        End If
+
         Dim found = database.GetCollection(Of BsonDocument)("products")
         Return found.CountDocuments(filter)
     End Function
 
-    Public Function GetAllImage()
+    Public Function GetAllImage(is_sale As Boolean)
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
             .ClientCertificates = New List(Of X509Certificate)() From {
@@ -35,7 +41,13 @@ Public Class MongoDBServer
         Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
-        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
+        Dim filter As FilterDefinition(Of BsonDocument)
+        If is_sale Then
+            filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch) And Builders(Of BsonDocument).Filter.Eq(Of Int32)("is_available", 1)
+        Else
+            filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
+        End If
+        'Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch) And Builders(Of BsonDocument).Filter.Eq(Of Int32)("is_available", 1)
         Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("image")).ToList
         Dim image_list(cursor.Count)
         For i = 0 To cursor.Count - 1
@@ -43,7 +55,7 @@ Public Class MongoDBServer
         Next
         Return image_list
     End Function
-    Public Function GetAllFood()
+    Public Function GetAllFood(is_sale As Boolean)
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
             .ClientCertificates = New List(Of X509Certificate)() From {
@@ -53,7 +65,12 @@ Public Class MongoDBServer
         Dim conn = New MongoClient(settings)
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("products")
-        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", "Visual Basic")
+        Dim filter As FilterDefinition(Of BsonDocument)
+        If is_sale Then
+            filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch) And Builders(Of BsonDocument).Filter.Eq(Of Int32)("is_available", 1)
+        Else
+            filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
+        End If
         Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("stock")).ToList
         Dim foods_list(cursor.Count)
         For i = 0 To cursor.Count - 1
