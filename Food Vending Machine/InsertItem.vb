@@ -45,8 +45,8 @@ Public Class InsertItem
             isNoEmpty = False
         End If
 
-        If stockInput.Value <= 0 Then
-            errorMessage &= "- จำนวนสินค้า (ต้องมากกว่า 0)" & System.Environment.NewLine
+        If stockInput.Value < 0 Then
+            errorMessage &= "- จำนวนสินค้า" & System.Environment.NewLine
             isNoEmpty = False
         End If
 
@@ -89,7 +89,7 @@ Public Class InsertItem
                     GetFoodData()
 
                 Else
-                    MessageBox.Show("อัปเดตเพิ่มสินค้าลงในฐานข้อมูลล้มเหลว", "ผลการปฏิบัติงาน", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("อัปเดตเพิ่มสินค้าลงในฐานข้อมูลล้มเหลว", "Result", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
 
             Else
@@ -101,14 +101,14 @@ Public Class InsertItem
                     detail.image = base64.ConvertImageToBase64(image, imageFormat)
 
                     If mongoDBServer.Insert(detail) Then
-                        MessageBox.Show("เพิ่มสินค้าลงในฐานข้อมูลสำเร็จ", "ผลการปฏิบัติงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("เพิ่มสินค้าลงในฐานข้อมูลสำเร็จ", "Result", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         ResetInput()
                     Else
-                        MessageBox.Show("เพิ่มสินค้าลงในฐานข้อมูลล้มเหลว", "ผลการปฏิบัติงาน", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBox.Show("เพิ่มสินค้าลงในฐานข้อมูลล้มเหลว", "Result", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
 
                 Else
-                    MessageBox.Show("กรุณาตรวจสอบรูปภาพที่เลือกอีกครั้ง (ไฟล์ไม่ถูกย้าย, เปลี่ยนชื่อ หรือถูกลบออกจากเครื่องคอมพิวเตอร์)", "ข้อผิดพลาด", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("กรุณาตรวจสอบรูปภาพที่เลือกอีกครั้ง (ไฟล์ไม่ถูกย้าย, เปลี่ยนชื่อ หรือถูกลบออกจากเครื่องคอมพิวเตอร์)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             End If
 
