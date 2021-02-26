@@ -22,7 +22,6 @@ Partial Class HeatFoodPage
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HeatFoodPage))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTakeFood = New System.Windows.Forms.Label()
@@ -33,7 +32,7 @@ Partial Class HeatFoodPage
         Me.lblTextWait = New System.Windows.Forms.Label()
         Me.lblTextSec = New System.Windows.Forms.Label()
         Me.ProgressBar = New System.Windows.Forms.ProgressBar()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerWorker = New System.ComponentModel.BackgroundWorker()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.picBird1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,7 +69,7 @@ Partial Class HeatFoodPage
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.picBird1, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.picBird2, 3, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.lblCountDown, 2, 3)
@@ -99,7 +98,7 @@ Partial Class HeatFoodPage
         Me.picBird1.Location = New System.Drawing.Point(40, 75)
         Me.picBird1.Name = "picBird1"
         Me.TableLayoutPanel1.SetRowSpan(Me.picBird1, 3)
-        Me.picBird1.Size = New System.Drawing.Size(298, 322)
+        Me.picBird1.Size = New System.Drawing.Size(297, 322)
         Me.picBird1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.picBird1.TabIndex = 1
         Me.picBird1.TabStop = False
@@ -108,10 +107,10 @@ Partial Class HeatFoodPage
         '
         Me.picBird2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.picBird2.Image = CType(resources.GetObject("picBird2.Image"), System.Drawing.Image)
-        Me.picBird2.Location = New System.Drawing.Point(750, 75)
+        Me.picBird2.Location = New System.Drawing.Point(747, 75)
         Me.picBird2.Name = "picBird2"
         Me.TableLayoutPanel1.SetRowSpan(Me.picBird2, 3)
-        Me.picBird2.Size = New System.Drawing.Size(298, 322)
+        Me.picBird2.Size = New System.Drawing.Size(297, 322)
         Me.picBird2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.picBird2.TabIndex = 2
         Me.picBird2.TabStop = False
@@ -121,9 +120,9 @@ Partial Class HeatFoodPage
         Me.lblCountDown.AutoSize = True
         Me.lblCountDown.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblCountDown.Font = New System.Drawing.Font("Microsoft Sans Serif", 25.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblCountDown.Location = New System.Drawing.Point(344, 157)
+        Me.lblCountDown.Location = New System.Drawing.Point(343, 157)
         Me.lblCountDown.Name = "lblCountDown"
-        Me.lblCountDown.Size = New System.Drawing.Size(400, 150)
+        Me.lblCountDown.Size = New System.Drawing.Size(398, 150)
         Me.lblCountDown.TabIndex = 4
         Me.lblCountDown.Text = "Label1"
         Me.lblCountDown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -133,9 +132,9 @@ Partial Class HeatFoodPage
         Me.lblTextWait.AutoSize = True
         Me.lblTextWait.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTextWait.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTextWait.Location = New System.Drawing.Point(344, 72)
+        Me.lblTextWait.Location = New System.Drawing.Point(343, 72)
         Me.lblTextWait.Name = "lblTextWait"
-        Me.lblTextWait.Size = New System.Drawing.Size(400, 85)
+        Me.lblTextWait.Size = New System.Drawing.Size(398, 85)
         Me.lblTextWait.TabIndex = 6
         Me.lblTextWait.Text = "เหลือเวลารอ"
         Me.lblTextWait.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -145,9 +144,9 @@ Partial Class HeatFoodPage
         Me.lblTextSec.AutoSize = True
         Me.lblTextSec.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTextSec.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.lblTextSec.Location = New System.Drawing.Point(344, 307)
+        Me.lblTextSec.Location = New System.Drawing.Point(343, 307)
         Me.lblTextSec.Name = "lblTextSec"
-        Me.lblTextSec.Size = New System.Drawing.Size(400, 93)
+        Me.lblTextSec.Size = New System.Drawing.Size(398, 93)
         Me.lblTextSec.TabIndex = 7
         Me.lblTextSec.Text = "วินาที"
         Me.lblTextSec.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -155,14 +154,15 @@ Partial Class HeatFoodPage
         'ProgressBar
         '
         Me.ProgressBar.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ProgressBar.Location = New System.Drawing.Point(344, 422)
+        Me.ProgressBar.Location = New System.Drawing.Point(343, 422)
         Me.ProgressBar.Name = "ProgressBar"
-        Me.ProgressBar.Size = New System.Drawing.Size(400, 32)
+        Me.ProgressBar.Size = New System.Drawing.Size(398, 32)
+        Me.ProgressBar.Step = 1
         Me.ProgressBar.TabIndex = 8
         '
-        'Timer1
+        'TimerWorker
         '
-        Me.Timer1.Interval = 1000
+        Me.TimerWorker.WorkerReportsProgress = True
         '
         'HeatFoodPage
         '
@@ -187,12 +187,11 @@ Partial Class HeatFoodPage
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblTakeFood As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    'Friend WithEvents CircularProgressBar1 As CircularProgressBar.CircularProgressBar
-    Friend WithEvents Timer1 As Timer
     Friend WithEvents picBird1 As PictureBox
     Friend WithEvents picBird2 As PictureBox
     Friend WithEvents lblCountDown As Label
     Friend WithEvents lblTextWait As Label
     Friend WithEvents lblTextSec As Label
     Friend WithEvents ProgressBar As ProgressBar
+    Friend WithEvents TimerWorker As System.ComponentModel.BackgroundWorker
 End Class

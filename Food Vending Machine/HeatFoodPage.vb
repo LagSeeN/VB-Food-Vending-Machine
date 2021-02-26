@@ -1,4 +1,5 @@
-﻿Imports System.Drawing.Text
+﻿Imports System.Threading
+Imports System.Drawing.Text
 Public Class HeatFoodPage
     Dim time As Double = 60
     Dim sizes As Double = 0
@@ -23,22 +24,7 @@ Public Class HeatFoodPage
         Fontload()
         can_close = False
         lblCountDown.Text = time_to_cook
-        Timer1.Start()
-    End Sub
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If current_time > 0 Then
-            current_time -= 1
-            lblCountDown.Text = current_time
-            ProgressBar.Value = 100 - ((current_time / time_to_cook) * 100)
-        Else
-            My.Computer.Audio.Play(My.Resources.Sound, AudioPlayMode.WaitToComplete)
-            Timer1.Stop()
-            Dim TakeFood As New TakeFood
-            TakeFood.ShowDialog()
-            can_close = True
-            Me.Close()
-        End If
+        TimerWorker.RunWorkerAsync()
     End Sub
     Private Sub Fontload()
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
@@ -56,6 +42,30 @@ Public Class HeatFoodPage
         Else
             e.Cancel = True
         End If
+    End Sub
+
+    Private Sub TimerWorker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles TimerWorker.DoWork
+        While True
+            If current_time = 0 Then
+                Exit While
+            End If
+            current_time -= 1
+            TimerWorker.ReportProgress(current_time)
+            Thread.Sleep(1000)
+        End While
+    End Sub
+
+    Private Sub TimerWorker_ProgressChanged(sender As Object, e As System.ComponentModel.ProgressChangedEventArgs) Handles TimerWorker.ProgressChanged
+        lblCountDown.Text = e.ProgressPercentage
+        ProgressBar.Value = 100 - ((e.ProgressPercentage / time_to_cook) * 100)
+    End Sub
+
+    Private Sub TimerWorker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles TimerWorker.RunWorkerCompleted
+        My.Computer.Audio.Play(My.Resources.Sound, AudioPlayMode.WaitToComplete)
+        Dim TakeFood As New TakeFood
+        TakeFood.ShowDialog()
+        can_close = True
+        Me.Close()
     End Sub
 End Class
 
