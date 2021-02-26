@@ -7,6 +7,7 @@ Public Class Home
     Dim total_product As Integer
     Dim image_list As New ArrayList
     Dim food_list As New ArrayList
+    Dim coin_ready As Boolean
 
     Dim colFont As New PrivateFontCollection
 
@@ -62,13 +63,25 @@ Public Class Home
         total_product = mongoDBServer.CountFood(True)
         image_list = mongoDBServer.GetAllImage(True)
         food_list = mongoDBServer.GetAllFood(True)
+        If mongoDBServer.CheckCoin Then
+            coin_ready = True
+        Else
+            coin_ready = False
+        End If
     End Sub
     Private Sub Load_Products_Worker_RunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles Load_Products_Worker.RunWorkerCompleted
         Try
-            Load_Products()
+            If coin_ready Then
+                Load_Products()
+                FoodView.Enabled = True
+            Else
+                MessageBox.Show("ตู้เหรียญหมด", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                buyBtn.Text = "ไม่พร้อมให้บริการ"
+                buyBtn.Enabled = False
+                FoodView.Enabled = False
+            End If
             FoodView.Enabled = True
             Me.KeyPreview = True
-            buyBtn.Enabled = True
         Catch ex As Exception
             MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             MessageBox.Show("ERROR" & vbCrLf & "เกิดข้อผิดพลาดในการทำงาน โปรแกรมจะปิดตัวลง", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)

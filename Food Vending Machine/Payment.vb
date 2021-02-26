@@ -4,7 +4,7 @@ Public Class Payment
     Dim id As String
     Dim change_price As Integer
     Dim coin As Integer()
-    Dim time_to_cook As Integer
+    Dim time_to_cook As Double
     Dim food_item
     Dim mongoDBServer As New MongoDBServer
     Dim base64 As New Base64

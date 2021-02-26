@@ -3,12 +3,12 @@ Public Class Change
     Dim mongoDBServer As New MongoDBServer
     Dim id As String
     Dim change_price As Integer
-    Dim coin
+    Dim coin As Integer()
     Dim time_to_cook As Integer
     Dim can_close As Boolean
     Dim colFont As New PrivateFontCollection
 
-    Public Sub New(id, change_price, coin, time_to_cook)
+    Public Sub New(id As String, change_price As Integer, coin As Integer(), time_to_cook As Double)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -38,7 +38,7 @@ Public Class Change
         Fontload()
         can_close = False
         lblChange.Text = change_price
-        mongoDBServer.food_finish(id)
+        mongoDBServer.food_finish(id, coin, change_price)
     End Sub
     Private Sub Change_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If can_close Then

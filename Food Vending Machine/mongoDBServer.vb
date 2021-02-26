@@ -30,6 +30,25 @@ Public Class MongoDBServer
         Return found.CountDocuments(filter)
     End Function
 
+    Public Function CheckCoin()
+        Dim settings = MongoClientSettings.FromConnectionString(server)
+        settings.SslSettings = New SslSettings With {
+            .ClientCertificates = New List(Of X509Certificate)() From {
+                cert
+            }
+        }
+        Dim conn = New MongoClient(settings)
+        Dim database = conn.GetDatabase("Food_Vending_Machine")
+        Dim collection = database.GetCollection(Of BsonDocument)("coin")
+        Dim filter As FilterDefinition(Of BsonDocument)
+        filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
+        Dim cursor = collection.Find(filter).First
+        If cursor("coin1").ToInt32 = 0 Or cursor("coin5").ToInt32 = 0 Or cursor("coin10").ToInt32 = 0 Then
+            Return False
+        End If
+        Return True
+    End Function
+
     Public Function GetAllImage(is_sale As Boolean)
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
@@ -165,7 +184,7 @@ Public Class MongoDBServer
         Return result
     End Function
 
-    Public Sub food_finish(id As String)
+    Public Sub food_finish(id As String, coin As Integer(), change As Integer)
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
             .ClientCertificates = New List(Of X509Certificate)() From {
@@ -182,9 +201,8 @@ Public Class MongoDBServer
         filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", stock_data("_id"))
 
         Dim data As BsonDocument = New BsonDocument()
-        Dim new_stock As Integer = stock_data("stock")
         With data
-            .Add("stock", new_stock - 1)
+            .Add("stock", stock_data("stock").ToInt32 - 1)
         End With
         collection.UpdateOne(filter, New BsonDocument("$set", data))
 
@@ -200,7 +218,48 @@ Public Class MongoDBServer
             .Add("branch", "Visual Basic")
         End With
         collection.InsertOne(data)
+
         'write coin
+        collection = database.GetCollection(Of BsonDocument)("coin")
+        filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
+        data = New BsonDocument()
+        Dim coin_data = collection.Find(filter).First
+        With data
+            .Add("coin1", coin_data("coin1").ToInt32 + coin(0))
+            .Add("coin5", coin_data("coin5").ToInt32 + coin(1))
+            .Add("coin10", coin_data("coin10").ToInt32 + coin(2))
+        End With
+        collection.UpdateOne(filter, New BsonDocument("$set", data))
+
+        'ทอนเงิน
+        If change <> 0 Then
+            coin_data = collection.Find(filter).First
+            Dim coin_list(3) As Integer
+            If change >= 10 And coin_data("coin10").ToInt32 > 0 Then
+                Dim temp As Integer = change / 10
+                coin_list(2) = temp
+                change -= temp * 10
+            End If
+            If change >= 5 And coin_data("coin5").ToInt32 > 0 Then
+                Dim temp As Integer = change / 5
+                coin_list(1) = temp
+                change -= temp * 5
+            End If
+            If change >= 1 And coin_data("coin1").ToInt32 > 0 Then
+                Dim temp As Integer = change / 1
+                coin_list(0) = temp
+                change -= temp * 1
+            End If
+            MessageBox.Show("เงินทอน" & vbCrLf & "เหรียญ 10 จำนวน " & coin_list(2) & vbCrLf & "เหรียญ 5 จำนวน " & coin_list(1) & vbCrLf & "เหรียญ 1 จำนวน " & coin_list(0), "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            data = New BsonDocument()
+            With data
+                .Add("coin1", coin_data("coin1").ToInt32 - coin_list(0))
+                .Add("coin5", coin_data("coin5").ToInt32 - coin_list(1))
+                .Add("coin10", coin_data("coin10").ToInt32 - coin_list(2))
+            End With
+            collection.UpdateOne(filter, New BsonDocument("$set", data))
+        End If
+
     End Sub
 
     Public Function GetTransaction()
