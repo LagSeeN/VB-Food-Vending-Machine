@@ -39,7 +39,7 @@ Public Class CoinEmu
     End Sub
 
     Private Sub CoinEmu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Fontload()
+        Fontload()
         input_coin = 0
         is_canceled = False
     End Sub
@@ -72,8 +72,11 @@ Public Class CoinEmu
     End Sub
 
     Private Sub CoinEmu_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        is_canceled = True
-        Me.Hide()
+        If is_canceled Then
+            e.Cancel = False
+        Else
+            e.Cancel = True
+        End If
     End Sub
 
     Private Sub Fontload()

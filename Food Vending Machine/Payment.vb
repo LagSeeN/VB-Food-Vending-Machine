@@ -1,6 +1,6 @@
 ﻿Imports System.Drawing.Text
 Public Class Payment
-    Dim timeCount As Integer = 5
+    Dim timeCount As Integer = 60
     Dim id As String
     Dim change_price As Integer
     Dim coin As Integer()
@@ -68,6 +68,7 @@ Public Class Payment
     Private Sub BtnCoinEmu_Click(sender As Object, e As EventArgs) Handles btnCoinEmu.Click
         'เรียก Emu เหรียญ
         CoinEmu.Show()
+        btnCoinEmu.Enabled = False
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click

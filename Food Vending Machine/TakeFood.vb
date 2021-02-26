@@ -2,6 +2,7 @@
 Public Class TakeFood
     Dim colFont As New PrivateFontCollection
     Dim count As Integer = 0
+    Dim can_close As Boolean
     Public Sub New()
 
         ' This call is required by the designer.
@@ -13,6 +14,7 @@ Public Class TakeFood
 
     Private Sub TakeFood_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Fontload()
+        can_close = False
         Timer1.Start()
     End Sub
 
@@ -20,6 +22,7 @@ Public Class TakeFood
         count += 1
         If count = 5 Then
             Timer1.Stop()
+            can_close = True
             Me.Close()
         End If
     End Sub
@@ -28,5 +31,13 @@ Public Class TakeFood
 
         lblTakeFood.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)
 
+    End Sub
+
+    Private Sub TakeFood_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If can_close Then
+            e.Cancel = False
+        Else
+            e.Cancel = True
+        End If
     End Sub
 End Class

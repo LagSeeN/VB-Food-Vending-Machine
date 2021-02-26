@@ -246,7 +246,7 @@ Partial Class Payment
     Friend WithEvents lblTextPrice As Label
     Friend WithEvents lblPrice As Label
     Friend WithEvents lblName As Label
-    Friend WithEvents btnCoinEmu As Button
+    Public WithEvents btnCoinEmu As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents lblTextTime As Label
     Friend WithEvents lblTime As Label
