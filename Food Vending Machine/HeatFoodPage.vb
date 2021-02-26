@@ -5,6 +5,7 @@ Public Class HeatFoodPage
     Dim id As String
     Dim time_to_cook As Integer
     Dim current_time As Integer
+    Dim can_close As Boolean
     Dim colFont As New PrivateFontCollection
 
     Public Sub New(id As String, time_to_cook As Integer)
@@ -20,6 +21,7 @@ Public Class HeatFoodPage
     End Sub
     Private Sub HeatFoodPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Fontload()
+        can_close = False
         lblCountDown.Text = time_to_cook
         Timer1.Start()
     End Sub
@@ -34,6 +36,7 @@ Public Class HeatFoodPage
             Timer1.Stop()
             Dim TakeFood As New TakeFood
             TakeFood.ShowDialog()
+            can_close = True
             Me.Close()
         End If
     End Sub
@@ -45,6 +48,14 @@ Public Class HeatFoodPage
         lblTextSec.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
         lblCountDown.Font = New Font(colFont.Families(0), 40, FontStyle.Regular)
 
+    End Sub
+
+    Private Sub HeatFoodPage_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If can_close Then
+            e.Cancel = False
+        Else
+            e.Cancel = True
+        End If
     End Sub
 End Class
 

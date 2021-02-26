@@ -36,6 +36,7 @@ Public Class Change
 
     Private Sub Change_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Fontload()
+        can_close = False
         lblChange.Text = change_price
         mongoDBServer.food_finish(id)
     End Sub
