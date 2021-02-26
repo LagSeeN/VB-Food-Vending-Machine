@@ -35,7 +35,7 @@ Public Class HeatFoodPage
             My.Computer.Audio.Play(My.Resources.Sound, AudioPlayMode.WaitToComplete)
             Timer1.Stop()
             Dim TakeFood As New TakeFood
-            TakeFood.Show()
+            TakeFood.ShowDialog()
             Me.Close()
         End If
     End Sub

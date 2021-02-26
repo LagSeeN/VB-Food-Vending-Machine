@@ -8,6 +8,7 @@ Public Class Change
     Dim change_price As Integer
     Dim coin
     Dim time_to_cook As Integer
+    Dim can_close As Boolean
 
     Public Sub New(id, change_price, coin, time_to_cook)
 
@@ -23,13 +24,15 @@ Public Class Change
     End Sub
     Private Sub BtnHeat_Click(sender As Object, e As EventArgs) Handles btnHeat.Click
         Dim HeatFoodPage As New HeatFoodPage(id, time_to_cook)
-        HeatFoodPage.Show()
+        HeatFoodPage.ShowDialog()
+        can_close = True
         Me.Close()
     End Sub
 
     Private Sub BtnNotHeat_Click(sender As Object, e As EventArgs) Handles btnNotHeat.Click
         Dim TakeFood As New TakeFood
-        TakeFood.Show()
+        TakeFood.ShowDialog()
+        can_close = True
         Me.Close()
     End Sub
 
@@ -62,5 +65,13 @@ Public Class Change
         btnHeat.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
         btnNotHeat.Font = New Font(pfc.Families(0), 20, FontStyle.Regular)
 
+    End Sub
+
+    Private Sub Change_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If can_close Then
+            e.Cancel = False
+        Else
+            e.Cancel = True
+        End If
     End Sub
 End Class

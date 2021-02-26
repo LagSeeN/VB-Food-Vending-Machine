@@ -37,7 +37,7 @@ Public Class MongoDBServer
         Dim collection = database.GetCollection(Of BsonDocument)("products")
         Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
         Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("image")).ToList
-        Dim image_list(cursor.Count) As Image
+        Dim image_list(cursor.Count)
         For i = 0 To cursor.Count - 1
             image_list(i) = base64.ConvertByteToImage(base64.ConvertBase64ToByteArray(cursor(i)("image")))
         Next

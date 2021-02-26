@@ -37,9 +37,11 @@ Public Class Payment
                     Timer1.Stop()
                     coin = CoinEmu.Get_coin_arr
                     change_price = CoinEmu.Get_input_coin - price
+                    btnCoinEmu.Enabled = False
                     Dim Change As New Change(id, change_price, coin, time_to_cook)
-                    Change.Show()
                     CoinEmu.Close()
+                    Change.ShowDialog()
+                    Me.Close()
                 End If
             ElseIf CoinEmu.Get_is_canceled Then
                 MessageBox.Show("ยกเลิกรายการแล้ว กลับไปยังหน้าแรก", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information)

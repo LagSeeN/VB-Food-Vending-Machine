@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Food Vending Machine": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

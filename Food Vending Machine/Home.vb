@@ -19,9 +19,8 @@ Public Class Home
         ' Add any initialization after the InitializeComponent() call.
     End Sub
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
-        Me.KeyPreview = True
-        buyBtn.Enabled = False
+        'Fontload()
+        InitializeFoodView()
         Load_Products_Worker.RunWorkerAsync()
 
     End Sub
@@ -31,12 +30,11 @@ Public Class Home
         Dim Payment As New Payment(id)
         Payment.ShowDialog()
         buyBtn.Enabled = False
-        FoodView.Items.Clear()
+        InitializeFoodView()
         Load_Products_Worker.RunWorkerAsync()
     End Sub
 
     Private Sub Load_Products()
-        Fontload()
         FoodView.View = View.LargeIcon
         FoodView.FullRowSelect = True
         For i As Integer = 0 To total_product - 1
@@ -49,7 +47,18 @@ Public Class Home
             lst.SubItems.Add(food_list(i)("_id").ToString)
             lst.SubItems.Add(food_list(i)("stock").ToString)
         Next
+        FoodView.Enabled = True
+        Me.KeyPreview = True
+        buyBtn.Enabled = True
     End Sub
+
+    Private Sub InitializeFoodView()
+        buyBtn.Enabled = False
+        Me.KeyPreview = False
+        FoodView.Enabled = False
+        FoodView.Items.Clear()
+    End Sub
+
 
     Private Sub Load_Products_Worker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles Load_Products_Worker.DoWork
         total_product = mongoDBServer.CountFood
@@ -78,7 +87,15 @@ Public Class Home
         If e.KeyCode = Keys.F1 Then
             Dim ModeSelect As New ModeSelect()
             ModeSelect.ShowDialog()
-            Load_Products_Worker.RunWorkerAsync()
+            InitializeFoodView()
+            Try
+                Load_Products_Worker.RunWorkerAsync()
+            Catch ex As System.InvalidOperationException
+                MessageBox.Show("กรุณารอสักครู่ และดำเนินการใหม่อีกครั้ง", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Catch ex As Exception
+                MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+
         End If
     End Sub
     Private Sub Fontload()
