@@ -262,7 +262,7 @@ Public Class MongoDBServer
 
     End Sub
 
-    Public Function GetTransaction()
+    Public Function GetTransaction() As List(Of TransactionResult)
         Dim settings = MongoClientSettings.FromConnectionString(server)
         settings.SslSettings = New SslSettings With {
             .ClientCertificates = New List(Of X509Certificate)() From {
@@ -273,26 +273,35 @@ Public Class MongoDBServer
         Dim database = conn.GetDatabase("Food_Vending_Machine")
         Dim collection = database.GetCollection(Of BsonDocument)("transaction")
         Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", "Visual Basic")
-        Dim cursor = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("date").Include("food_name")).ToList
 
-        Dim transactions As New List(Of Transaction)
-        For Each item In cursor
-            Dim transaction As New Transaction
-            transaction._id = item("_id")
-            transaction.purchase_date = item("date")
-            transaction.food_name = item("food_name")
+        Dim options = New AggregateOptions() With {
+            .AllowDiskUse = True
+        }
 
-            transactions.Add(transaction)
-        Next
+        Dim currentDate As DateTime = DateTime.Now
+        Dim firstDayOfMonth = New DateTime(currentDate.Year, currentDate.Month, 1)
+        Dim lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddTicks(-1)
 
-        transactions = transactions.Where(Function(t) t.purchase_date.ToUniversalTime.Month = Date.Now.Month And t.purchase_date.ToUniversalTime.Year = Date.Now.Year).ToList()
+        Dim pipeline As PipelineDefinition(Of BsonDocument, BsonDocument) = New BsonDocument() {New BsonDocument("$match", New BsonDocument().Add("$and", New BsonArray().Add(New BsonDocument().Add("branch", "Visual Basic")).Add(New BsonDocument().Add("date", New BsonDocument().Add("$gte", New BsonDateTime(firstDayOfMonth)))).Add(New BsonDocument().Add("date", New BsonDocument().Add("$lte", New BsonDateTime(lastDayOfMonth)))))), New BsonDocument("$group", New BsonDocument().Add("_id", New BsonDocument().Add("price", "$price").Add("food_name", "$food_name")).Add("SUM(price)", New BsonDocument().Add("$sum", "$price")).Add("COUNT(food_name)", New BsonDocument().Add("$sum", 1))), New BsonDocument("$project", New BsonDocument().Add("food_name", "$_id.food_name").Add("price", "$_id.price").Add("SUM(price)", "$SUM(price)").Add("COUNT(food_name)", "$COUNT(food_name)").Add("_id", 0)), New BsonDocument("$group", New BsonDocument().Add("_id", BsonNull.Value).Add("distinct", New BsonDocument().Add("$addToSet", "$$ROOT"))), New BsonDocument("$unwind", New BsonDocument().Add("path", "$distinct").Add("preserveNullAndEmptyArrays", New BsonBoolean(False))), New BsonDocument("$replaceRoot", New BsonDocument().Add("newRoot", "$distinct")), New BsonDocument("$sort", New BsonDocument().Add("COUNT(food_name)", -1).Add("food_name", 1))}
 
-        Dim result = (From x In transactions Group x By __groupByKey1__ = x.food_name Into g = Group Order By g.Count() Descending Select New TransactionResult With {
-            .FoodName = __groupByKey1__,
-            .Count = g.Count()
-        }).ToList()
+        Dim results = New List(Of TransactionResult)
 
-        Return result
+        Using cursor = collection.Aggregate(pipeline, options)
+            While cursor.MoveNext()
+                Dim batch = cursor.Current
+                For Each document As BsonDocument In batch
+                    Dim result = New TransactionResult()
+
+                    result.FoodName = document("food_name")
+                    result.Price = document("price")
+                    result.TotalSale = document("SUM(price)")
+                    result.Count = document("COUNT(food_name)")
+
+                    results.Add(result)
+                Next
+            End While
+        End Using
+        Return results
     End Function
 
 End Class
