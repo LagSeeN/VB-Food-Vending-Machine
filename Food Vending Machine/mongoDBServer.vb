@@ -224,7 +224,7 @@ Public Class MongoDBServer
                     change -= temp * 1
                 End If
             End If
-            MessageBox.Show("เงินทอน" & vbCrLf & "เหรียญ 10 จำนวน " & coin_list(2) & vbCrLf & "เหรียญ 5 จำนวน " & coin_list(1) & vbCrLf & "เหรียญ 1 จำนวน " & coin_list(0), "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("เงินทอน" & vbCrLf & "เหรียญ 10 จำนวน " & coin_list(2) & " เหรียญ" & vbCrLf & "เหรียญ 5 จำนวน " & coin_list(1) & " เหรียญ" & vbCrLf & "เหรียญ 1 จำนวน " & coin_list(0) & " เหรียญ", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information)
             data = New BsonDocument()
             With data
                 .Add("coin1", coin_data("coin1").ToInt32 - coin_list(0))
