@@ -26,6 +26,7 @@ Partial Class ModeSelect
         Me.AddProductBtn = New System.Windows.Forms.Button()
         Me.EditProductBtn = New System.Windows.Forms.Button()
         Me.SellProductBtn = New System.Windows.Forms.Button()
+        Me.CoinNumBtn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'AddProductBtn
@@ -55,11 +56,21 @@ Partial Class ModeSelect
         Me.SellProductBtn.Text = "ขายสินค้า"
         Me.SellProductBtn.UseVisualStyleBackColor = True
         '
+        'CoinNumBtn
+        '
+        Me.CoinNumBtn.Location = New System.Drawing.Point(21, 298)
+        Me.CoinNumBtn.Name = "CoinNumBtn"
+        Me.CoinNumBtn.Size = New System.Drawing.Size(342, 75)
+        Me.CoinNumBtn.TabIndex = 3
+        Me.CoinNumBtn.Text = "เพิ่ม/ลดเหรียญ"
+        Me.CoinNumBtn.UseVisualStyleBackColor = True
+        '
         'ModeSelect
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 32.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(391, 293)
+        Me.ClientSize = New System.Drawing.Size(391, 393)
+        Me.Controls.Add(Me.CoinNumBtn)
         Me.Controls.Add(Me.SellProductBtn)
         Me.Controls.Add(Me.EditProductBtn)
         Me.Controls.Add(Me.AddProductBtn)
@@ -75,4 +86,5 @@ Partial Class ModeSelect
     Friend WithEvents AddProductBtn As Button
     Friend WithEvents EditProductBtn As Button
     Friend WithEvents SellProductBtn As Button
+    Friend WithEvents CoinNumBtn As Button
 End Class

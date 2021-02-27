@@ -23,15 +23,22 @@ Public Class ModeSelect
         Dim TransactionViewer As New TransactionViewer
         TransactionViewer.ShowDialog()
     End Sub
+    Private Sub CoinNumBtn_Click(sender As Object, e As EventArgs) Handles CoinNumBtn.Click
+        Dim CoinNumber As New CoinNumber
+        CoinNumber.ShowDialog()
+    End Sub
     Private Sub Fontload()
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
         AddProductBtn.Font = New Font(colFont.Families(0), 20, FontStyle.Bold)
         SellProductBtn.Font = New Font(colFont.Families(0), 20, FontStyle.Bold)
         EditProductBtn.Font = New Font(colFont.Families(0), 20, FontStyle.Bold)
+        CoinNumBtn.Font = New Font(colFont.Families(0), 20, FontStyle.Bold)
 
     End Sub
     Private Sub ModeSelect_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Fontload()
     End Sub
+
+
 End Class
