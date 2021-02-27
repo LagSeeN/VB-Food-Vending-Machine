@@ -255,22 +255,25 @@ Public Class MongoDBServer
         Dim pipeline As PipelineDefinition(Of BsonDocument, BsonDocument) = New BsonDocument() {New BsonDocument("$match", New BsonDocument().Add("$and", New BsonArray().Add(New BsonDocument().Add("branch", "Visual Basic")).Add(New BsonDocument().Add("date", New BsonDocument().Add("$gte", New BsonDateTime(firstDayOfMonth)))).Add(New BsonDocument().Add("date", New BsonDocument().Add("$lte", New BsonDateTime(lastDayOfMonth)))))), New BsonDocument("$group", New BsonDocument().Add("_id", New BsonDocument().Add("price", "$price").Add("food_name", "$food_name")).Add("SUM(price)", New BsonDocument().Add("$sum", "$price")).Add("COUNT(food_name)", New BsonDocument().Add("$sum", 1))), New BsonDocument("$project", New BsonDocument().Add("food_name", "$_id.food_name").Add("price", "$_id.price").Add("SUM(price)", "$SUM(price)").Add("COUNT(food_name)", "$COUNT(food_name)").Add("_id", 0)), New BsonDocument("$group", New BsonDocument().Add("_id", BsonNull.Value).Add("distinct", New BsonDocument().Add("$addToSet", "$$ROOT"))), New BsonDocument("$unwind", New BsonDocument().Add("path", "$distinct").Add("preserveNullAndEmptyArrays", New BsonBoolean(False))), New BsonDocument("$replaceRoot", New BsonDocument().Add("newRoot", "$distinct")), New BsonDocument("$sort", New BsonDocument().Add("COUNT(food_name)", -1).Add("food_name", 1))}
 
         Dim results = New List(Of TransactionResult)
+        Try
+            Using cursor = collection.Aggregate(pipeline, options)
+                While cursor.MoveNext()
+                    Dim batch = cursor.Current
+                    For Each document As BsonDocument In batch
+                        Dim result = New TransactionResult()
 
-        Using cursor = collection.Aggregate(pipeline, options)
-            While cursor.MoveNext()
-                Dim batch = cursor.Current
-                For Each document As BsonDocument In batch
-                    Dim result = New TransactionResult()
+                        result.FoodName = document("food_name")
+                        result.Price = document("price")
+                        result.TotalSale = document("SUM(price)")
+                        result.Count = document("COUNT(food_name)")
 
-                    result.FoodName = document("food_name")
-                    result.Price = document("price")
-                    result.TotalSale = document("SUM(price)")
-                    result.Count = document("COUNT(food_name)")
-
-                    results.Add(result)
-                Next
-            End While
-        End Using
+                        results.Add(result)
+                    Next
+                End While
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
         Return results
     End Function
 

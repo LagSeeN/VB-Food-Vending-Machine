@@ -16,7 +16,6 @@ Public Class CoinNumber
 
     Private Sub InitializeCoinLoad()
         If mongoDBServer.ConnectServer() Then
-            mongoDBServer.ConnectServer()
             coin = mongoDBServer.GetCoin
             numCoin1.Value = coin("coin1")
             numCoin5.Value = coin("coin5")

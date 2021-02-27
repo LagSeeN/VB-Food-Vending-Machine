@@ -85,7 +85,7 @@ Public Class InsertItem
                 detail.image = base64.ConvertImageToBase64(image, imageFormat)
 
                 If mongoDBServer.Update(detail) Then
-                    MessageBox.Show("อัปเดตสินค้าลงในฐานข้อมูลสำเร็จ", "ผลการปฏิบัติงาน", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("อัปเดตสินค้าลงในฐานข้อมูลสำเร็จ", "Result", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     Dim currSelectedIndex As Integer = cbm_productList.SelectedIndex
                     LoadCombobox()
@@ -94,7 +94,7 @@ Public Class InsertItem
                     GetFoodData()
 
                 Else
-                    MessageBox.Show("อัปเดตเพิ่มสินค้าลงในฐานข้อมูลล้มเหลว", "Result", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("อัปเดตสินค้าลงในฐานข้อมูลล้มเหลว", "Result", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
 
             Else
@@ -191,6 +191,10 @@ Public Class InsertItem
             stockLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
             timeLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
             availableLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
+
+            priceUnitLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
+            stockUnitLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
+            timeUnitLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
 
             nameTextBox.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
             priceInput.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
