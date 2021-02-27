@@ -28,7 +28,7 @@ Public Class MongoDBServer
             conn = New MongoClient(settings)
             database = conn.GetDatabase("Food_Vending_Machine")
 
-            Dim isMongoLive As Boolean = database.RunCommandAsync(CType("{ping:1}", Command(Of BsonDocument))).Wait(1000)
+            Dim isMongoLive As Boolean = database.RunCommandAsync(CType("{ping:1}", Command(Of BsonDocument))).Wait(3000)
             If isMongoLive Then
                 Return True
             End If

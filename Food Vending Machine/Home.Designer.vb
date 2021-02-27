@@ -43,8 +43,9 @@ Partial Class Home
         Me.headerPanel.Controls.Add(Me.titleLabel)
         Me.headerPanel.Dock = System.Windows.Forms.DockStyle.Top
         Me.headerPanel.Location = New System.Drawing.Point(0, 0)
+        Me.headerPanel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.headerPanel.Name = "headerPanel"
-        Me.headerPanel.Size = New System.Drawing.Size(1469, 125)
+        Me.headerPanel.Size = New System.Drawing.Size(1285, 94)
         Me.headerPanel.TabIndex = 0
         '
         'titleLabel
@@ -52,9 +53,9 @@ Partial Class Home
         Me.titleLabel.AutoSize = True
         Me.titleLabel.Font = New System.Drawing.Font("Segoe UI", 28.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.titleLabel.ForeColor = System.Drawing.Color.White
-        Me.titleLabel.Location = New System.Drawing.Point(89, 24)
+        Me.titleLabel.Location = New System.Drawing.Point(78, 18)
         Me.titleLabel.Name = "titleLabel"
-        Me.titleLabel.Size = New System.Drawing.Size(510, 62)
+        Me.titleLabel.Size = New System.Drawing.Size(410, 51)
         Me.titleLabel.TabIndex = 0
         Me.titleLabel.Text = "Food Vending Machine"
         '
@@ -63,23 +64,24 @@ Partial Class Home
         Me.homeTableLayoutPanel.ColumnCount = 7
         Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.81!))
         Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.19!))
-        Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162.0!))
-        Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18.0!))
-        Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162.0!))
+        Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
         Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 16.0!))
-        Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43.0!))
+        Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
+        Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14.0!))
+        Me.homeTableLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38.0!))
         Me.homeTableLayoutPanel.Controls.Add(Me.foodListPanel, 1, 1)
         Me.homeTableLayoutPanel.Controls.Add(Me.buyBtn, 4, 3)
         Me.homeTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.homeTableLayoutPanel.Location = New System.Drawing.Point(0, 125)
+        Me.homeTableLayoutPanel.Location = New System.Drawing.Point(0, 94)
+        Me.homeTableLayoutPanel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.homeTableLayoutPanel.Name = "homeTableLayoutPanel"
         Me.homeTableLayoutPanel.RowCount = 5
         Me.homeTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.992511!))
         Me.homeTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.58412!))
         Me.homeTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.423365!))
-        Me.homeTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59.0!))
-        Me.homeTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59.0!))
-        Me.homeTableLayoutPanel.Size = New System.Drawing.Size(1469, 548)
+        Me.homeTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44.0!))
+        Me.homeTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44.0!))
+        Me.homeTableLayoutPanel.Size = New System.Drawing.Size(1285, 411)
         Me.homeTableLayoutPanel.TabIndex = 1
         '
         'foodListPanel
@@ -88,9 +90,10 @@ Partial Class Home
         Me.homeTableLayoutPanel.SetColumnSpan(Me.foodListPanel, 4)
         Me.foodListPanel.Controls.Add(Me.FoodView)
         Me.foodListPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.foodListPanel.Location = New System.Drawing.Point(86, 24)
+        Me.foodListPanel.Location = New System.Drawing.Point(75, 18)
+        Me.foodListPanel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.foodListPanel.Name = "foodListPanel"
-        Me.foodListPanel.Size = New System.Drawing.Size(1320, 383)
+        Me.foodListPanel.Size = New System.Drawing.Size(1154, 288)
         Me.foodListPanel.TabIndex = 0
         '
         'FoodView
@@ -100,10 +103,9 @@ Partial Class Home
         Me.FoodView.HideSelection = False
         Me.FoodView.LabelWrap = False
         Me.FoodView.Location = New System.Drawing.Point(0, 0)
-        Me.FoodView.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.FoodView.MultiSelect = False
         Me.FoodView.Name = "FoodView"
-        Me.FoodView.Size = New System.Drawing.Size(1320, 383)
+        Me.FoodView.Size = New System.Drawing.Size(1154, 288)
         Me.FoodView.TabIndex = 1
         Me.FoodView.UseCompatibleStateImageBehavior = False
         '
@@ -111,9 +113,10 @@ Partial Class Home
         '
         Me.buyBtn.Dock = System.Windows.Forms.DockStyle.Fill
         Me.buyBtn.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.buyBtn.Location = New System.Drawing.Point(1250, 432)
+        Me.buyBtn.Location = New System.Drawing.Point(1093, 324)
+        Me.buyBtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.buyBtn.Name = "buyBtn"
-        Me.buyBtn.Size = New System.Drawing.Size(156, 53)
+        Me.buyBtn.Size = New System.Drawing.Size(136, 40)
         Me.buyBtn.TabIndex = 2
         Me.buyBtn.Text = "ชำระเงิน"
         Me.buyBtn.UseVisualStyleBackColor = True
@@ -130,16 +133,18 @@ Partial Class Home
         '
         'Home
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1469, 673)
+        Me.ClientSize = New System.Drawing.Size(1285, 505)
         Me.Controls.Add(Me.homeTableLayoutPanel)
         Me.Controls.Add(Me.headerPanel)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Home"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Home"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.headerPanel.ResumeLayout(False)
         Me.headerPanel.PerformLayout()
         Me.homeTableLayoutPanel.ResumeLayout(False)
