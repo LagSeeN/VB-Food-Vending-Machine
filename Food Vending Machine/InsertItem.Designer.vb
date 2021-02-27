@@ -41,6 +41,9 @@ Partial Class InsertItem
         Me.uploadBtn = New System.Windows.Forms.Button()
         Me.cancelBtn = New System.Windows.Forms.Button()
         Me.acceptBtn = New System.Windows.Forms.Button()
+        Me.priceUnitLabel = New System.Windows.Forms.Label()
+        Me.stockUnitLabel = New System.Windows.Forms.Label()
+        Me.timeUnitLabel = New System.Windows.Forms.Label()
         Me.headerPanel.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.itemPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -102,6 +105,9 @@ Partial Class InsertItem
         Me.TableLayoutPanel1.Controls.Add(Me.uploadBtn, 11, 10)
         Me.TableLayoutPanel1.Controls.Add(Me.cancelBtn, 13, 12)
         Me.TableLayoutPanel1.Controls.Add(Me.acceptBtn, 10, 12)
+        Me.TableLayoutPanel1.Controls.Add(Me.priceUnitLabel, 6, 6)
+        Me.TableLayoutPanel1.Controls.Add(Me.stockUnitLabel, 6, 8)
+        Me.TableLayoutPanel1.Controls.Add(Me.timeUnitLabel, 6, 10)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 125)
@@ -289,6 +295,39 @@ Partial Class InsertItem
         Me.acceptBtn.Text = "ยืนยัน"
         Me.acceptBtn.UseVisualStyleBackColor = True
         '
+        'priceUnitLabel
+        '
+        Me.priceUnitLabel.AutoSize = True
+        Me.TableLayoutPanel1.SetColumnSpan(Me.priceUnitLabel, 3)
+        Me.priceUnitLabel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.priceUnitLabel.Location = New System.Drawing.Point(522, 221)
+        Me.priceUnitLabel.Name = "priceUnitLabel"
+        Me.priceUnitLabel.Size = New System.Drawing.Size(192, 42)
+        Me.priceUnitLabel.TabIndex = 29
+        Me.priceUnitLabel.Text = "บาท"
+        '
+        'stockUnitLabel
+        '
+        Me.stockUnitLabel.AutoSize = True
+        Me.TableLayoutPanel1.SetColumnSpan(Me.stockUnitLabel, 3)
+        Me.stockUnitLabel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.stockUnitLabel.Location = New System.Drawing.Point(522, 285)
+        Me.stockUnitLabel.Name = "stockUnitLabel"
+        Me.stockUnitLabel.Size = New System.Drawing.Size(192, 42)
+        Me.stockUnitLabel.TabIndex = 30
+        Me.stockUnitLabel.Text = "ชิ้น"
+        '
+        'timeUnitLabel
+        '
+        Me.timeUnitLabel.AutoSize = True
+        Me.TableLayoutPanel1.SetColumnSpan(Me.timeUnitLabel, 3)
+        Me.timeUnitLabel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.timeUnitLabel.Location = New System.Drawing.Point(522, 349)
+        Me.timeUnitLabel.Name = "timeUnitLabel"
+        Me.timeUnitLabel.Size = New System.Drawing.Size(192, 50)
+        Me.timeUnitLabel.TabIndex = 31
+        Me.timeUnitLabel.Text = "วินาที"
+        '
         'InsertItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
@@ -300,7 +339,7 @@ Partial Class InsertItem
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "InsertItem"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "InsertItem"
+        Me.Text = "Insert/Edit Item"
         Me.headerPanel.ResumeLayout(False)
         Me.headerPanel.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -331,4 +370,7 @@ Partial Class InsertItem
     Friend WithEvents availableLabel As Label
     Friend WithEvents availableCheck As CheckBox
     Friend WithEvents titleLabel As Label
+    Friend WithEvents priceUnitLabel As Label
+    Friend WithEvents stockUnitLabel As Label
+    Friend WithEvents timeUnitLabel As Label
 End Class

@@ -118,6 +118,7 @@ Partial Class CoinNumber
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.numCoin5, 2)
         Me.numCoin5.Location = New System.Drawing.Point(213, 111)
+        Me.numCoin5.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.numCoin5.Name = "numCoin5"
         Me.numCoin5.Size = New System.Drawing.Size(132, 27)
         Me.numCoin5.TabIndex = 6
@@ -126,6 +127,7 @@ Partial Class CoinNumber
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.numCoin1, 2)
         Me.numCoin1.Location = New System.Drawing.Point(213, 39)
+        Me.numCoin1.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.numCoin1.Name = "numCoin1"
         Me.numCoin1.Size = New System.Drawing.Size(132, 27)
         Me.numCoin1.TabIndex = 5
@@ -134,6 +136,7 @@ Partial Class CoinNumber
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.numCoin10, 2)
         Me.numCoin10.Location = New System.Drawing.Point(213, 183)
+        Me.numCoin10.Maximum = New Decimal(New Integer() {2147483647, 0, 0, 0})
         Me.numCoin10.Name = "numCoin10"
         Me.numCoin10.Size = New System.Drawing.Size(132, 27)
         Me.numCoin10.TabIndex = 7
