@@ -24,6 +24,7 @@ Partial Class InsertItem
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(InsertItem))
         Me.headerPanel = New System.Windows.Forms.Panel()
+        Me.titleLabel = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.cbm_productList = New System.Windows.Forms.ComboBox()
         Me.itemPicBox = New System.Windows.Forms.PictureBox()
@@ -40,6 +41,7 @@ Partial Class InsertItem
         Me.uploadBtn = New System.Windows.Forms.Button()
         Me.cancelBtn = New System.Windows.Forms.Button()
         Me.acceptBtn = New System.Windows.Forms.Button()
+        Me.headerPanel.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.itemPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.priceInput, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,12 +51,23 @@ Partial Class InsertItem
         '
         'headerPanel
         '
-        Me.headerPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.headerPanel.BackColor = System.Drawing.Color.Coral
+        Me.headerPanel.Controls.Add(Me.titleLabel)
         Me.headerPanel.Dock = System.Windows.Forms.DockStyle.Top
         Me.headerPanel.Location = New System.Drawing.Point(0, 0)
         Me.headerPanel.Name = "headerPanel"
         Me.headerPanel.Size = New System.Drawing.Size(1262, 125)
         Me.headerPanel.TabIndex = 1
+        '
+        'titleLabel
+        '
+        Me.titleLabel.AutoSize = True
+        Me.titleLabel.ForeColor = System.Drawing.Color.White
+        Me.titleLabel.Location = New System.Drawing.Point(138, 33)
+        Me.titleLabel.Name = "titleLabel"
+        Me.titleLabel.Size = New System.Drawing.Size(38, 20)
+        Me.titleLabel.TabIndex = 0
+        Me.titleLabel.Text = "Title"
         '
         'TableLayoutPanel1
         '
@@ -280,6 +293,7 @@ Partial Class InsertItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1262, 673)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.headerPanel)
@@ -287,6 +301,8 @@ Partial Class InsertItem
         Me.Name = "InsertItem"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "InsertItem"
+        Me.headerPanel.ResumeLayout(False)
+        Me.headerPanel.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
         CType(Me.itemPicBox, System.ComponentModel.ISupportInitialize).EndInit()
@@ -314,4 +330,5 @@ Partial Class InsertItem
     Friend WithEvents timeInput As NumericUpDown
     Friend WithEvents availableLabel As Label
     Friend WithEvents availableCheck As CheckBox
+    Friend WithEvents titleLabel As Label
 End Class

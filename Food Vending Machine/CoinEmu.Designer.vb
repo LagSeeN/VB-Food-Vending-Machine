@@ -36,7 +36,7 @@ Partial Class CoinEmu
         '
         'footerPanel
         '
-        Me.footerPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.footerPanel.BackColor = System.Drawing.Color.Coral
         Me.footerPanel.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.footerPanel.Location = New System.Drawing.Point(0, 281)
         Me.footerPanel.Name = "footerPanel"

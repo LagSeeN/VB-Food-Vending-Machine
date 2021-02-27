@@ -47,6 +47,7 @@ Partial Class TakeFood
         '
         'lblTakeFood
         '
+        Me.lblTakeFood.BackColor = System.Drawing.Color.Coral
         Me.lblTakeFood.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTakeFood.Font = New System.Drawing.Font("Microsoft Sans Serif", 28.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.lblTakeFood.ForeColor = System.Drawing.Color.White

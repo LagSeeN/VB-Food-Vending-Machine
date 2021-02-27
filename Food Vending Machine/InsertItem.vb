@@ -184,6 +184,7 @@ Public Class InsertItem
         Try
             colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
+            titleLabel.Font = New Font(colFont.Families(0), 45, FontStyle.Bold)
             cbm_productList.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
             nameLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
             priceLabel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)

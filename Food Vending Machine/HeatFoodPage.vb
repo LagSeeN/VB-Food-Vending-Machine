@@ -29,7 +29,7 @@ Public Class HeatFoodPage
     Private Sub Fontload()
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
-        lblTakeFood.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)
+        lblTakeFood.Font = New Font(colFont.Families(0), 45, FontStyle.Bold)
         lblTextWait.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
         lblTextSec.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
         lblCountDown.Font = New Font(colFont.Families(0), 40, FontStyle.Regular)

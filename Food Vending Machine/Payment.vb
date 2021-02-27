@@ -118,14 +118,14 @@ Public Class Payment
     Private Sub Fontload()
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
-        lblPaymentHead.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)
+        lblPaymentHead.Font = New Font(colFont.Families(0), 45, FontStyle.Bold)
         lblTextName.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
         lblName.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
         lblTextPrice.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
         lblPrice.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
         lblTextTime.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
         lblTime.Font = New Font(colFont.Families(0), 35, FontStyle.Regular)
-        btnCancel.Font = New Font(colFont.Families(0), 15, FontStyle.Regular)
+        btnCancel.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
         btnCoinEmu.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
     End Sub
 

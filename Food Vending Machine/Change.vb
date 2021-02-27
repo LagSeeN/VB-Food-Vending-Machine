@@ -56,7 +56,7 @@ Public Class Change
     Private Sub Fontload()
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
-        lblTakeFood.Font = New Font(colFont.Families(0), 45, FontStyle.Regular)
+        lblTakeFood.Font = New Font(colFont.Families(0), 45, FontStyle.Bold)
         lblTextChange.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
         lblTextHeat.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
         lblBahtText.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)

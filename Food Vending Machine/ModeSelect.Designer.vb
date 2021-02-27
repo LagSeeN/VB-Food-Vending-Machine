@@ -69,6 +69,7 @@ Partial Class ModeSelect
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 32.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(391, 393)
         Me.Controls.Add(Me.CoinNumBtn)
         Me.Controls.Add(Me.SellProductBtn)

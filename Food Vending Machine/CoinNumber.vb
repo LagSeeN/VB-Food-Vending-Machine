@@ -34,8 +34,11 @@ Public Class CoinNumber
         lblCoin1.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
         lblCoin2.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
         lblCoin3.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
-        btnUpdate.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
-        btnCancel.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
+        btnUpdate.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+        btnCancel.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+        numCoin1.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+        numCoin5.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
+        numCoin10.Font = New Font(colFont.Families(0), 18, FontStyle.Regular)
 
     End Sub
     Private Sub ModeSelect_Load(sender As Object, e As EventArgs) Handles MyBase.Load

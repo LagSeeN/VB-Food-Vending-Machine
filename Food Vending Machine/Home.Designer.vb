@@ -39,7 +39,7 @@ Partial Class Home
         '
         'headerPanel
         '
-        Me.headerPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.headerPanel.BackColor = System.Drawing.Color.Coral
         Me.headerPanel.Controls.Add(Me.titleLabel)
         Me.headerPanel.Dock = System.Windows.Forms.DockStyle.Top
         Me.headerPanel.Location = New System.Drawing.Point(0, 0)

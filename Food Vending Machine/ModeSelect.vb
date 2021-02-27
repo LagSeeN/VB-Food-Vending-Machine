@@ -11,11 +11,13 @@ Public Class ModeSelect
     End Sub
     Private Sub AddProductBtn_Click(sender As Object, e As EventArgs) Handles AddProductBtn.Click
         Dim InsertItem As New InsertItem
+        InsertItem.titleLabel.Text = "เพิ่มรายการสินค้า"
         InsertItem.ShowDialog()
     End Sub
 
     Private Sub EditProductBtn_Click(sender As Object, e As EventArgs) Handles EditProductBtn.Click
         Dim InsertItem As New InsertItem(True)
+        InsertItem.titleLabel.Text = "แก้ไขรายการสินค้า"
         InsertItem.ShowDialog()
     End Sub
 

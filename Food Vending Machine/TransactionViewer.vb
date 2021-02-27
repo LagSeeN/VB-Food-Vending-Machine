@@ -33,7 +33,7 @@ Public Class TransactionViewer
                 dgvTransaction.Rows.Add(transaction.FoodName, transaction.Price.ToString("N") & " บาท", transaction.Count.ToString("N0") & " ชิ้น", transaction.TotalSale.ToString("N") & " บาท")
             Next
 
-            lblTitle.Text = "กำลังแสดงรายการสินค้าได้จำหน่ายได้ในเดือน " & thaiMonth(Date.Now.Month - 1) & " ปี " & Date.Now.Year
+            lblTitle.Text = "รายการสินค้าที่จำหน่ายได้ในเดือน " & thaiMonth(Date.Now.Month - 1) & " ปี " & Date.Now.Year
         Else
             MessageBox.Show("เกิดข้อผิดพลาดขณะเชื่อมต่อ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.Close()
@@ -43,7 +43,7 @@ Public Class TransactionViewer
     Private Sub Fontload()
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
-        lblTitle.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
+        lblTitle.Font = New Font(colFont.Families(0), 30, FontStyle.Bold)
 
     End Sub
 End Class
