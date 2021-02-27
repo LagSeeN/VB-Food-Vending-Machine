@@ -21,7 +21,13 @@ Public Class Home
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Fontload()
         InitializeFoodView()
-        Load_Products_Worker.RunWorkerAsync()
+        If mongoDBServer.ConnectServer() Then
+            Load_Products_Worker.RunWorkerAsync()
+        Else
+            MessageBox.Show("เกิดข้อผิดพลาดขณะเชื่อมต่อ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            buyBtn.Text = "ไม่พร้อมให้บริการ"
+        End If
+
     End Sub
 
     Private Sub buyBtn_Click(sender As Object, e As EventArgs) Handles buyBtn.Click
@@ -29,7 +35,12 @@ Public Class Home
         Dim Payment As New Payment(id)
         Payment.ShowDialog()
         InitializeFoodView()
-        Load_Products_Worker.RunWorkerAsync()
+        If mongoDBServer.ConnectServer() Then
+            Load_Products_Worker.RunWorkerAsync()
+        Else
+            MessageBox.Show("เกิดข้อผิดพลาดขณะเชื่อมต่อ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            buyBtn.Text = "ไม่พร้อมให้บริการ"
+        End If
     End Sub
 
     Private Sub Load_Products()
@@ -110,7 +121,12 @@ Public Class Home
             ModeSelect.ShowDialog()
             InitializeFoodView()
             Try
-                Load_Products_Worker.RunWorkerAsync()
+                If mongoDBServer.ConnectServer() Then
+                    Load_Products_Worker.RunWorkerAsync()
+                Else
+                    Throw New System.Exception("เกิดข้อผิดพลาดขณะเชื่อมต่อ")
+                    buyBtn.Text = "ไม่พร้อมให้บริการ"
+                End If
             Catch ex As System.InvalidOperationException
                 MessageBox.Show("กรุณารอสักครู่ และดำเนินการใหม่อีกครั้ง", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Catch ex As Exception

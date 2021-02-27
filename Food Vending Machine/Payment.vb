@@ -24,7 +24,13 @@ Public Class Payment
     Private Sub Payment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Fontload()
         can_close = False
-        GetFood_Worker.RunWorkerAsync()
+        If mongoDBServer.ConnectServer() Then
+            GetFood_Worker.RunWorkerAsync()
+        Else
+            MessageBox.Show("เกิดข้อผิดพลาดขณะเชื่อมต่อ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            can_close = True
+            Me.Close()
+        End If
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -100,6 +106,7 @@ Public Class Payment
     End Sub
 
     Private Sub GetFood_Worker_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles GetFood_Worker.DoWork
+        mongoDBServer.ConnectServer()
         food_item = mongoDBServer.GetFood(id)
     End Sub
 

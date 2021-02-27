@@ -57,6 +57,7 @@ Partial Class CoinNumber
         Me.TableLayoutPanel1.Controls.Add(Me.btnCancel, 4, 7)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 9
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.69519!))
@@ -68,16 +69,16 @@ Partial Class CoinNumber
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.69519!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.4385!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.69519!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(412, 343)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(360, 257)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'lblCoin1
         '
         Me.lblCoin1.AutoSize = True
         Me.lblCoin1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblCoin1.Location = New System.Drawing.Point(70, 36)
+        Me.lblCoin1.Location = New System.Drawing.Point(62, 27)
         Me.lblCoin1.Name = "lblCoin1"
-        Me.lblCoin1.Size = New System.Drawing.Size(115, 36)
+        Me.lblCoin1.Size = New System.Drawing.Size(100, 27)
         Me.lblCoin1.TabIndex = 0
         Me.lblCoin1.Text = "เหรียญ 1 บาท"
         Me.lblCoin1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -86,9 +87,9 @@ Partial Class CoinNumber
         '
         Me.lblCoin2.AutoSize = True
         Me.lblCoin2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblCoin2.Location = New System.Drawing.Point(70, 108)
+        Me.lblCoin2.Location = New System.Drawing.Point(62, 81)
         Me.lblCoin2.Name = "lblCoin2"
-        Me.lblCoin2.Size = New System.Drawing.Size(115, 36)
+        Me.lblCoin2.Size = New System.Drawing.Size(100, 27)
         Me.lblCoin2.TabIndex = 1
         Me.lblCoin2.Text = "เหรียญ 5 บาท"
         Me.lblCoin2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -97,9 +98,9 @@ Partial Class CoinNumber
         '
         Me.lblCoin3.AutoSize = True
         Me.lblCoin3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lblCoin3.Location = New System.Drawing.Point(70, 180)
+        Me.lblCoin3.Location = New System.Drawing.Point(62, 135)
         Me.lblCoin3.Name = "lblCoin3"
-        Me.lblCoin3.Size = New System.Drawing.Size(115, 36)
+        Me.lblCoin3.Size = New System.Drawing.Size(100, 27)
         Me.lblCoin3.TabIndex = 2
         Me.lblCoin3.Text = "เหรียญ 10 บาท"
         Me.lblCoin3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -107,9 +108,10 @@ Partial Class CoinNumber
         'btnUpdate
         '
         Me.btnUpdate.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.btnUpdate.Location = New System.Drawing.Point(70, 255)
+        Me.btnUpdate.Location = New System.Drawing.Point(62, 191)
+        Me.btnUpdate.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(115, 43)
+        Me.btnUpdate.Size = New System.Drawing.Size(100, 33)
         Me.btnUpdate.TabIndex = 3
         Me.btnUpdate.Text = "บันทึก"
         Me.btnUpdate.UseVisualStyleBackColor = True
@@ -117,45 +119,51 @@ Partial Class CoinNumber
         'numCoin5
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.numCoin5, 2)
-        Me.numCoin5.Location = New System.Drawing.Point(213, 111)
+        Me.numCoin5.Location = New System.Drawing.Point(187, 83)
+        Me.numCoin5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.numCoin5.Name = "numCoin5"
-        Me.numCoin5.Size = New System.Drawing.Size(134, 27)
+        Me.numCoin5.Size = New System.Drawing.Size(116, 23)
         Me.numCoin5.TabIndex = 6
         '
         'numCoin1
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.numCoin1, 2)
-        Me.numCoin1.Location = New System.Drawing.Point(213, 39)
+        Me.numCoin1.Location = New System.Drawing.Point(187, 29)
+        Me.numCoin1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.numCoin1.Name = "numCoin1"
-        Me.numCoin1.Size = New System.Drawing.Size(134, 27)
+        Me.numCoin1.Size = New System.Drawing.Size(116, 23)
         Me.numCoin1.TabIndex = 5
         '
         'numCoin10
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.numCoin10, 2)
-        Me.numCoin10.Location = New System.Drawing.Point(213, 183)
+        Me.numCoin10.Location = New System.Drawing.Point(187, 137)
+        Me.numCoin10.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.numCoin10.Name = "numCoin10"
-        Me.numCoin10.Size = New System.Drawing.Size(134, 27)
+        Me.numCoin10.Size = New System.Drawing.Size(116, 23)
         Me.numCoin10.TabIndex = 7
         '
         'btnCancel
         '
         Me.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.btnCancel.Location = New System.Drawing.Point(233, 255)
+        Me.btnCancel.Location = New System.Drawing.Point(204, 191)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(114, 43)
+        Me.btnCancel.Size = New System.Drawing.Size(99, 33)
         Me.btnCancel.TabIndex = 4
         Me.btnCancel.Text = "ยกเลิก"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'CoinNumber
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(412, 343)
+        Me.ClientSize = New System.Drawing.Size(360, 257)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "CoinNumber"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CoinNumber"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()

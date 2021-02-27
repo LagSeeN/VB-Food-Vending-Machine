@@ -38,7 +38,13 @@ Public Class Change
         Fontload()
         can_close = False
         lblChange.Text = change_price
-        mongoDBServer.food_finish(id, coin, change_price)
+        If mongoDBServer.ConnectServer() Then
+            mongoDBServer.food_finish(id, coin, change_price)
+        Else
+            MessageBox.Show("เกิดข้อผิดพลาดขณะเชื่อมต่อ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            can_close = True
+            Me.Close()
+        End If
     End Sub
     Private Sub Change_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If can_close Then

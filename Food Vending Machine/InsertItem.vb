@@ -21,12 +21,17 @@ Public Class InsertItem
     End Sub
     Private Sub InsertItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Fontload()
-        If isEditMode Then
-            LoadCombobox()
+        If mongoDBServer.ConnectServer() Then
+            If isEditMode Then
+                LoadCombobox()
+            Else
+                cbm_productList.Visible = False
+                availableLabel.Visible = False
+                availableCheck.Visible = False
+            End If
         Else
-            cbm_productList.Visible = False
-            availableLabel.Visible = False
-            availableCheck.Visible = False
+            MessageBox.Show("เกิดข้อผิดพลาดขณะเชื่อมต่อ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Me.Close()
         End If
     End Sub
     Private Sub acceptBtn_Click(sender As Object, e As EventArgs) Handles acceptBtn.Click
@@ -201,5 +206,9 @@ Public Class InsertItem
             MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
+    End Sub
+
+    Private Sub cancelBtn_Click(sender As Object, e As EventArgs) Handles cancelBtn.Click
+        Me.Close()
     End Sub
 End Class

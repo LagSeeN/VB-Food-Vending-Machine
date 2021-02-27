@@ -11,16 +11,34 @@ Public Class MongoDBServer
     Dim cert = New X509Certificate2(My.Resources.X509_cert_2554937799609490701, "")
     Dim base64 As New Base64
     Dim branch As String = "Visual Basic"
-    Public Function CountFood(is_sale As Boolean)
-        Dim settings = MongoClientSettings.FromConnectionString(server)
-        settings.SslSettings = New SslSettings With {
-            .ClientCertificates = New List(Of X509Certificate)() From {
-                cert
+    Dim settings As MongoClientSettings
+    Dim conn As MongoClient
+    Dim database As IMongoDatabase
+    Dim collection As IMongoCollection(Of BsonDocument)
+    Dim filter As FilterDefinition(Of BsonDocument)
+
+    Public Function ConnectServer()
+        Try
+            settings = MongoClientSettings.FromConnectionString(server)
+            settings.SslSettings = New SslSettings With {
+                .ClientCertificates = New List(Of X509Certificate)() From {
+                    cert
+                }
             }
-        }
-        Dim conn = New MongoClient(settings)
-        Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim filter As FilterDefinition(Of BsonDocument)
+            conn = New MongoClient(settings)
+            database = conn.GetDatabase("Food_Vending_Machine")
+
+            Dim isMongoLive As Boolean = database.RunCommandAsync(CType("{ping:1}", Command(Of BsonDocument))).Wait(1000)
+            If isMongoLive Then
+                Return True
+            End If
+        Catch ex As Exception
+            MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End Try
+        Return False
+    End Function
+    Public Function CountFood(is_sale As Boolean)
         If is_sale Then
             filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch) And Builders(Of BsonDocument).Filter.Eq(Of Int32)("is_available", 1)
         Else
@@ -31,16 +49,7 @@ Public Class MongoDBServer
     End Function
 
     Public Function CheckCoin()
-        Dim settings = MongoClientSettings.FromConnectionString(server)
-        settings.SslSettings = New SslSettings With {
-            .ClientCertificates = New List(Of X509Certificate)() From {
-                cert
-            }
-        }
-        Dim conn = New MongoClient(settings)
-        Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim collection = database.GetCollection(Of BsonDocument)("coin")
-        Dim filter As FilterDefinition(Of BsonDocument)
+        collection = database.GetCollection(Of BsonDocument)("coin")
         filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
         Dim cursor = collection.Find(filter).First
         If cursor("coin1").ToInt32 = 0 Or cursor("coin5").ToInt32 = 0 Or cursor("coin10").ToInt32 = 0 Then
@@ -50,16 +59,7 @@ Public Class MongoDBServer
     End Function
 
     Public Function GetAllImage(is_sale As Boolean)
-        Dim settings = MongoClientSettings.FromConnectionString(server)
-        settings.SslSettings = New SslSettings With {
-            .ClientCertificates = New List(Of X509Certificate)() From {
-                cert
-            }
-        }
-        Dim conn = New MongoClient(settings)
-        Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim collection = database.GetCollection(Of BsonDocument)("products")
-        Dim filter As FilterDefinition(Of BsonDocument)
+        collection = database.GetCollection(Of BsonDocument)("products")
         If is_sale Then
             filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch) And Builders(Of BsonDocument).Filter.Eq(Of Int32)("is_available", 1)
         Else
@@ -73,16 +73,7 @@ Public Class MongoDBServer
         Return image_list
     End Function
     Public Function GetAllFood(is_sale As Boolean)
-        Dim settings = MongoClientSettings.FromConnectionString(server)
-        settings.SslSettings = New SslSettings With {
-            .ClientCertificates = New List(Of X509Certificate)() From {
-                cert
-            }
-        }
-        Dim conn = New MongoClient(settings)
-        Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim collection = database.GetCollection(Of BsonDocument)("products")
-        Dim filter As FilterDefinition(Of BsonDocument)
+        collection = database.GetCollection(Of BsonDocument)("products")
         If is_sale Then
             filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch) And Builders(Of BsonDocument).Filter.Eq(Of Int32)("is_available", 1)
         Else
@@ -97,16 +88,8 @@ Public Class MongoDBServer
     End Function
 
     Public Function GetFood(id As String)
-        Dim settings = MongoClientSettings.FromConnectionString(server)
-        settings.SslSettings = New SslSettings With {
-            .ClientCertificates = New List(Of X509Certificate)() From {
-                cert
-            }
-        }
-        Dim conn = New MongoClient(settings)
-        Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim collection = database.GetCollection(Of BsonDocument)("products")
-        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", ObjectId.Parse(id))
+        collection = database.GetCollection(Of BsonDocument)("products")
+        filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", ObjectId.Parse(id))
         Dim food = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("price").Include("stock").Include("image").Include("time").Include("is_available")).First
         Return food
     End Function
@@ -114,15 +97,7 @@ Public Class MongoDBServer
     Public Function Insert(product As Product)
         Dim result As Boolean
 
-        Dim settings = MongoClientSettings.FromConnectionString(server)
-        settings.SslSettings = New SslSettings With {
-            .ClientCertificates = New List(Of X509Certificate)() From {
-                cert
-            }
-        }
-        Dim conn = New MongoClient(settings)
-        Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim collection = database.GetCollection(Of BsonDocument)("products")
+        collection = database.GetCollection(Of BsonDocument)("products")
 
         Dim data As BsonDocument = New BsonDocument()
 
@@ -150,16 +125,8 @@ Public Class MongoDBServer
     Public Function Update(product As Product)
         Dim result As Boolean
 
-        Dim settings = MongoClientSettings.FromConnectionString(server)
-        settings.SslSettings = New SslSettings With {
-            .ClientCertificates = New List(Of X509Certificate)() From {
-                cert
-            }
-        }
-        Dim conn = New MongoClient(settings)
-        Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim collection = database.GetCollection(Of BsonDocument)("products")
-        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", product.id)
+        collection = database.GetCollection(Of BsonDocument)("products")
+        filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", product.id)
 
         Dim data As BsonDocument = New BsonDocument()
 
@@ -185,16 +152,8 @@ Public Class MongoDBServer
     End Function
 
     Public Sub food_finish(id As String, coin As Integer(), change As Integer)
-        Dim settings = MongoClientSettings.FromConnectionString(server)
-        settings.SslSettings = New SslSettings With {
-            .ClientCertificates = New List(Of X509Certificate)() From {
-                cert
-            }
-        }
-        Dim conn = New MongoClient(settings)
-        Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim collection = database.GetCollection(Of BsonDocument)("products")
-        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", ObjectId.Parse(id))
+        collection = database.GetCollection(Of BsonDocument)("products")
+        filter = Builders(Of BsonDocument).Filter.Eq(Of BsonObjectId)("_id", ObjectId.Parse(id))
         Dim stock_data = collection.Find(filter).Project(Builders(Of BsonDocument).Projection.Include("_id").Include("product_name").Include("price").Include("stock")).First
 
         'update stock
@@ -217,7 +176,11 @@ Public Class MongoDBServer
             .Add("price", stock_data("price"))
             .Add("branch", "Visual Basic")
         End With
-        collection.InsertOne(data)
+        Try
+            collection.InsertOne(data)
+        Catch ex As Exception
+            MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
         'write coin
         collection = database.GetCollection(Of BsonDocument)("coin")
@@ -229,7 +192,11 @@ Public Class MongoDBServer
             .Add("coin5", coin_data("coin5").ToInt32 + coin(1))
             .Add("coin10", coin_data("coin10").ToInt32 + coin(2))
         End With
-        collection.UpdateOne(filter, New BsonDocument("$set", data))
+        Try
+            collection.UpdateOne(filter, New BsonDocument("$set", data))
+        Catch ex As Exception
+            MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
 
         'ทอนเงิน
         If change <> 0 Then
@@ -237,18 +204,25 @@ Public Class MongoDBServer
             Dim coin_list(3) As Integer
             If change >= 10 And coin_data("coin10").ToInt32 > 0 Then
                 Dim temp As Integer = change / 10
-                coin_list(2) = temp
-                change -= temp * 10
+                If coin_data("coin10").ToInt32 > temp Then
+                    coin_list(2) = temp
+                    change -= temp * 10
+                End If
             End If
             If change >= 5 And coin_data("coin5").ToInt32 > 0 Then
                 Dim temp As Integer = change / 5
-                coin_list(1) = temp
-                change -= temp * 5
+                If coin_data("coin5").ToInt32 > temp Then
+                    coin_list(1) = temp
+                    change -= temp * 5
+                End If
+
             End If
             If change >= 1 And coin_data("coin1").ToInt32 > 0 Then
                 Dim temp As Integer = change / 1
-                coin_list(0) = temp
-                change -= temp * 1
+                If coin_data("coin1").ToInt32 > temp Then
+                    coin_list(0) = temp
+                    change -= temp * 1
+                End If
             End If
             MessageBox.Show("เงินทอน" & vbCrLf & "เหรียญ 10 จำนวน " & coin_list(2) & vbCrLf & "เหรียญ 5 จำนวน " & coin_list(1) & vbCrLf & "เหรียญ 1 จำนวน " & coin_list(0), "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information)
             data = New BsonDocument()
@@ -257,22 +231,18 @@ Public Class MongoDBServer
                 .Add("coin5", coin_data("coin5").ToInt32 - coin_list(1))
                 .Add("coin10", coin_data("coin10").ToInt32 - coin_list(2))
             End With
-            collection.UpdateOne(filter, New BsonDocument("$set", data))
+            Try
+                collection.UpdateOne(filter, New BsonDocument("$set", data))
+            Catch ex As Exception
+                MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
         End If
 
     End Sub
 
     Public Function GetTransaction() As List(Of TransactionResult)
-        Dim settings = MongoClientSettings.FromConnectionString(server)
-        settings.SslSettings = New SslSettings With {
-            .ClientCertificates = New List(Of X509Certificate)() From {
-                cert
-            }
-        }
-        Dim conn = New MongoClient(settings)
-        Dim database = conn.GetDatabase("Food_Vending_Machine")
-        Dim collection = database.GetCollection(Of BsonDocument)("transaction")
-        Dim filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", "Visual Basic")
+        collection = database.GetCollection(Of BsonDocument)("transaction")
+        filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", "Visual Basic")
 
         Dim options = New AggregateOptions() With {
             .AllowDiskUse = True
@@ -303,5 +273,29 @@ Public Class MongoDBServer
         End Using
         Return results
     End Function
+
+    Public Function GetCoin()
+        collection = database.GetCollection(Of BsonDocument)("coin")
+        filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
+        Dim coin = collection.Find(filter).First
+        Return coin
+    End Function
+
+    Public Sub updateCoin(new_coin As Int32())
+        collection = database.GetCollection(Of BsonDocument)("coin")
+        filter = Builders(Of BsonDocument).Filter.Eq(Of String)("branch", branch)
+        Dim Data = New BsonDocument()
+        With Data
+            .Add("coin1", new_coin(0))
+            .Add("coin5", new_coin(1))
+            .Add("coin10", new_coin(2))
+        End With
+        Try
+            collection.UpdateOne(filter, New BsonDocument("$set", Data))
+            MessageBox.Show("อัปเดตเหรียญเสร็จสิ้น", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("ERROR" & vbCrLf & ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 
 End Class
