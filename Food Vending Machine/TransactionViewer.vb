@@ -44,6 +44,8 @@ Public Class TransactionViewer
         colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
 
         lblTitle.Font = New Font(colFont.Families(0), 30, FontStyle.Bold)
+        dgvTransaction.DefaultCellStyle.Font = New Font(colFont.Families(0), 14, FontStyle.Regular)
+        dgvTransaction.ColumnHeadersDefaultCellStyle.Font = New Font(colFont.Families(0), 14, FontStyle.Bold)
 
     End Sub
 End Class
