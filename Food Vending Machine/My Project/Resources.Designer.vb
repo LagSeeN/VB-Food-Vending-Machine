@@ -61,46 +61,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property BirdChef3() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("BirdChef3", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property BirdFood1() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("BirdFood1", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property BirdKnife() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("BirdKnife", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property Change() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Change", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized resource of type System.Byte[].
         '''</summary>
         Friend ReadOnly Property FC_Lamoon_Regular_ver_1_00() As Byte()
@@ -116,16 +76,6 @@ Namespace My.Resources
         Friend ReadOnly Property Sound() As System.IO.UnmanagedMemoryStream
             Get
                 Return ResourceManager.GetStream("Sound", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Byte[].
-        '''</summary>
-        Friend ReadOnly Property X509_cert_2554937799609490701() As Byte()
-            Get
-                Dim obj As Object = ResourceManager.GetObject("X509_cert_2554937799609490701", resourceCulture)
-                Return CType(obj,Byte())
             End Get
         End Property
     End Module

@@ -7,10 +7,10 @@ Imports System.Collections.Generic
 Imports System.Security.Cryptography.X509Certificates
 
 Public Class MongoDBServer
-    Dim server = "mongodb+srv://clustertni.kt6oq.mongodb.net/Food_Vending_Machine?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
-    Dim cert = New X509Certificate2(My.Resources.X509_cert_2554937799609490701, "")
+    Dim server = "<url server>"
+    Dim cert = New X509Certificate2("<x509 file.pfx file>", "")
     Dim base64 As New Base64
-    Dim branch As String = "Visual Basic"
+    Dim branch As String = "<branch>"
     Dim settings As MongoClientSettings
     Dim conn As MongoClient
     Dim database As IMongoDatabase

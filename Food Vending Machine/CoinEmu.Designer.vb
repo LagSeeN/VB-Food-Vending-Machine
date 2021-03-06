@@ -22,7 +22,6 @@ Partial Class CoinEmu
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CoinEmu))
         Me.footerPanel = New System.Windows.Forms.Panel()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.CoinEmuTableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
@@ -38,16 +37,17 @@ Partial Class CoinEmu
         '
         Me.footerPanel.BackColor = System.Drawing.Color.Coral
         Me.footerPanel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.footerPanel.Location = New System.Drawing.Point(0, 281)
+        Me.footerPanel.Location = New System.Drawing.Point(0, 211)
+        Me.footerPanel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.footerPanel.Name = "footerPanel"
-        Me.footerPanel.Size = New System.Drawing.Size(462, 52)
+        Me.footerPanel.Size = New System.Drawing.Size(404, 39)
         Me.footerPanel.TabIndex = 1
         '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(0, 0)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 27)
+        Me.TextBox1.Size = New System.Drawing.Size(100, 23)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = "TextBox1"
         '
@@ -68,6 +68,7 @@ Partial Class CoinEmu
         Me.CoinEmuTableLayoutPanel.Controls.Add(Me.cancelBtn, 5, 5)
         Me.CoinEmuTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CoinEmuTableLayoutPanel.Location = New System.Drawing.Point(0, 0)
+        Me.CoinEmuTableLayoutPanel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.CoinEmuTableLayoutPanel.Name = "CoinEmuTableLayoutPanel"
         Me.CoinEmuTableLayoutPanel.RowCount = 7
         Me.CoinEmuTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.88077!))
@@ -77,7 +78,7 @@ Partial Class CoinEmu
         Me.CoinEmuTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.94662!))
         Me.CoinEmuTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.08185!))
         Me.CoinEmuTableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.252669!))
-        Me.CoinEmuTableLayoutPanel.Size = New System.Drawing.Size(462, 281)
+        Me.CoinEmuTableLayoutPanel.Size = New System.Drawing.Size(404, 211)
         Me.CoinEmuTableLayoutPanel.TabIndex = 2
         '
         'coinTotalTB
@@ -85,19 +86,21 @@ Partial Class CoinEmu
         Me.CoinEmuTableLayoutPanel.SetColumnSpan(Me.coinTotalTB, 5)
         Me.coinTotalTB.Dock = System.Windows.Forms.DockStyle.Top
         Me.coinTotalTB.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.coinTotalTB.Location = New System.Drawing.Point(36, 36)
+        Me.coinTotalTB.Location = New System.Drawing.Point(32, 27)
+        Me.coinTotalTB.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.coinTotalTB.Name = "coinTotalTB"
         Me.coinTotalTB.ReadOnly = True
-        Me.coinTotalTB.Size = New System.Drawing.Size(386, 61)
+        Me.coinTotalTB.Size = New System.Drawing.Size(337, 50)
         Me.coinTotalTB.TabIndex = 0
         Me.coinTotalTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'oneCoinBtn
         '
         Me.oneCoinBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.oneCoinBtn.Location = New System.Drawing.Point(36, 115)
+        Me.oneCoinBtn.Location = New System.Drawing.Point(32, 86)
+        Me.oneCoinBtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.oneCoinBtn.Name = "oneCoinBtn"
-        Me.oneCoinBtn.Size = New System.Drawing.Size(114, 45)
+        Me.oneCoinBtn.Size = New System.Drawing.Size(99, 34)
         Me.oneCoinBtn.TabIndex = 1
         Me.oneCoinBtn.Text = "1"
         Me.oneCoinBtn.UseVisualStyleBackColor = True
@@ -105,9 +108,10 @@ Partial Class CoinEmu
         'fiveCoinBtn
         '
         Me.fiveCoinBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.fiveCoinBtn.Location = New System.Drawing.Point(172, 115)
+        Me.fiveCoinBtn.Location = New System.Drawing.Point(151, 86)
+        Me.fiveCoinBtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.fiveCoinBtn.Name = "fiveCoinBtn"
-        Me.fiveCoinBtn.Size = New System.Drawing.Size(114, 45)
+        Me.fiveCoinBtn.Size = New System.Drawing.Size(99, 34)
         Me.fiveCoinBtn.TabIndex = 2
         Me.fiveCoinBtn.Text = "5"
         Me.fiveCoinBtn.UseVisualStyleBackColor = True
@@ -115,9 +119,10 @@ Partial Class CoinEmu
         'tenCoinBtn
         '
         Me.tenCoinBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.tenCoinBtn.Location = New System.Drawing.Point(308, 115)
+        Me.tenCoinBtn.Location = New System.Drawing.Point(270, 86)
+        Me.tenCoinBtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.tenCoinBtn.Name = "tenCoinBtn"
-        Me.tenCoinBtn.Size = New System.Drawing.Size(114, 45)
+        Me.tenCoinBtn.Size = New System.Drawing.Size(99, 34)
         Me.tenCoinBtn.TabIndex = 3
         Me.tenCoinBtn.Text = "10"
         Me.tenCoinBtn.UseVisualStyleBackColor = True
@@ -125,23 +130,24 @@ Partial Class CoinEmu
         'cancelBtn
         '
         Me.cancelBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.cancelBtn.Location = New System.Drawing.Point(308, 209)
+        Me.cancelBtn.Location = New System.Drawing.Point(270, 156)
+        Me.cancelBtn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cancelBtn.Name = "cancelBtn"
-        Me.cancelBtn.Size = New System.Drawing.Size(114, 40)
+        Me.cancelBtn.Size = New System.Drawing.Size(99, 30)
         Me.cancelBtn.TabIndex = 5
         Me.cancelBtn.Text = "ยกเลิก"
         Me.cancelBtn.UseVisualStyleBackColor = True
         '
         'CoinEmu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(462, 333)
+        Me.ClientSize = New System.Drawing.Size(404, 250)
         Me.Controls.Add(Me.CoinEmuTableLayoutPanel)
         Me.Controls.Add(Me.footerPanel)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.MaximizeBox = False
         Me.Name = "CoinEmu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -22,7 +22,6 @@ Partial Class ModeSelect
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ModeSelect))
         Me.AddProductBtn = New System.Windows.Forms.Button()
         Me.EditProductBtn = New System.Windows.Forms.Button()
         Me.SellProductBtn = New System.Windows.Forms.Button()
@@ -77,7 +76,6 @@ Partial Class ModeSelect
         Me.Controls.Add(Me.EditProductBtn)
         Me.Controls.Add(Me.AddProductBtn)
         Me.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "ModeSelect"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
