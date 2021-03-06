@@ -28,7 +28,7 @@ Public Class CoinNumber
     End Sub
 
     Private Sub Fontload()
-        colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
+        colFont.AddFontFile(Application.StartupPath + "Font\<font file>")
 
         lblCoin1.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)
         lblCoin2.Font = New Font(colFont.Families(0), 18, FontStyle.Bold)

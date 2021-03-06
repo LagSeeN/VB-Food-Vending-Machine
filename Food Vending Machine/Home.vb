@@ -137,7 +137,7 @@ Public Class Home
     End Sub
     Private Sub Fontload()
         Try
-            colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
+            colFont.AddFontFile(Application.StartupPath + "Font\<font file>")
             buyBtn.Font = New Font(colFont.Families(0), 20, FontStyle.Regular)
             titleLabel.Font = New Font(colFont.Families(0), 45, FontStyle.Bold)
         Catch ex As System.IO.FileNotFoundException

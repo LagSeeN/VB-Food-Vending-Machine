@@ -27,7 +27,7 @@ Public Class HeatFoodPage
         TimerWorker.RunWorkerAsync()
     End Sub
     Private Sub Fontload()
-        colFont.AddFontFile(Application.StartupPath + "Font\FC Lamoon Regular ver 1.00.ttf")
+        colFont.AddFontFile(Application.StartupPath + "Font\<font file>")
 
         lblTakeFood.Font = New Font(colFont.Families(0), 45, FontStyle.Bold)
         lblTextWait.Font = New Font(colFont.Families(0), 30, FontStyle.Regular)
