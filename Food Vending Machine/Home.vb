@@ -62,6 +62,7 @@ Public Class Home
     End Sub
 
     Private Sub InitializeFoodView()
+        buyBtn.Text = "ชำระเงิน"
         ProductListImage.Images.Clear()
         buyBtn.Enabled = False
         Me.KeyPreview = False
