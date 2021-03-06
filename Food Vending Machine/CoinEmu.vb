@@ -39,7 +39,7 @@ Public Class CoinEmu
     End Sub
 
     Private Sub CoinEmu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
+        'Fontload()
         input_coin = 0
         is_canceled = False
     End Sub

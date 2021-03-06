@@ -19,7 +19,7 @@ Public Class Home
         ' Add any initialization after the InitializeComponent() call.
     End Sub
     Private Sub Home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
+        'Fontload()
         InitializeFoodView()
         If mongoDBServer.ConnectServer() Then
             Load_Products_Worker.RunWorkerAsync()

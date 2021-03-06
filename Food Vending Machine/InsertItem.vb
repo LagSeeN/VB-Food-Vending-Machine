@@ -20,7 +20,7 @@ Public Class InsertItem
 
     End Sub
     Private Sub InsertItem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
+        'Fontload()
         If mongoDBServer.ConnectServer() Then
             If isEditMode Then
                 LoadCombobox()

@@ -3,7 +3,7 @@ Public Class TransactionViewer
     Dim mongoDBServer As New MongoDBServer
     Dim colFont As New PrivateFontCollection
     Private Sub TransactionViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
+        'Fontload()
         If mongoDBServer.ConnectServer() Then
             Dim transactions As List(Of TransactionResult) = mongoDBServer.GetTransaction()
 

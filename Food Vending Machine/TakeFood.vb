@@ -13,7 +13,7 @@ Public Class TakeFood
     End Sub
 
     Private Sub TakeFood_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
+        'Fontload()
         can_close = False
         Timer1.Start()
     End Sub

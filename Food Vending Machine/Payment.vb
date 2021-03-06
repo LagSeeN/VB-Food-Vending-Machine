@@ -22,7 +22,7 @@ Public Class Payment
         Me.id = id
     End Sub
     Private Sub Payment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
+        'Fontload()
         can_close = False
         If mongoDBServer.ConnectServer() Then
             GetFood_Worker.RunWorkerAsync()

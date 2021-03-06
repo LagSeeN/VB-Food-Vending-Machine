@@ -41,7 +41,7 @@ Public Class CoinNumber
 
     End Sub
     Private Sub ModeSelect_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
+        'Fontload()
         InitializeCoinLoad()
     End Sub
 

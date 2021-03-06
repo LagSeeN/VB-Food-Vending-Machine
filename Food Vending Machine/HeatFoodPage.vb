@@ -21,7 +21,7 @@ Public Class HeatFoodPage
 
     End Sub
     Private Sub HeatFoodPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
+        'Fontload()
         can_close = False
         lblCountDown.Text = time_to_cook
         TimerWorker.RunWorkerAsync()

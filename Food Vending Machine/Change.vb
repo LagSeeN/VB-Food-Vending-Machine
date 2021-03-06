@@ -35,7 +35,7 @@ Public Class Change
     End Sub
 
     Private Sub Change_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Fontload()
+        'Fontload()
         can_close = False
         lblChange.Text = change_price
         If mongoDBServer.ConnectServer() Then
