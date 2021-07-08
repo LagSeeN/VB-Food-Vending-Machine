@@ -11,6 +11,22 @@
 
 ## Screenshot
 
+Main Screen
+
+![](image/MainUI.png)
+
+Payment
+
+![](image/Payment.png)
+
+Add/Edit/Delete Product
+
+![](image/AddProduct.png)
+
+![](image/Edit.RemoveProduct.png)
+
+Sales Summary
+![](image/SalesSummary.png)
 
 
 ## Team
